@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="MonsterHunter"/>
+      <UseAppBundle Value="False"/>
+      <ResourceType Value="res"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
+    </RunParams>
+    <Units Count="15">
+      <Unit0>
+        <Filename Value="MonsterHunter.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unitlieu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UnitLieu"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="unitmenuprincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UnitMenuPrincipal"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="unitascii.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitASCII"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="unitihm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitIHM"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="unitpersonnage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitPersonnage"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="unitobjet.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitObjet"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="unitchambre.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitChambre"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="unitequipement.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitEquipement"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="unitville.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitVille"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="unitmarchand.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitMarchand"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="unitmonstre.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitMonstre"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="unitchasse.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitChasse"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="unitcantine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitCantine"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="unitforge.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitForge"/>
+      </Unit14>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="MonsterHunter"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
