@@ -33,7 +33,7 @@ function villeHub() : typeLieu;
 var choix : string;
 begin
   choix := '';
-  while (choix <> '1') and (choix <> '2') and (choix <> '3') and (choix <> '4') and (choix <> '5') and (choix <> '6') do
+  while (choix <> '1') and (choix <> '2') and (choix <> '3') and (choix <> '4') and (choix <> '5') do
   begin
     afficherInterfacePrincipale();
     afficherLieu('Ville de Brightwood');

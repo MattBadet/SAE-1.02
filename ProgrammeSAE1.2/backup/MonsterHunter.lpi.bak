@@ -7,6 +7,7 @@
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
@@ -25,7 +26,7 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <Units Count="16">
+    <Units Count="15">
       <Unit0>
         <Filename Value="MonsterHunter.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -100,11 +101,6 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitForge"/>
       </Unit14>
-      <Unit15>
-        <Filename Value="unitcampentrainement.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="unitCampEntrainement"/>
-      </Unit15>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
