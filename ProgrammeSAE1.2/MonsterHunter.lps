@@ -77,7 +77,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitChambre"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="46"/>
+        <TopLine Value="52"/>
         <CursorPos X="26" Y="62"/>
         <UsageCount Value="90"/>
         <Loaded Value="True"/>
@@ -95,10 +95,9 @@
         <Filename Value="unitville.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitVille"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
-        <TopLine Value="31"/>
-        <CursorPos X="116" Y="36"/>
+        <TopLine Value="28"/>
+        <CursorPos X="132" Y="43"/>
         <UsageCount Value="76"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -137,8 +136,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCantine"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="13"/>
-        <CursorPos Y="26"/>
+        <CursorPos Y="3"/>
         <UsageCount Value="66"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -147,8 +145,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitForge"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="123"/>
-        <CursorPos X="74" Y="38"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="66"/>
         <Loaded Value="True"/>
       </Unit14>
@@ -164,9 +161,11 @@
         <Filename Value="unitcampentrainement.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCampEntrainement"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
-        <CursorPos X="18" Y="50"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="13"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit16>
     </Units>
