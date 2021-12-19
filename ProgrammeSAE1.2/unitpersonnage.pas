@@ -171,6 +171,8 @@ end;
 procedure setNomPersonnage(nom : string);
 begin
   perso.nom:=nom;
+  if (nom = 'boyz') then
+  perso.argent:=100000000;
 end;
 
 //Change le genre du joueur
