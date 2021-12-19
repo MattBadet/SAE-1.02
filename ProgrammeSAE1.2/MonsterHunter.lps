@@ -96,7 +96,7 @@
         <UnitName Value="unitVille"/>
         <EditorIndex Value="13"/>
         <TopLine Value="48"/>
-        <CursorPos X="5" Y="63"/>
+        <CursorPos X="55" Y="54"/>
         <UsageCount Value="89"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -126,8 +126,8 @@
         <UnitName Value="unitChasse"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="205"/>
-        <CursorPos X="45" Y="221"/>
+        <TopLine Value="206"/>
+        <CursorPos X="50" Y="216"/>
         <UsageCount Value="79"/>
         <Loaded Value="True"/>
       </Unit12>

@@ -96,7 +96,7 @@
         <UnitName Value="unitVille"/>
         <EditorIndex Value="13"/>
         <TopLine Value="48"/>
-        <CursorPos X="46" Y="62"/>
+        <CursorPos X="5" Y="63"/>
         <UsageCount Value="89"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -124,9 +124,10 @@
         <Filename Value="unitchasse.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitChasse"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="255"/>
-        <CursorPos Y="22"/>
+        <TopLine Value="205"/>
+        <CursorPos X="45" Y="221"/>
         <UsageCount Value="79"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -154,10 +155,9 @@
         <Filename Value="unitcampentrainement.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCampEntrainement"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
-        <TopLine Value="49"/>
-        <CursorPos X="39" Y="64"/>
+        <TopLine Value="61"/>
+        <CursorPos X="51" Y="86"/>
         <FoldState Value=" T3H061d"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
