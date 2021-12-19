@@ -27,7 +27,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitMenuPrincipal"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="89"/>
+        <TopLine Value="83"/>
         <CursorPos X="122" Y="116"/>
         <UsageCount Value="142"/>
         <Loaded Value="True"/>
@@ -46,8 +46,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitIHM"/>
         <EditorIndex Value="11"/>
-        <TopLine Value="128"/>
-        <CursorPos X="12" Y="135"/>
+        <TopLine Value="122"/>
+        <CursorPos X="67" Y="134"/>
         <UsageCount Value="142"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -55,10 +55,9 @@
         <Filename Value="unitpersonnage.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitPersonnage"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <TopLine Value="158"/>
-        <CursorPos X="27" Y="175"/>
+        <CursorPos X="128" Y="158"/>
         <UsageCount Value="140"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -95,9 +94,10 @@
         <Filename Value="unitville.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitVille"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
-        <TopLine Value="17"/>
-        <CursorPos X="132" Y="43"/>
+        <TopLine Value="48"/>
+        <CursorPos X="28" Y="65"/>
         <UsageCount Value="89"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -156,8 +156,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCampEntrainement"/>
         <EditorIndex Value="14"/>
-        <TopLine Value="85"/>
-        <CursorPos X="40" Y="95"/>
+        <TopLine Value="67"/>
+        <CursorPos X="20" Y="75"/>
         <FoldState Value=" T3H061d"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>

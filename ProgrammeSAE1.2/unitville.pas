@@ -58,11 +58,11 @@ begin
     couleurTexte(White);
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
     deplacerCurseurZoneAction(3);write('     1/ Se rendre à votre chambre');
-    deplacerCurseurZoneAction(4);write('     2/ Se rendre aux marchands');
-    deplacerCurseurZoneAction(5);write('     3/ Se rendre à la forge'); 
-    deplacerCurseurZoneAction(6);write('     4/ Se rendre à la cantine');
-    deplacerCurseurZoneAction(7);write('     5/ Se rendre à la porte');
-    deplacerCurseurZoneAction(8);write('     6/ Se rendre au camp d''entrainement');
+    deplacerCurseurZoneAction(5);write('     2/ Se rendre aux marchands');
+    deplacerCurseurZoneAction(7);write('     3/ Se rendre à la forge');
+    deplacerCurseurXY(50,33);write('     4/ Se rendre à la cantine');
+    deplacerCurseurXY(50,35);write('     5/ Se rendre à la porte');
+    deplacerCurseurXY(50,37);write('     6/ Se rendre au camp d''entrainement');
 
     deplacerCurseurZoneResponse();
     readln(choix);

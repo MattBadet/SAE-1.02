@@ -57,12 +57,11 @@ begin
     deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
     deplacerCurseurXY(26,18);write('tours.');
     if (getPersonnage().argent < 1000) then
-    couleurTexte(Red);
+    couleurTexte(Red)
+    else
+    couleurTexte(Green);
     deplacerCurseurXY(40,24);write('Prix : 1000PO');
-    couleurTexte(white);
-    deplacerCurseurXY(29,25);write('LVL');
 
-    couleurTexte(Red);
     dessinerCadreXY(79,8,125,27,simple,white,black);
     dessinerCadreXY(91,7,113,9,simple,white,black);
     dessinerCadreXY(79,22,125,27,simple,white,black);
@@ -73,12 +72,13 @@ begin
     deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
     deplacerCurseurXY(82,15);write('EFFET : Inflige 30% des dégats de base,');
     deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
-    deplacerCurseurXY(97,17);write('de PV que le nombre enlever au monstre.');
+    deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
     if (getPersonnage().argent < 1000) then
-    couleurTexte(Red);
+    couleurTexte(Red)
+    else
+    couleurTexte(Green);
     deplacerCurseurXY(96,24);write('Prix : 1000PO');
-    couleurTexte(Red);
-    deplacerCurseurXY(85,25);write('');
+    couleurTexte(white);
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
     deplacerCurseurZoneAction(3);write('     1/ Apprendre Tranche');

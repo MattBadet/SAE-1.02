@@ -124,7 +124,6 @@ begin
     begin
     deplacerCurseurXY(160,36);Write(' Compétences : Aucune');
     end
-    end
     else if (getPersonnage().competence = 1) then
     begin
     deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
@@ -138,8 +137,7 @@ begin
     deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
     deplacerCurseurXY(175,37);Write('Vol Vie ');
     end;
-
-
+  end;
 end;
 
 //Affichage le cadre du lieu dans le cas d'un écran simple
