@@ -60,9 +60,9 @@ begin
     deplacerCurseurZoneAction(3);write('     1/ Se rendre à votre chambre');
     deplacerCurseurZoneAction(5);write('     2/ Se rendre aux marchands');
     deplacerCurseurZoneAction(7);write('     3/ Se rendre à la forge');
-    deplacerCurseurXY(50,33);write('     4/ Se rendre à la cantine');
-    deplacerCurseurXY(50,35);write('     5/ Se rendre à la porte');
-    deplacerCurseurXY(50,37);write('     6/ Se rendre au camp d''entrainement');
+    deplacerCurseurXY(55,33);write('     4/ Se rendre à la cantine');
+    deplacerCurseurXY(55,35);write('     5/ Se rendre à la porte');
+    deplacerCurseurXY(55,37);write('     6/ Se rendre au camp d''entrainement');
 
     deplacerCurseurZoneResponse();
     readln(choix);

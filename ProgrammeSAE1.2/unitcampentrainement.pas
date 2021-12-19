@@ -63,7 +63,7 @@ begin
     deplacerCurseurXY(40,24);write('Prix : 1000PO');
     if (getPersonnage().competence = 1) OR (getPersonnage().competence = 3) then
     begin
-    deplacerCurseurXY(40,25);write('Déjà possédée');
+    deplacerCurseurXY(40,25);write('Déjà appris');
     end;
 
     dessinerCadreXY(79,8,125,27,simple,white,black);
@@ -84,7 +84,7 @@ begin
     deplacerCurseurXY(96,24);write('Prix : 1000PO');
     if (getPersonnage().competence = 2) OR (getPersonnage().competence = 3) then
     begin
-    deplacerCurseurXY(96,25);write('Déjà possédée');
+    deplacerCurseurXY(96,25);write('Déjà appris');
     end;
     couleurTexte(white);
 

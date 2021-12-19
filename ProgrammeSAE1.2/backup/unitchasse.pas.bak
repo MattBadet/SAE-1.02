@@ -215,14 +215,14 @@ begin
           deplacerCurseurZoneAction(3);write('     1/ Attaquer le monstre de toute votre force');
           deplacerCurseurZoneAction(5);write('     2/ Essayer de récupérer une partie du monstre');
           deplacerCurseurZoneAction(7);write('     3/ Utiliser une potion');
-          deplacerCurseurXY(55,33);write('     4/ Utiliser une bombe');
+          deplacerCurseurXY(50,33);write('     4/ Utiliser une bombe');
           if (getpersonnage().competence = 1) OR (getpersonnage().competence = 3) then
           begin
-          deplacerCurseurXY(55,35);write('     5/ Utiliser Tranche');
+          deplacerCurseurXY(50,35);write('     5/ Utiliser Tranche');
           end;
           if (getpersonnage().competence = 2) OR (getpersonnage().competence = 3) then
           begin
-          deplacerCurseurXY(55,37);write('     6/ Utiliser VolVie');
+          deplacerCurseurXY(50,37);write('     6/ Utiliser VolVie');
           end;
         end;
         deplacerCurseurZoneResponse();
