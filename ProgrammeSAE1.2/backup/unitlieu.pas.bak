@@ -59,6 +59,7 @@ begin
           expedition : chasseHub();                         //Porte de la ville
           forge : ForgeHUB();                               //Forge
           cantine : cantineHUB();                           //Cantine
+          camp : campHUB();                                 //Camp d'Entrainement
      end;
 end;
 

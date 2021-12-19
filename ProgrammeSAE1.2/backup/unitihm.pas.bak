@@ -120,8 +120,24 @@ begin
 
     deplacerCurseurXY(164,34);Write('   -------------   ');
 
-    deplacerCurseurXY(160,36);Write(' Compétences : -Aucune');
-
+    if (getPersonnage().competence = 0) then
+    begin
+    deplacerCurseurXY(160,36);Write(' Compétences : Aucune');
+    end
+    end
+    else if (getPersonnage().competence = 1) then
+    begin
+    deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
+    end
+    else if (getPersonnage().competence = 2) then
+    begin
+    deplacerCurseurXY(160,36);Write(' Compétences : Vol Vie');
+    end
+    else if (getPersonnage().competence = 3) then
+    begin
+    deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
+    deplacerCurseurXY(175,37);Write('Vol Vie ');
+    end;
   end;
 
 end;

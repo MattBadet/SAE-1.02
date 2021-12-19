@@ -14,14 +14,22 @@ implementation
 uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 
+//Le joueur veux apprendre Tranche
 procedure veuxTranche();
 begin
-
+  if ((getPersonnage().competence = 0) OR (getPersonnage().competence = 2)) AND (getPersonnage().argent >= 1000) then
+  begin
+    apprendCompetence(1);
+  end;
 end;
 
+//Le joueur veux apprendre VolVie
 procedure veuxVolVie();
 begin
-
+  if ((getPersonnage().competence = 0) OR (getPersonnage().competence = 1)) AND (getPersonnage().argent >= 1000) then
+  begin
+    apprendCompetence(2);
+  end;
 end;
 
 //Fonction exécutée pour afficher l'écran d'affichage des compétences
@@ -92,8 +100,6 @@ begin
     end;
     end;
   end;
-
-
 end;
 
 

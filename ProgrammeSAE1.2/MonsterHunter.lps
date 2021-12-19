@@ -9,7 +9,7 @@
         <Filename Value="MonsterHunter.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="12" Y="8"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -18,8 +18,8 @@
         <UnitName Value="UnitLieu"/>
         <EditorIndex Value="16"/>
         <TopLine Value="43"/>
-        <CursorPos X="82" Y="62"/>
-        <UsageCount Value="133"/>
+        <CursorPos X="83" Y="62"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -27,9 +27,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitMenuPrincipal"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="77"/>
         <CursorPos X="122" Y="116"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -37,19 +36,19 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitASCII"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="123"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="unitihm.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitIHM"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
-        <TopLine Value="126"/>
-        <CursorPos X="24" Y="64"/>
-        <UsageCount Value="133"/>
+        <TopLine Value="128"/>
+        <CursorPos X="3" Y="141"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -57,9 +56,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitPersonnage"/>
         <EditorIndex Value="10"/>
-        <TopLine Value="14"/>
-        <CursorPos X="5" Y="24"/>
-        <UsageCount Value="131"/>
+        <TopLine Value="339"/>
+        <CursorPos X="22" Y="353"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -69,7 +68,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="13"/>
         <CursorPos X="32" Y="56"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="136"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -79,7 +78,7 @@
         <EditorIndex Value="15"/>
         <TopLine Value="143"/>
         <CursorPos X="83" Y="151"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -88,7 +87,7 @@
         <UnitName Value="unitEquipement"/>
         <EditorIndex Value="8"/>
         <CursorPos X="50" Y="9"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -98,7 +97,7 @@
         <EditorIndex Value="13"/>
         <TopLine Value="17"/>
         <CursorPos X="132" Y="43"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="88"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -106,9 +105,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitMarchand"/>
         <EditorIndex Value="9"/>
-        <TopLine Value="53"/>
-        <CursorPos X="22" Y="63"/>
-        <UsageCount Value="78"/>
+        <TopLine Value="47"/>
+        <CursorPos X="85" Y="64"/>
+        <UsageCount Value="86"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -116,9 +115,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitMonstre"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="28"/>
+        <TopLine Value="40"/>
         <CursorPos Y="35"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="80"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -128,7 +127,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="255"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -138,7 +137,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="34"/>
         <CursorPos X="5" Y="49"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -148,18 +147,18 @@
         <EditorIndex Value="4"/>
         <TopLine Value="35"/>
         <CursorPos X="50" Y="79"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="unitcampentrainement.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCampEntrainement"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
-        <TopLine Value="41"/>
-        <CursorPos X="31" Y="58"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="85"/>
+        <CursorPos X="40" Y="95"/>
+        <FoldState Value=" T3H061d"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -167,130 +166,130 @@
         <EditorIndex Value="6"/>
         <TopLine Value="109"/>
         <CursorPos X="11" Y="132"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit16>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="unitlieu.pas"/>
-        <Caret Line="7" Column="52" TopLine="3"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="180" Column="33" TopLine="143"/>
       </Position1>
       <Position2>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="9" Column="12"/>
+        <Caret Line="51" Column="31" TopLine="28"/>
       </Position2>
       <Position3>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="58" Column="40"/>
+        <Caret Line="55" Column="29" TopLine="28"/>
       </Position3>
       <Position4>
-        <Filename Value="unitchasse.pas"/>
-        <Caret Line="177" Column="84" TopLine="143"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="66" Column="60" TopLine="23"/>
       </Position4>
       <Position5>
-        <Filename Value="unitchasse.pas"/>
-        <Caret Line="180" Column="33" TopLine="143"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="67" Column="13" TopLine="41"/>
       </Position5>
       <Position6>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="51" Column="31" TopLine="28"/>
+        <Caret Line="68" Column="27" TopLine="44"/>
       </Position6>
       <Position7>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="55" Column="29" TopLine="28"/>
+        <Caret Line="27" Column="13" TopLine="16"/>
       </Position7>
       <Position8>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="66" Column="60" TopLine="23"/>
+        <Caret Line="68" Column="25" TopLine="49"/>
       </Position8>
       <Position9>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="67" Column="13" TopLine="41"/>
+        <Caret Line="27" Column="9"/>
       </Position9>
       <Position10>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="68" Column="27" TopLine="44"/>
-      </Position10>
-      <Position11>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="27" Column="13" TopLine="16"/>
-      </Position11>
-      <Position12>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="68" Column="25" TopLine="49"/>
-      </Position12>
-      <Position13>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="27" Column="9"/>
-      </Position13>
-      <Position14>
         <Filename Value="GestionEcran.pas"/>
         <Caret Line="71" Column="12"/>
-      </Position14>
-      <Position15>
+      </Position10>
+      <Position11>
         <Filename Value="unitchambre.pas"/>
         <Caret Line="62" Column="26" TopLine="46"/>
-      </Position15>
-      <Position16>
+      </Position11>
+      <Position12>
         <Filename Value="unitlieu.pas"/>
         <Caret Line="33" Column="111" TopLine="19"/>
-      </Position16>
-      <Position17>
+      </Position12>
+      <Position13>
         <Filename Value="MonsterHunter.lpr"/>
         <Caret Line="6" Column="16"/>
-      </Position17>
-      <Position18>
+      </Position13>
+      <Position14>
         <Filename Value="MonsterHunter.lpr"/>
         <Caret Line="8" Column="12"/>
+      </Position14>
+      <Position15>
+        <Filename Value="unitcampentrainement.pas"/>
+        <Caret Line="24" Column="28" TopLine="7"/>
+      </Position15>
+      <Position16>
+        <Filename Value="unitcampentrainement.pas"/>
+        <Caret Line="15" Column="48"/>
+      </Position16>
+      <Position17>
+        <Filename Value="unitcampentrainement.pas"/>
+        <Caret Line="50" Column="34" TopLine="34"/>
+      </Position17>
+      <Position18>
+        <Filename Value="unitcampentrainement.pas"/>
+        <Caret Line="19" Column="14" TopLine="4"/>
       </Position18>
       <Position19>
         <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="24" Column="28" TopLine="7"/>
+        <Caret Line="32" Column="36" TopLine="16"/>
       </Position19>
       <Position20>
         <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="15" Column="48"/>
+        <Caret Line="48" Column="41" TopLine="37"/>
       </Position20>
       <Position21>
-        <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="50" Column="34" TopLine="34"/>
+        <Filename Value="unitville.pas"/>
+        <Caret Line="43" Column="133" TopLine="17"/>
       </Position21>
       <Position22>
-        <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="19" Column="14" TopLine="4"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="40" Column="27" TopLine="31"/>
       </Position22>
       <Position23>
         <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="32" Column="36" TopLine="16"/>
+        <Caret Line="43" Column="25" TopLine="40"/>
       </Position23>
       <Position24>
         <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="48" Column="41" TopLine="37"/>
+        <Caret Line="41" Column="20" TopLine="31"/>
       </Position24>
       <Position25>
-        <Filename Value="unitville.pas"/>
-        <Caret Line="43" Column="133" TopLine="17"/>
-      </Position25>
-      <Position26>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="40" Column="27" TopLine="31"/>
-      </Position26>
-      <Position27>
-        <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="43" Column="25" TopLine="40"/>
-      </Position27>
-      <Position28>
-        <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="41" Column="20" TopLine="31"/>
-      </Position28>
-      <Position29>
         <Filename Value="unitcampentrainement.pas"/>
         <Caret Line="58" Column="20" TopLine="48"/>
-      </Position29>
-      <Position30>
+      </Position25>
+      <Position26>
         <Filename Value="unitcampentrainement.pas"/>
         <Caret Line="41" Column="29" TopLine="29"/>
+      </Position26>
+      <Position27>
+        <Filename Value="unitmarchand.pas"/>
+        <Caret Line="64" Column="85" TopLine="47"/>
+      </Position27>
+      <Position28>
+        <Filename Value="unitpersonnage.pas"/>
+        <Caret Line="327" Column="127" TopLine="327"/>
+      </Position28>
+      <Position29>
+        <Filename Value="unitihm.pas"/>
+        <Caret Line="124" Column="62" TopLine="114"/>
+      </Position29>
+      <Position30>
+        <Filename Value="unitihm.pas"/>
+        <Caret Line="135" Column="8" TopLine="118"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

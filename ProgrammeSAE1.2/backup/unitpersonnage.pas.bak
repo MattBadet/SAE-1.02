@@ -23,7 +23,7 @@ type
     sante : integer;                        //Vie du personnage
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
-    competence : integer;
+    competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
   end;
 
   //Type représentant un coffre d'équipement
@@ -60,7 +60,7 @@ procedure changerArme(mat : integer);
 procedure changerArmure(slot,mat : integer); 
 //Achete un objet du type i
 procedure acheterObjet(i : integer);  
-//Vendre un objet du type i
+//Vendre un objet du type
 procedure vendreObjet(i : integer); 
 //Renvoie le montant de dégats d'une attaque
 function degatsAttaque() : integer;  
@@ -86,9 +86,8 @@ procedure forgerArmure(slot : integer; mat : materiaux);
 function bonusToString(buff : bonus) : String;
 //Change le buff du joueur
 procedure setBuff(buff : bonus);
-
-
-
+//donne une compétence au joueur
+procedure apprendCompetence(n : integer);
 
 
 
@@ -142,6 +141,8 @@ begin
   for i := 0 to 4 do perso.armures[i] := aucun; 
   //Ajouter 200 PO
   perso.argent:=200;
+  //Pas de compétence apprise
+  perso.competence:=0;
 end;
 
 //Renvoie le personnage (lecture seul)
@@ -338,6 +339,21 @@ end;
 procedure setBuff(buff : bonus);
 begin
   perso.buff := buff;
+end;
+
+//donne une compétence au joueur
+procedure apprendCompetence(n : integer);
+begin
+  perso.argent := perso.argent - 1000;
+  if (n = 1) AND (perso.competence = 2) then
+  perso.competence:=3;
+  else if (n = 1) AND (perso.competence = 0) then
+  perso.competence:=1;
+  else if (n = 2) AND (perso.competence = 1) then
+  perso.competence:=3;
+  else
+  perso.competence:=2;
+
 end;
 
 end.
