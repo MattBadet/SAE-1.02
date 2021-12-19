@@ -11,7 +11,6 @@ type
     typeM : TypeMonstre;                        //type de monstre
     pv : integer;                               //points de vie
     stun : integer;                             //Nombre de tour stun
-    saignement : integer;                       //Nombre de tour a saigner
     prime : integer;
   end;
 

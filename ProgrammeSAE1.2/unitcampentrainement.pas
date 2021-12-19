@@ -53,7 +53,7 @@ begin
     deplacerCurseurXY(26,11);write('infligerai un coup rapide à l''ennemie.');
     deplacerCurseurXY(26,12);write('Le faisant ainsi saigner abondemment.');
     deplacerCurseurXY(26,15);write('EFFET : Inflige immédiatement 50% des');
-    deplacerCurseurXY(26,16);write('dégats de base. Puis inflige 20% des');
+    deplacerCurseurXY(26,16);write('dégats de base. Puis inflige 25% des');
     deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
     deplacerCurseurXY(26,18);write('tours.');
     if (getPersonnage().argent < 1000) then
@@ -74,7 +74,7 @@ begin
     deplacerCurseurXY(82,11);write('vous serai capable de voler une partie de');
     deplacerCurseurXY(82,12);write('la vie du monstre qui vous fera face. Et');
     deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
-    deplacerCurseurXY(82,15);write('EFFET : Inflige 30% des dégats de base,');
+    deplacerCurseurXY(82,15);write('EFFET : Inflige 33% des dégats de base,');
     deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
     deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
     if (getPersonnage().argent < 1000) then
