@@ -120,8 +120,7 @@ begin
 
     deplacerCurseurXY(164,34);Write('   -------------   ');
 
-    deplacerCurseurXY(155,36);Write(' Compétence 1 : ');
-    deplacerCurseurXY(155,37);Write(' Compétence 2 : ');
+    deplacerCurseurXY(160,36);Write(' Compétences : Aucune');
 
   end;
 

@@ -23,7 +23,7 @@ type
     sante : integer;                        //Vie du personnage
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
-    competence : integer;                   //Compétences utilisable par le joueur
+    competence : integer;
   end;
 
   //Type représentant un coffre d'équipement
