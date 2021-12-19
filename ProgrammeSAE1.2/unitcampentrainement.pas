@@ -31,9 +31,14 @@ begin
     dessinerCadreXY(35,7,57,9,simple,white,black);
     dessinerCadreXY(23,22,69,27,simple,white,black);
     deplacerCurseurXY(39,8);write('--- TRANCHE ---');
-    deplacerCurseurXY(25,10);write('Description : ');
-    deplacerCurseurXY(25,15);write('Effet : ');
-    deplacerCurseurXY(29,24);write('Prix');
+    deplacerCurseurXY(26,10);write('DESCRIPTION : Avec cette technique, vous');
+    deplacerCurseurXY(26,11);write('infligerai un coup rapide à l''ennemie.');
+    deplacerCurseurXY(26,12);write('Le faisant ainsi saigner abondemment.');
+    deplacerCurseurXY(26,15);write('EFFET : Inflige immédiatement 50% des');
+    deplacerCurseurXY(26,16);write('dégats de base. Puis inflige 20% des');
+    deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
+    deplacerCurseurXY(26,18);write('tours.');
+    deplacerCurseurXY(29,24);write('1000PO');
     deplacerCurseurXY(29,25);write('LVL');
 
     couleurTexte(Red);
@@ -41,9 +46,14 @@ begin
     dessinerCadreXY(91,7,113,9,simple,white,black);
     dessinerCadreXY(79,22,125,27,simple,white,black);
     deplacerCurseurXY(95,8);write('--- VOL VIE ---');
-    deplacerCurseurXY(81,10);write('Description : ');
-    deplacerCurseurXY(81,15);write('Effet : ');
-    deplacerCurseurXY(85,24);write('Prix');
+    deplacerCurseurXY(82,10);write('DESCRIPTION : Avec cette attaque magique,');
+    deplacerCurseurXY(82,11);write('vous serai capable de voler une partie de');
+    deplacerCurseurXY(82,12);write('la vie du monstre qui vous fera face. Et');
+    deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
+    deplacerCurseurXY(82,15);write('EFFET : Inflige 30% des dégats de base,');
+    deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
+    deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
+    deplacerCurseurXY(85,24);write('1000PO');
     deplacerCurseurXY(85,25);write('LVL');
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
