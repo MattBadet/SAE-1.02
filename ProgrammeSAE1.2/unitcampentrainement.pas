@@ -61,6 +61,10 @@ begin
     else
     couleurTexte(Green);
     deplacerCurseurXY(40,24);write('Prix : 1000PO');
+    if (getPersonnage().competence = 1) OR (getPersonnage().competence = 3) then
+    begin
+    deplacerCurseurXY(40,25);write('Déjà possédée');
+    end;
 
     dessinerCadreXY(79,8,125,27,simple,white,black);
     dessinerCadreXY(91,7,113,9,simple,white,black);
@@ -78,7 +82,12 @@ begin
     else
     couleurTexte(Green);
     deplacerCurseurXY(96,24);write('Prix : 1000PO');
+    if (getPersonnage().competence = 2) OR (getPersonnage().competence = 3) then
+    begin
+    deplacerCurseurXY(96,25);write('Déjà possédée');
+    end;
     couleurTexte(white);
+
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
     deplacerCurseurZoneAction(3);write('     1/ Apprendre Tranche');
