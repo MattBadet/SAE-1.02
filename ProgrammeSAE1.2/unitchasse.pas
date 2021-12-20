@@ -90,22 +90,22 @@ begin
              //Potion
              else if(choix = '3') then
              begin
-                  if(getPersonnage().inventaire[0] > 0) then
+                  if(getPersonnage().inventaire[1] > 0) then
                   begin
                        soigner();
                        boirePotion := 1;           //Réussite 
-                       utiliserObjet(0);
+                       utiliserObjet(1);
                   end
                   else boirePotion := 0;           //Echec
              end
              //Bombe
              else if(choix = '4') then
              begin
-                 if(getPersonnage().inventaire[1] > 0) then
+                 if(getPersonnage().inventaire[2] > 0) then
                   begin
                        monstre.stun:=3;
                        lancerBombe := 1;           //Réussite
-                       utiliserObjet(1);
+                       utiliserObjet(2);
                   end
                   else lancerBombe := 0;           //Echec
              end
