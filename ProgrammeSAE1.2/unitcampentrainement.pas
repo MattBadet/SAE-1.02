@@ -74,7 +74,7 @@ begin
     deplacerCurseurXY(82,11);write('vous serai capable de voler une partie de');
     deplacerCurseurXY(82,12);write('la vie du monstre qui vous fera face. Et');
     deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
-    deplacerCurseurXY(82,15);write('EFFET : Inflige 33% des dégats de base,');
+    deplacerCurseurXY(82,15);write('EFFET : Inflige 66% des dégats de base,');
     deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
     deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
     if (getPersonnage().argent < 1000) then
