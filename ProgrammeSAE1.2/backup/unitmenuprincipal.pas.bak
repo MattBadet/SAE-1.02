@@ -62,7 +62,7 @@ end;
 function creationPersonnageHub() : typeLieu;
 var
    nom : string;           //Nom saisi par l'utilisateur
-   taille : string;        //taille saisi par l'utilisateur
+   taille : string;       //taille saisi par l'utilisateur
    sexe : string;          //sexe du personnage
 begin
      //Initialisation

@@ -15,7 +15,7 @@ type
   Personnage = record
     nom : String;                           //Nom du personnage
     sexe : genre;                           //Genre du personnage
-    taille : integer;                       //taille du personnage
+    taille : String;                        //taille du personnage
     inventaire : Tinventaire;               //Inventaire
     parties : TinventairePartie;            //Inventaire des parties de monstres
     arme : materiaux;                       //Arme utilisée
@@ -47,7 +47,7 @@ function genreToString(sexe : genre) : string;
 //Change le nom du joueur
 procedure setNomPersonnage(nom : string);
 //Change la taille du joueur
-procedure setTaillePersonnage(taille : integer);  
+procedure setTaillePersonnage(taille : string);
 //Change le genre du joueur
 procedure setGenrePersonnage(sexe : genre);
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur
@@ -182,7 +182,7 @@ begin
 end;
 
 //Change la taille du joueur
-procedure setTaillePersonnage(taille : integer);
+procedure setTaillePersonnage(taille : string);
 begin
   perso.taille:=taille;
 end;

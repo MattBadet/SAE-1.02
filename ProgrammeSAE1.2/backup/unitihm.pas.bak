@@ -137,7 +137,6 @@ begin
     deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
     deplacerCurseurXY(175,37);Write('Vol Vie ');
     end;
-
   end;
 end;
 
