@@ -110,7 +110,7 @@ begin
                   else lancerBombe := 0;           //Echec
              end
              //Tranche
-             else if(choix = '5') AND ((getPersonnage().competence = 1) OR (getPersonnage().competence = 3)) then
+             else if(choix = '5') AND ((getPersonnage().competence = 1) OR (getPersonnage().competence = 3)) then //si compétence détenu
              begin
                //Dégat du joueur
                degatPerso := degatsAttaque() div 2;
@@ -118,7 +118,7 @@ begin
                monstre.pv -= degatPerso;
              end
              //VolVie
-             else if(choix = '6') AND ((getPersonnage().competence = 2) OR (getPersonnage().competence = 3)) then
+             else if(choix = '6') AND ((getPersonnage().competence = 2) OR (getPersonnage().competence = 3)) then //si compétence détenu
              begin
                //Dégat du joueur
                degatPerso := (degatsAttaque() div 3) * 2;
@@ -137,11 +137,13 @@ begin
              else if(monstre.pv > 0) then monstre.stun -= 1;
              //Regenration du joueur
              if(getPersonnage.sante>0) and (getPersonnage.buff = Regeneration) then regen();
+
              //saignement du monstre
              degatSaignement:=0;
              if(monstre.saignement>0) then
              begin
-               monstre.saignement -= 1;
+               monstre.saignement -= 1; //réduit le saignement de 1
+               //calcul dégats saignement
                degatSaignement := degatsAttaque() div 4;
                monstre.pv -= degatSaignement;
              end;

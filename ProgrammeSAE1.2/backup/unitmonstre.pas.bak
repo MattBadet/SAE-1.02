@@ -11,7 +11,8 @@ type
     typeM : TypeMonstre;                        //type de monstre
     pv : integer;                               //points de vie
     stun : integer;                             //Nombre de tour stun
-    prime : integer;
+    saignement : integer;                       //Nombre de tour à saigner
+    prime : integer;                            //PO donné par le monstre à sa mort
   end;
 
   TCatalogueMonstre = array[0..ord(high(TypeMonstre))] of TMonstre;
