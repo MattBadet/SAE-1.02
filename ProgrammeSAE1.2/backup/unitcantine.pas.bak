@@ -33,11 +33,9 @@ begin
      setBuff(bonus(nbPlat));
 end;
 
-procedure ChoixPage(n : integer);
-
 //Fonction exécutée pour afficher l'écran d'affichage des recettes
 //Renvoie le prochain lieu à visiter
-function choixRecette() : typeLieu;
+function choixPage(n : integer) : typeLieu;
 var choix : string;
   choixNumber : integer;
 begin
@@ -48,27 +46,53 @@ begin
     afficherLieu('Cantine de la ville de Brightwood');
                                                         
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
-    couleurTexte(Cyan);
-    deplacerCurseurXY(30,7);write('Plat');
-    deplacerCurseurXY(70,7);write('Bonus');  
     couleurTexte(White);
-    deplacerCurseurXY(30,9);write('1/ Un ragoût de viande');
-    deplacerCurseurXY(70,9);write('(Force)');
-    deplacerCurseurXY(30,10);write('2/ Un sauté de légume'); 
-    deplacerCurseurXY(70,10);write('(Regénération)');
+    deplacerCurseurXY(40,7);write(' 1/ Ragoût de crevettes aux gombos avec du riz à la menthe');
+    deplacerCurseurXY(40,8);write(' 2/ Mijoté de calamars aux navets avec des lentilles à la coriandre');
+    deplacerCurseurXY(40,9);write(' 3/ Porc grillé aux edamames avec des lentilles à la coriandre');
+    deplacerCurseurXY(40,10);write(' 4/ Tajine de truite à la betterave avec des haricots rouges à la ciboulette');
+    deplacerCurseurXY(40,11);write(' 5/ Mijoté de hareng au chou avec de l''orge à l''aneth');
+    deplacerCurseurXY(40,12);write(' 6/ Salade de crabe à la patate douce avec du riz à l''aneth');
+    deplacerCurseurXY(40,13);write(' 7/ Ragoût de porc aux brocolis avec des lentilles au persil');
+    deplacerCurseurXY(40,14);write(' 8/ Ragoût de thon à la patate douce avec de l''orge à la ciboulette');
+    deplacerCurseurXY(40,15);write(' 9/ Sauté de porc aux épinards avec de l''orge au basilic');
+    deplacerCurseurXY(40,16);write('10/ Mijoté de pintade au choux-fleur avec des petits pois à l''aneth');
+    deplacerCurseurXY(40,17);write('11/ Tajine de poulet aux endives avec du riz à la ciboulette');
+    deplacerCurseurXY(40,18);write('12/ Mijoté de veau aux pommes de terre avec des fèves à la ciboulette');
+    deplacerCurseurXY(40,19);write('13/ Salade de crevettes aux champignons avec des lentilles au basilic');
+    deplacerCurseurXY(40,20);write('14/ Poulet frit aux champignons avec des petits pois à l''aneth');
+    deplacerCurseurXY(40,21);write('15/ Salade de poulet aux asperges avec de l''orge au basilic');
+    deplacerCurseurXY(40,22);write('16/ Dinde frite aux brocolis avec de l''orge au persil');
+    deplacerCurseurXY(40,23);write('17/ Mijoté de crabe à la courgette avec des fèves à la coriandre');
+    deplacerCurseurXY(40,24);write('18/ Ragoût de thon à la patate douce avec des fèves au persil');
+    deplacerCurseurXY(40,25);write('19/ Sauté de porc au célerie avec des haricots rouges au persil');
+    deplacerCurseurXY(40,25);write('20/ Curry de dinde aux champignons avec des pâtes au persil');
+
+    dessinerCadreXY(1,27,21,29,simple,white,black);
+    deplacerCurseurXY(2,28);write('Buff : ');
+    case n of
+    1:write('Force');
+    2:write('Régénération');
+    3:write('Critique');
+    end;
+    dessinerCadreXY(130,27,147,29,simple,white,black);
+    deplacerCurseurXY(131,28);write('Page : 255 / 255');
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
-    deplacerCurseurZoneAction(3);write('     ?/ Commander un plat (entrer son numéro)');
-
-    deplacerCurseurZoneAction(6);write('     0/ Retourner sur la place principale');
+    deplacerCurseurZoneAction(3);write('     1/ Passer ordre alphabétique à inverse');
+    deplacerCurseurZoneAction(5);write('     2/ Choisir une page précise (rentrer son numéro)');
+    deplacerCurseurZoneAction(7);write('     3/ Page précédente');
+    deplacerCurseurXY(55,33);write('     4/ Page suivante');
+    deplacerCurseurXY(55,35);write('     5/ Choisir plat sur la page');
+    deplacerCurseurXY(55,37);write('     0/ Retourner sur la place principale');
 
     deplacerCurseurZoneResponse();
     readln(choix);
 
     //Si l'utilisateur saisit 0 => sortir
-    if(choix = '0') then choixRecette := ville
+    if(choix = '0') then choixPage := ville
     //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
-    else ChoixPage(StrToInt(choix));
+    //else EntrerPage();
   end;
 
 
@@ -80,7 +104,7 @@ function cantineHUB() : typeLieu;
 var choix : string;
 begin
   choix := '';
-  while (choix <> '0') and (choix <> '1') do
+  while (choix <> '0') and (choix <> '1') and (choix <> '2') and (choix <> '3') do
   begin
     afficherInterfacePrincipale();
     afficherLieu('Cantine de la ville de Brightwood');
@@ -98,18 +122,17 @@ begin
 
     couleurTexte(White);
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
-    deplacerCurseurZoneAction(3);write('     1/ Commander un plat');
-
+    deplacerCurseurZoneAction(3);write('     1/ Commander un plat avec un bonus de Force');
+    deplacerCurseurZoneAction(4);write('     2/ Commander un plat avec un bonus de Régénération');
+    deplacerCurseurZoneAction(5);write('     3/ Commander un plat avec un bonus de Critique');
     deplacerCurseurZoneAction(6);write('     0/ Retourner sur la place principale');
 
     deplacerCurseurZoneResponse();
     readln(choix);
   end;
 
-  case choix of
-       '0' : cantineHUB := ville;
-       '1' : cantineHUB := choixRecette();
-  end;
+  if choix = '0' then cantineHUB := ville
+  else cantineHUB := ChoixPage(StrToInt(choix));
 
 end;
 end.
