@@ -125,8 +125,8 @@
         <UnitName Value="unitChasse"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="92"/>
-        <CursorPos X="39" Y="108"/>
+        <TopLine Value="110"/>
+        <CursorPos X="142" Y="125"/>
         <UsageCount Value="83"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -155,8 +155,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitCampEntrainement"/>
         <EditorIndex Value="14"/>
-        <TopLine Value="135"/>
-        <CursorPos X="68" Y="56"/>
+        <TopLine Value="39"/>
+        <CursorPos X="55" Y="77"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit15>
@@ -175,7 +175,7 @@
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit17>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="unitcantine.pas"/>
         <Caret Line="40" Column="27" TopLine="31"/>
@@ -270,32 +270,28 @@
       </Position23>
       <Position24>
         <Filename Value="unitpersonnage.pas"/>
-        <Caret Line="48" Column="11" TopLine="170"/>
+        <Caret Line="185" Column="34" TopLine="174"/>
       </Position24>
       <Position25>
-        <Filename Value="unitpersonnage.pas"/>
-        <Caret Line="185" Column="34" TopLine="174"/>
-      </Position25>
-      <Position26>
         <Filename Value="unitmenuprincipal.pas"/>
         <Caret Line="116" Column="122" TopLine="89"/>
-      </Position26>
-      <Position27>
+      </Position25>
+      <Position26>
         <Filename Value="unitchasse.pas"/>
         <Caret Line="137" Column="42" TopLine="92"/>
+      </Position26>
+      <Position27>
+        <Filename Value="unitpersonnage.pas"/>
+        <Caret Line="276" Column="37" TopLine="261"/>
       </Position27>
       <Position28>
         <Filename Value="unitpersonnage.pas"/>
-        <Caret Line="276" Column="37" TopLine="261"/>
+        <Caret Line="19" Column="5" TopLine="8"/>
       </Position28>
       <Position29>
-        <Filename Value="unitpersonnage.pas"/>
-        <Caret Line="19" Column="5" TopLine="8"/>
-      </Position29>
-      <Position30>
         <Filename Value="unitobjet.pas"/>
         <Caret Line="25" Column="3" TopLine="14"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

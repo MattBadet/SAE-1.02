@@ -34,9 +34,6 @@ begin
 end;
 
 procedure ChoixPage(n : integer);
-begin
-
-end;
 
 //Fonction exécutée pour afficher l'écran d'affichage des recettes
 //Renvoie le prochain lieu à visiter

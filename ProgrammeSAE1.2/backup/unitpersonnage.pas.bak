@@ -182,7 +182,7 @@ begin
 end;
 
 //Change la taille du joueur
-procedure setTaillePersonnage(taille : integer);
+procedure setTaillePersonnage(taille : string);
 begin
   perso.taille:=taille;
 end;
