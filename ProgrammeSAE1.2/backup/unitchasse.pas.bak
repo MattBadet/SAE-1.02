@@ -183,6 +183,10 @@ begin
               begin
                   deplacerCurseurXY(30,15);write('Vous attaquez le monstre avec ',armeToString(getPersonnage().arme)+' et lui faites ',degatPerso,' point(s) de dégats');
               end;
+              if(degatSaignement > 0) then
+              begin
+                deplacerCurseurXY(30,17);write('Le monstre saigne! il prend ', degatSaignement,' point(s) de dégats a cause du saignement');
+              end;
               if(nbPartie > 0) and (degatPerso > 0) then
               begin
                    deplacerCurseurXY(30,16);write('Vous avez réussi à récupérer une partie du monstre.');
@@ -243,10 +247,6 @@ begin
                couleurTexte(lightred);
                deplacerCurseurXY(30,19);write('Le monstre essaye de reprendre ses esprits...');
             end;
-            if(degatSaignement > 0) then
-              begin
-                deplacerCurseurXY(30,17);write('Le monstre saigne! il prend ', degatSaignement,' point(s) de dégats a cause du saignement');
-              end;
 
 
             couleurTexte(White);

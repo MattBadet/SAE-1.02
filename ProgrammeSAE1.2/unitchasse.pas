@@ -121,7 +121,7 @@ begin
              else if(choix = '6') AND ((getPersonnage().competence = 2) OR (getPersonnage().competence = 3)) then //si compétence détenu
              begin
                //Dégat du joueur
-               degatPerso := (degatsAttaque() div 3) * 2;
+               degatPerso := (degatsAttaque() * 2) div 3;
                monstre.pv -= degatPerso;
                //Régen égale au nombre de PV enlevé au monstre
                for i:=1 to degatPerso do
