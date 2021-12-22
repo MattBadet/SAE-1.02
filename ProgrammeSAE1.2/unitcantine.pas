@@ -33,12 +33,31 @@ begin
      setBuff(bonus(nbPlat));
 end;
 
+{function recupRecette(n : integer): array of string;
+
+var
+  t1 : array of string;
+  t2 : array of string;
+  t3 : array of string;
+
+begin
+  case n of
+  1: recupRecette := t1;
+  2: recupRecette := t2;
+  3: recupRecette := t3;
+  end;
+end;}
+
 //Fonction exécutée pour afficher l'écran d'affichage des recettes
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
+  recette : array of string;
   choixNumber : integer;
 begin
+
+  //recette := recupRecette(n);
+
   choix := '';
   while (choix <> '0') do
   begin
@@ -46,7 +65,6 @@ begin
     afficherLieu('Cantine de la ville de Brightwood');
                                                         
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
-    couleurTexte(White);
     deplacerCurseurXY(40,7);write(' 1/ Ragoût de crevettes aux gombos avec du riz à la menthe');
     deplacerCurseurXY(40,8);write(' 2/ Mijoté de calamars aux navets avec des lentilles à la coriandre');
     deplacerCurseurXY(40,9);write(' 3/ Porc grillé aux edamames avec des lentilles à la coriandre');
