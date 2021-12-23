@@ -14,6 +14,7 @@ function menuPrincipalHub() : typeLieu;
 //Fonction exécutée à l'arrivée dans l'écran de création du personnage
 //Renoive le prochain lieu à visiter
 function creationPersonnageHub() : typeLieu;
+function chargerpartie():typeLieu;
 
 
 
@@ -29,7 +30,7 @@ function creationPersonnageHub() : typeLieu;
 
 implementation
 uses
-  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet;
+  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet,unitEquipement;
 
 
 //----- FONCTIONS ET PROCEDURES -----
@@ -48,11 +49,13 @@ begin
    afficherTitreMenuPrincipal();
    afficherLieu('Menu Principal');
    deplacerCurseurZoneAction(2);write('1/ Débuter une nouvelle partie');
-   deplacerCurseurZoneAction(4);write('2/ Quitter');
+   deplacerCurseurZoneAction(4);write('2/ Continuer la partie');
+   deplacerCurseurZoneAction(6);write('3/ Quitter');
    deplacerCurseurZoneResponse();
    readln(choix);
    case choix of
         '1': menuPrincipalHub:=creationPersonnage;
+        '2': menuPrincipalHub:=chargerpartie;
         else menuPrincipalHub:=quitter;
    end;
 end;
@@ -62,7 +65,7 @@ end;
 function creationPersonnageHub() : typeLieu;
 var
    nom : string;           //Nom saisi par l'utilisateur
-   taille : integer;       //taille saisi par l'utilisateur
+   taille : string;        //taille saisi par l'utilisateur
    sexe : string;          //sexe du personnage
 begin
      //Initialisation
@@ -119,11 +122,113 @@ begin
      couleurTexte(white);
      deplacerCurseurXY(55,23);write('Alors que le capitaine et vous commencez à échanger quelques banalités, le ciel se couvre');
      deplacerCurseurXY(55,24);write('brutalement. En quelques secondes à peine, la mer, jusque-là calme, se transforme un monstre');
-     deplacerCurseurXY(55,25);write('rugissant. Le bateau tangue violemment vous projetant contre une paroie. Vos sente votre tê');
-     deplacerCurseurXY(55,26);write('te heurter celle-ci violemment et le monde autour de vous disparaît.');
+     deplacerCurseurXY(55,25);write('rugissant. Le bateau tangue violemment vous projetant contre une paroie. Vous sentez votre');
+     deplacerCurseurXY(55,26);write('tête heurter celle-ci violemment et le monde autour de vous disparaît.');
      readln;
 
      creationPersonnageHub:=chambreArrivee;
+end;
+function chargerpartie(): typeLieu;
+var
+   savefile: TextFile;
+   taille,nom : string;
+   qte,pv,po,partie1,partie2,comp : integer;
+   sexe : genre;
+   arm,casque,torse,gants,jambieres,bottes : materiaux;
+   buf:bonus;
+   epeefer,epeeos,epeeecaille:string;
+   casquefer,casqueos,casqueecaille:string;
+   torsefer,torseos,torseecaille:string;
+   gantsfer,gantsos,gantsecaille:string;
+   jambieresfer,jambieresos,jambieresecaille:string;
+   bottesfer,bottesos,bottesecaille:string;
+
+begin
+     //Initialisation
+     initialisationJoueur();
+     initialisationCoffre();
+     initialisationObjets();
+     initialisationMonstres();
+
+     AssignFile(savefile, 'save.txt');
+     Reset(savefile);
+     Readln(savefile, nom);
+     setNomPersonnage(nom);
+     Readln(savefile,taille);
+     setTaillePersonnage(taille);
+     Readln(savefile,sexe);
+     setGenrePersonnage(sexe);
+     Readln(savefile,pv);
+     setSantePersonnage(pv);
+     Readln(savefile,po);
+     setArgentPersonnage(po);
+     Readln(savefile,arm);
+     setArmePersonnage(arm);
+     Readln(savefile,casque);
+     setArmurePersonnage(casque,0);
+     Readln(savefile,torse);
+     setArmurePersonnage(torse,1);
+     Readln(savefile,gants);
+     setArmurePersonnage(gants,2);
+     Readln(savefile,jambieres);
+     setArmurePersonnage(jambieres,3);
+     Readln(savefile,bottes);
+     setArmurePersonnage(bottes,4);
+     Readln(savefile,partie1);
+     setPartiePersonnage(partie1,0);
+     Readln(savefile,partie2);
+     setPartiePersonnage(partie2,1);
+     Readln(savefile,buf);
+     setBuffPersonnage(buf);
+     Readln(savefile,comp);
+     SetCompPersonnage(comp);
+     //ARME
+     Readln(savefile,epeefer);
+     setArmeCoffre(1,epeefer);
+     Readln(savefile,epeeos);
+     setArmeCoffre(2,epeeos);
+     Readln(savefile,epeeecaille);
+     setArmeCoffre(3,epeeecaille);
+     //ARMURE
+     Readln(savefile,casquefer);
+     SetArmureCoffre(0,2,casquefer);
+     Readln(savefile,torsefer);
+     SetArmureCoffre(1,2,torsefer);
+     Readln(savefile,gantsfer);
+     SetArmureCoffre(2,2,gantsfer);
+     Readln(savefile,jambieresfer);
+     SetArmureCoffre(3,2,jambieresfer);
+     Readln(savefile,bottesfer);
+     SetArmureCoffre(4,2,bottesfer);
+     Readln(savefile,casqueos);
+     SetArmureCoffre(0,3,casqueos);
+     Readln(savefile,torseos);
+     SetArmureCoffre(1,3,torseos);
+     Readln(savefile,gantsos);
+     SetArmureCoffre(2,3,gantsos);
+     Readln(savefile,jambieresos);
+     SetArmureCoffre(3,3,jambieresos);
+     Readln(savefile,bottesos);
+     SetArmureCoffre(4,3,bottesos) ;
+     Readln(savefile,casqueecaille);
+     SetArmureCoffre(0,4,casqueecaille);
+     Readln(savefile,torseecaille);
+     SetArmureCoffre(1,4,torseecaille);
+     Readln(savefile,gantsecaille);
+     SetArmureCoffre(2,4,gantsecaille);
+     Readln(savefile,jambieresecaille);
+     SetArmureCoffre(3,4,jambieresecaille);
+     Readln(savefile,bottesecaille);
+     SetArmureCoffre(4,4,bottesecaille);
+     //OBJET
+     Readln(savefile,qte);
+     ajoutObjet(1,qte);
+     Readln(savefile,qte);
+     ajoutObjet(2,qte);
+
+     CloseFile(savefile);
+
+     chargerpartie:=chambreArrivee;
 end;
 
 end.

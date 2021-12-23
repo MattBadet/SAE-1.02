@@ -6,7 +6,7 @@ unit unitEquipement;
 interface        
 //----- TYPES -----
 type
-  materiaux = (aucun,fer,Os,Ecaille);                                     //Matériaux pour les armes et armures
+  materiaux = (aucun,fer,Os,Ecaille);                                   //Matériaux pour les armes et armures
   emplacementArmure = (Casque,Torse,Gants,Jambieres,Bottes);            //liste des emplacements d'armures
   TArmures = array[0..4] of materiaux;                                  //Armure (5 slots)
   TCoffreArmures = array[0..4,1..ord(high(materiaux))] of boolean;      //Coffres - armures (pour chaque couple matériaux, slots, un booléen représentant si le joueur possède cet objet dans son coffre)
@@ -23,6 +23,9 @@ function multiplicateurDegatsArme(mat : materiaux) : integer;
 function encaissement(armures : TArmures) : integer; 
 //Renvoie la recette de l'objet pour affichage
 function recetteToString(mat : materiaux) : string;
+
+procedure SetArmeCoffre();
+procedure SetArmureCoffre();
 
 
 
@@ -97,6 +100,16 @@ begin
       os : recetteToString:='(500 po, 5 morceaux de Grand Jagras)';
       Ecaille : recetteToString:='(500 po, 5 morceaux de Pukei-Pukei)';
   end;
+end;
+
+procedure SetArmeCoffre(mat:integer;verif:boolean);
+begin
+  coffre.arme[mat]:=verif;
+end;
+
+procedure SetArmureCoffre(emp,mat:integer;verif:boolean);
+begin
+     coffre.armure[emp,mat]:=verif;
 end;
 
 end.

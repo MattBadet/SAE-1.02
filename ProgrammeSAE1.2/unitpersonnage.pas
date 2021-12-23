@@ -50,6 +50,24 @@ procedure setNomPersonnage(nom : string);
 procedure setTaillePersonnage(taille : string);
 //Change le genre du joueur
 procedure setGenrePersonnage(sexe : genre);
+//Change la santé du joueur
+procedure setSantePersonnage(sante : integer);
+//Change l'argent du joueur
+procedure setArgentPersonnage(argent : integer);
+//Change l'arme du joueur
+procedure setArmePersonnage(arme : materiaux);
+//Change l'armure du joueur
+procedure setArmurePersonnage(mat : materiaux;emp:integer);
+//Change le nombre de partie du joueur
+procedure setPartiePersonnage(partie,id : integer);
+//Change le buff du joueur
+procedure setBuffPersonnage(buf : bonus);
+//Change la/les compétence(s) du joueur
+procedure SetCompPersonnage(comp:integer);
+//Change les armes contenues dans le coffre
+procedure SetArmeCoffre(mat:integer;verif:string);
+//Change les armures contenues dans le coffre
+procedure SetArmureCoffre(emp,mat:integer;verif:string);
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur
 procedure ajoutObjet(id : integer; qte : integer);    
 //Dormir dans son lit
@@ -185,6 +203,66 @@ end;
 procedure setTaillePersonnage(taille : string);
 begin
   perso.taille:=taille;
+end;
+
+//Change la santé du joueur
+procedure setSantePersonnage(sante : integer);
+begin
+  perso.sante:=sante;
+end;
+
+//Change l'argent du joueur
+procedure setArgentPersonnage(argent : integer);
+begin
+  perso.argent:=argent;
+end;
+
+//Change l'arme du joueur
+procedure setArmePersonnage(arme : materiaux);
+begin
+  perso.arme:=arme;
+end;
+
+//Change l'armure du joueur
+procedure setArmurePersonnage(mat : materiaux;emp:integer);
+begin
+  perso.armures[emp]:=mat;
+end;
+
+//Change le nombre de partie du joueur
+procedure setPartiePersonnage(partie,id : integer);
+begin
+  perso.parties[id]:=partie;
+end;
+
+//Change le buff du personnage
+procedure setBuffPersonnage(buf : bonus);
+begin
+  perso.buff:=buf;
+end;
+
+//Change la/les compétence(s) du personnage
+procedure setCompPersonnage(comp : integer);
+begin
+  perso.competence:=comp;
+end;
+
+//Change les armes contenues dans le coffre
+procedure SetArmeCoffre(mat:integer;verif:string);
+begin
+  if verif='TRUE' then
+     coffre.armes[mat]:=true
+  else
+     coffre.armes[mat]:=false;
+end;
+
+//Change les armures contenues dans le coffre
+procedure SetArmureCoffre(emp,mat:integer;verif:string);
+begin
+  if verif='TRUE' then
+     coffre.armures[emp,mat]:=true
+  else
+     coffre.armures[emp,mat]:=false;
 end;
 
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur

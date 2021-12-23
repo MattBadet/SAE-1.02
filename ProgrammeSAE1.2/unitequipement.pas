@@ -32,6 +32,8 @@ function recetteToString(mat : materiaux) : string;
 
 
 
+
+
 implementation
 
 //Gestion de l'affichage (chaine de caractères) d'une pièce d'armure

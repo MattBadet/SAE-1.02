@@ -18,12 +18,23 @@ function chambreHub() : typeLieu;
 //Renvoie le prochain lieu à visiter
 function coffreEquipement() : typeLieu;
 
+function sauvegarderpartie():typeLieu;
+
+
+
+
+
+
+
+
+
+
 
 
 
 implementation
 uses
-  unitIHM,unitASCII,unitPersonnage,unitEquipement,GestionEcran;
+  unitIHM,unitASCII,unitPersonnage,unitEquipement,unitObjet,GestionEcran,sysutils;
 
  
 //Fonction exécutée lors du repos
@@ -91,7 +102,7 @@ function chambreHub() : typeLieu;
 var choix : string;
 begin
   choix := '';
-  while (choix <> '1') and (choix <> '2') and (choix <> '3') do
+  while (choix <> '1') and (choix <> '2') and (choix <> '3') and (choix <> '4') do
   begin
     afficherInterfacePrincipale();
     afficherLieu('Dans votre chambre');
@@ -113,6 +124,7 @@ begin
     deplacerCurseurZoneAction(3);write('     1/ Vous reposer dans votre lit');
     deplacerCurseurZoneAction(4);write('     2/ Regarder dans votre coffre');
     deplacerCurseurZoneAction(5);write('     3/ Sortir de votre chambre');
+    deplacerCurseurZoneAction(7);write('     4/ Sauvegarder et Quitter');
 
     deplacerCurseurZoneResponse();
     readln(choix);
@@ -122,8 +134,62 @@ begin
        '1' : chambreHub := repos();
        '2' : chambreHub := coffreEquipement(); 
        '3' : chambreHub := ville;
+       '4' : chambreHub := sauvegarderpartie();
   end;
 
+end;
+
+function sauvegarderpartie():typeLieu;
+var sauvfile: TextFile;
+  slot,mat:integer;
+begin
+  write(GetPersonnage().nom);
+  AssignFile(sauvfile,'save.txt');
+  Rewrite(sauvfile);
+  Writeln(sauvfile,GetPersonnage().nom);
+  Writeln(sauvfile,GetPersonnage().taille);
+  Writeln(sauvfile,GetPersonnage().sexe);
+  Writeln(sauvfile,GetPersonnage().sante);
+  Writeln(sauvfile,GetPersonnage().argent);
+  Writeln(sauvfile,GetPersonnage().arme);
+  Writeln(sauvfile,GetPersonnage().armures[0]);
+  Writeln(sauvfile,GetPersonnage().armures[1]);
+  Writeln(sauvfile,GetPersonnage().armures[2]);
+  Writeln(sauvfile,GetPersonnage().armures[3]);
+  Writeln(sauvfile,GetPersonnage().armures[4]);
+  Writeln(sauvfile,GetPersonnage().parties[0]);
+  Writeln(sauvfile,GetPersonnage().parties[1]);
+  Writeln(sauvfile,GetPersonnage().buff);
+  Writeln(sauvfile,GetPersonnage().competence);
+  //Armes
+  Writeln(sauvfile,getCoffre.armes[1]);
+  Writeln(sauvfile,getCoffre.armes[2]);
+  Writeln(sauvfile,getCoffre.armes[3]);
+  //Armures
+  Writeln(sauvfile,getCoffre.armures[0,1]);
+  Writeln(sauvfile,getCoffre.armures[1,1]);
+  Writeln(sauvfile,getCoffre.armures[2,1]);
+  Writeln(sauvfile,getCoffre.armures[3,1]);
+  Writeln(sauvfile,getCoffre.armures[4,1]);
+
+  Writeln(sauvfile,getCoffre.armures[0,2]);
+  Writeln(sauvfile,getCoffre.armures[1,2]);
+  Writeln(sauvfile,getCoffre.armures[2,2]);
+  Writeln(sauvfile,getCoffre.armures[3,2]);
+  Writeln(sauvfile,getCoffre.armures[4,2]);
+
+  Writeln(sauvfile,getCoffre.armures[0,3]);
+  Writeln(sauvfile,getCoffre.armures[1,3]);
+  Writeln(sauvfile,getCoffre.armures[2,3]);
+  Writeln(sauvfile,getCoffre.armures[3,3]);
+  Writeln(sauvfile,getCoffre.armures[4,3]);
+  //Objets
+  Writeln(sauvfile,getPersonnage.inventaire[1]);
+  Writeln(sauvfile,getObjet(2));
+
+  CloseFile(sauvfile);
+
+  sauvegarderpartie:=quitter;
 end;
 
 //Fonction exécutée quand le joeur regarde son coffre

@@ -8,14 +8,14 @@ uses
     unitObjet,unitEquipement;
 //----- TYPES -----
 type
-  bonus = (AucunB,Force,Regeneration);       //Bonus de la cantinue
+  bonus = (AucunB,Force,Regeneration,Critique);       //Bonus de la cantinue
   genre = (Masculin,Feminin,Autre);         //Genre du personnage
 
   //Type représentant le personnage
   Personnage = record
     nom : String;                           //Nom du personnage
     sexe : genre;                           //Genre du personnage
-    taille : integer;                       //taille du personnage
+    taille : String;                        //taille du personnage
     inventaire : Tinventaire;               //Inventaire
     parties : TinventairePartie;            //Inventaire des parties de monstres
     arme : materiaux;                       //Arme utilisée
@@ -23,6 +23,7 @@ type
     sante : integer;                        //Vie du personnage
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
+    competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
   end;
 
   //Type représentant un coffre d'équipement
@@ -46,9 +47,27 @@ function genreToString(sexe : genre) : string;
 //Change le nom du joueur
 procedure setNomPersonnage(nom : string);
 //Change la taille du joueur
-procedure setTaillePersonnage(taille : integer);  
+procedure setTaillePersonnage(taille : string);
 //Change le genre du joueur
 procedure setGenrePersonnage(sexe : genre);
+//Change la santé du joueur
+procedure setSantePersonnage(sante : integer);
+//Change l'argent du joueur
+procedure setArgentPersonnage(argent : integer);
+//Change l'arme du joueur
+procedure setArmePersonnage(arme : materiaux);
+//Change l'armure du joueur
+procedure setArmurePersonnage(mat : materiaux;emp:integer);
+//Change le nombre de partie du joueur
+procedure setPartiePersonnage(partie,id : integer);
+//Change le buff du joueur
+procedure setBuffPersonnage(buf : bonus);
+//Change la/les compétence(s) du joueur
+procedure SetCompPersonnage(comp:integer);
+//Change les armes contenues dans le coffre
+procedure SetArmeCoffre(mat:integer;verif:string);
+//Change les armures contenues dans le coffre
+procedure SetArmureCoffre(emp,mat:integer;verif:string);
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur
 procedure ajoutObjet(id : integer; qte : integer);    
 //Dormir dans son lit
@@ -59,7 +78,7 @@ procedure changerArme(mat : integer);
 procedure changerArmure(slot,mat : integer); 
 //Achete un objet du type i
 procedure acheterObjet(i : integer);  
-//Vendre un objet du type i
+//Vendre un objet du type
 procedure vendreObjet(i : integer); 
 //Renvoie le montant de dégats d'une attaque
 function degatsAttaque() : integer;  
@@ -85,6 +104,15 @@ procedure forgerArmure(slot : integer; mat : materiaux);
 function bonusToString(buff : bonus) : String;
 //Change le buff du joueur
 procedure setBuff(buff : bonus);
+//donne une compétence au joueur
+procedure apprendCompetence(n : integer);
+
+
+
+
+
+
+
 
 
 
@@ -131,6 +159,8 @@ begin
   for i := 0 to 4 do perso.armures[i] := aucun; 
   //Ajouter 200 PO
   perso.argent:=200;
+  //Pas de compétence apprise
+  perso.competence:=0;
 end;
 
 //Renvoie le personnage (lecture seul)
@@ -159,6 +189,8 @@ end;
 procedure setNomPersonnage(nom : string);
 begin
   perso.nom:=nom;
+  if (nom = 'boyz') then
+  perso.argent:=100000000;
 end;
 
 //Change le genre du joueur
@@ -168,9 +200,69 @@ begin
 end;
 
 //Change la taille du joueur
-procedure setTaillePersonnage(taille : integer);
+procedure setTaillePersonnage(taille : string);
 begin
   perso.taille:=taille;
+end;
+
+//Change la santé du joueur
+procedure setSantePersonnage(sante : integer);
+begin
+  perso.sante:=sante;
+end;
+
+//Change l'argent du joueur
+procedure setArgentPersonnage(argent : integer);
+begin
+  perso.argent:=argent;
+end;
+
+//Change l'arme du joueur
+procedure setArmePersonnage(arme : materiaux);
+begin
+  perso.arme:=arme;
+end;
+
+//Change l'armure du joueur
+procedure setArmurePersonnage(mat : materiaux;emp:integer);
+begin
+  perso.armures[emp]:=mat;
+end;
+
+//Change le nombre de partie du joueur
+procedure setPartiePersonnage(partie,id : integer);
+begin
+  perso.parties[id]:=partie;
+end;
+
+//Change le buff du personnage
+procedure setBuffPersonnage(buf : bonus);
+begin
+  perso.buff:=buf;
+end;
+
+//Change la/les compétence(s) du personnage
+procedure setCompPersonnage(comp : integer);
+begin
+  perso.competence:=comp;
+end;
+
+//Change les armes contenues dans le coffre
+procedure SetArmeCoffre(mat:integer;verif:string);
+begin
+  if verif='true' then
+     coffre.armes[mat]:=true
+  else
+     coffre.armes[mat]:=false;
+end;
+
+//Change les armures contenues dans le coffre
+procedure SetArmureCoffre(emp,mat:integer;verif:string);
+begin
+  if verif='true' then
+     coffre.armures[emp,mat]:=true
+  else
+     coffre.armures[emp,mat]:=false;
 end;
 
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur
@@ -327,6 +419,21 @@ end;
 procedure setBuff(buff : bonus);
 begin
   perso.buff := buff;
+end;
+
+//donne une compétence au joueur
+procedure apprendCompetence(n : integer);
+begin
+  perso.argent := perso.argent - 1000;
+  if (n = 1) AND (perso.competence = 2) then
+  perso.competence:=3
+  else if (n = 1) AND (perso.competence = 0) then
+  perso.competence:=1
+  else if (n = 2) AND (perso.competence = 1) then
+  perso.competence:=3
+  else
+  perso.competence:=2;
+
 end;
 
 end.
