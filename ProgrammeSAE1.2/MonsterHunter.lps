@@ -28,10 +28,11 @@
         <Filename Value="unitmenuprincipal.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitMenuPrincipal"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="182"/>
-        <CursorPos X="49" Y="205"/>
+        <TopLine Value="145"/>
+        <CursorPos Y="155"/>
         <UsageCount Value="156"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -102,11 +103,10 @@
         <Filename Value="unitville.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitVille"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="31"/>
-        <CursorPos X="56" Y="44"/>
+        <CursorPos X="87" Y="49"/>
         <UsageCount Value="103"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -206,7 +206,7 @@
         <UsageCount Value="10"/>
       </Unit19>
     </Units>
-    <JumpHistory Count="6" HistoryIndex="5">
+    <JumpHistory Count="7" HistoryIndex="6">
       <Position1>
         <Filename Value="unitpersonnage.pas"/>
         <Caret Line="46" Column="61" TopLine="24"/>
@@ -231,6 +231,10 @@
         <Filename Value="unitpersonnage.pas"/>
         <Caret Line="259" Column="20" TopLine="221"/>
       </Position6>
+      <Position7>
+        <Filename Value="unitville.pas"/>
+        <Caret Line="49" Column="88" TopLine="31"/>
+      </Position7>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
