@@ -9,8 +9,6 @@ interface
 uses
   unitLieu;
 
-type strarray = array[1..2] of string;
-
 //Fonction exécutée à l'arrivée dans la cantine
 //Renvoie le prochain lieu à visiter
 function cantineHUB() : typeLieu;
@@ -29,6 +27,13 @@ function cantineHUB() : typeLieu;
 implementation
 uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
+type
+  strarray = array[1..2] of string;
+  tablarray = array[1..1712] of string;
+var
+  tablcrit:tablarray;  //RecettesCritique
+  tablregen:tablarray; //RecettesRegen    1633 elem
+  tablforc:tablarray;  //RecettesForce    1655 elem
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
@@ -58,13 +63,10 @@ begin
   result:=res;
 end;
 
-function recupRecette(n : integer): strarray;
+procedure recupRecette;
 var
  FileVar:TextFile;
  str : string;
- tablcrit:array[1..1712] of string;  //RecettesCritique
- tablregen:array[1..1633] of string; //RecettesRegen
- tablforc:array[1..1655] of string;  //RecettesForce
  i,y,j:integer;
 begin
   i:=0;
@@ -91,11 +93,15 @@ begin
     end;
   until(EOF(FileVar)); // EOF(Fin de fichier) le programme continue à lire des nouvelles jusqu'à la fin
     CloseFile(FileVar);
+end;
 
+function recupRecetteHUB(n:integer):tablarray;
+begin
+  recupRecette;
   case n of
-  1:recupRecette := tablforc;
-  2:recupRecette := tablregen;
-  3:recupRecette := tablcrit;
+    1: recupRecetteHUB:=tablcrit;
+    2: recupRecetteHUB:=tablregen;
+    3: recupRecetteHUB:=tablforc;
   end;
 end;
 
@@ -103,14 +109,14 @@ end;
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
-  recette : strarray;
+  recette : tablarray;
   nRecette : integer;
   page : integer;
   i : integer;
   choixNumber : integer;
 begin
   page := 1;
-  recette := recupRecette(n);
+  recette := recupRecetteHUB(n);
 
   choix := '';
   while (choix <> '0') do
