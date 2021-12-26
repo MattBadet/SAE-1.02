@@ -4,9 +4,13 @@ unit unitCantine;
 {$mode objfpc}{$H+}
 
 interface
+
 //----- FONCTIONS ET PROCEDURES -----
 uses
   unitLieu;
+
+type strarray = array[1..2] of string;
+
 //Fonction exécutée à l'arrivée dans la cantine
 //Renvoie le prochain lieu à visiter
 function cantineHUB() : typeLieu;
@@ -33,29 +37,77 @@ begin
      setBuff(bonus(nbPlat));
 end;
 
-{function recupRecette(n : integer): array of string;
-
-var
-  t1 : array of string;
-  t2 : array of string;
-  t3 : array of string;
-
+function split(chaine,char:string):strarray;//type strarray = array[1..2] of string;
+var i:integer;
+ res:array[1..2] of string;
+ verif:boolean;
 begin
-  case n of
-  1: recupRecette := t1;
-  2: recupRecette := t2;
-  3: recupRecette := t3;
+  res[1]:='';
+  res[2]:='';
+  verif:=false;
+  for i:=1 to length(chaine) do
+  begin
+       if verif then
+          res[2]:=res[2]+chaine[i]
+       else
+       if chaine[i] = char then
+          verif:=true
+       else
+           res[1]:=res[1]+chaine[i]
   end;
-end;}
+  result:=res;
+end;
+
+function recupRecette(n : integer): strarray;
+var
+ // les tableau tablcrit,tablregen et tablforc sont des variables GLOBAL
+ FileVar:TextFile;
+ str : string;
+ i,y,j:integer;
+begin
+  i:=0;
+  y:=0;
+  j:=0;
+  AssignFile(FileVar,'Recettes.txt');
+  Reset(FileVar);
+  repeat
+    Readln(FileVar,str);
+    if (Split(Str,'/')[2] = '(Critique)') then
+    begin
+       i := i+1;
+       tablcrit[i]:=Split(Str,'/')[1];
+    end;
+    if (Split(Str,'/')[2] = '(Regeneration)') then
+    begin
+         y := y+1;
+         tablregen[y]:=Split(Str,'/')[1];
+    end;
+    if (Split(Str,'/')[2] = '(Force)') then
+    begin
+         j := j+1;
+         tablforc[j]:=Split(Str,'/')[1];
+    end;
+  until(EOF(FileVar)); // EOF(Fin de fichier) le programme continue à lire des nouvelles jusqu'à la fin
+    CloseFile(FileVar);
+
+  case n of
+  1:recupRecette := tablforc;
+  2:recupRecette := tablregen;
+  3:recupRecette := tablcrit;
+  end;
+end;
 
 //Fonction exécutée pour afficher l'écran d'affichage des recettes
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
-  recette : array of string;
+  recette : strarray;
+  nRecette : integer;
+  page : integer;
+  i : integer;
   choixNumber : integer;
 begin
-
+  page := 1;
   recette := recupRecette(n);
 
   choix := '';
@@ -65,26 +117,8 @@ begin
     afficherLieu('Cantine de la ville de Brightwood');
                                                         
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
-    deplacerCurseurXY(40,7);write(' 1/ Ragoût de crevettes aux gombos avec du riz à la menthe');
-    deplacerCurseurXY(40,8);write(' 2/ Mijoté de calamars aux navets avec des lentilles à la coriandre');
-    deplacerCurseurXY(40,9);write(' 3/ Porc grillé aux edamames avec des lentilles à la coriandre');
-    deplacerCurseurXY(40,10);write(' 4/ Tajine de truite à la betterave avec des haricots rouges à la ciboulette');
-    deplacerCurseurXY(40,11);write(' 5/ Mijoté de hareng au chou avec de l''orge à l''aneth');
-    deplacerCurseurXY(40,12);write(' 6/ Salade de crabe à la patate douce avec du riz à l''aneth');
-    deplacerCurseurXY(40,13);write(' 7/ Ragoût de porc aux brocolis avec des lentilles au persil');
-    deplacerCurseurXY(40,14);write(' 8/ Ragoût de thon à la patate douce avec de l''orge à la ciboulette');
-    deplacerCurseurXY(40,15);write(' 9/ Sauté de porc aux épinards avec de l''orge au basilic');
-    deplacerCurseurXY(40,16);write('10/ Mijoté de pintade au choux-fleur avec des petits pois à l''aneth');
-    deplacerCurseurXY(40,17);write('11/ Tajine de poulet aux endives avec du riz à la ciboulette');
-    deplacerCurseurXY(40,18);write('12/ Mijoté de veau aux pommes de terre avec des fèves à la ciboulette');
-    deplacerCurseurXY(40,19);write('13/ Salade de crevettes aux champignons avec des lentilles au basilic');
-    deplacerCurseurXY(40,20);write('14/ Poulet frit aux champignons avec des petits pois à l''aneth');
-    deplacerCurseurXY(40,21);write('15/ Salade de poulet aux asperges avec de l''orge au basilic');
-    deplacerCurseurXY(40,22);write('16/ Dinde frite aux brocolis avec de l''orge au persil');
-    deplacerCurseurXY(40,23);write('17/ Mijoté de crabe à la courgette avec des fèves à la coriandre');
-    deplacerCurseurXY(40,24);write('18/ Ragoût de thon à la patate douce avec des fèves au persil');
-    deplacerCurseurXY(40,25);write('19/ Sauté de porc au célerie avec des haricots rouges au persil');
-    deplacerCurseurXY(40,25);write('20/ Curry de dinde aux champignons avec des pâtes au persil');
+    for i:=1 to 20 do
+    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[i]);
 
     dessinerCadreXY(1,27,21,29,simple,white,black);
     deplacerCurseurXY(2,28);write('Buff : ');

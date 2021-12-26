@@ -2,9 +2,13 @@
 program MonsterHunter;
 
 uses UnitLieu, unitIHM, unitPersonnage, unitObjet, unitChambre, unitEquipement,
-  unitVille, unitMarchand, unitMonstre, unitChasse, unitCantine, unitForge;
+  unitVille, unitMarchand, unitMonstre, unitChasse, unitCantine, unitForge,
+  unitCampEntrainement;
 
 var lieuEnCours : typeLieu;  //Lieu où se trouve le "joueur"
+  tablcrit:array[1..1712] of string;  //RecettesCritique
+  tablregen:array[1..1633] of string; //RecettesRegen
+  tablforc:array[1..1655] of string;  //RecettesForce
 
 begin
   //Randomize
