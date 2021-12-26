@@ -9,8 +9,6 @@ interface
 uses
   unitLieu;
 
-type strarray = array[1..2] of string;
-
 //Fonction exécutée à l'arrivée dans la cantine
 //Renvoie le prochain lieu à visiter
 function cantineHUB() : typeLieu;
@@ -29,6 +27,13 @@ function cantineHUB() : typeLieu;
 implementation
 uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
+type
+  strarray = array[1..2] of string;
+  tablarray = array[1..1712] of string;
+var
+  tablcrit:tablarray;  //RecettesCritique
+  tablregen:tablarray; //RecettesRegen    1633 elem
+  tablforc:tablarray;  //RecettesForce    1655 elem
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
@@ -58,9 +63,8 @@ begin
   result:=res;
 end;
 
-function recupRecette(n : integer): strarray;
+procedure recupRecette;
 var
- // les tableau tablcrit,tablregen et tablforc sont des variables GLOBAL
  FileVar:TextFile;
  str : string;
  i,y,j:integer;
@@ -89,11 +93,15 @@ begin
     end;
   until(EOF(FileVar)); // EOF(Fin de fichier) le programme continue à lire des nouvelles jusqu'à la fin
     CloseFile(FileVar);
+end;
 
+function recupRecetteHUB(n:integer):tablarray;
+begin
+  recupRecette;
   case n of
-  1:recupRecette := tablforc;
-  2:recupRecette := tablregen;
-  3:recupRecette := tablcrit;
+    1: recupRecetteHUB:=tablcrit;
+    2: recupRecetteHUB:=tablregen;
+    3: recupRecetteHUB:=tablforc;
   end;
 end;
 
@@ -101,24 +109,26 @@ end;
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
-  recette : strarray;
+  recette : tablarray;
   nRecette : integer;
   page : integer;
   i : integer;
-  choixNumber : integer;
 begin
   page := 1;
-  recette := recupRecette(n);
+  recette := recupRecetteHUB(n);
 
   choix := '';
   while (choix <> '0') do
   begin
     afficherInterfacePrincipale();
     afficherLieu('Cantine de la ville de Brightwood');
-                                                        
+
+    nRecette := ((page * 20) - 19);
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
     for i:=1 to 20 do
-    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[i]);
+    begin
+    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[nRecette+i]);
+    end;
 
     dessinerCadreXY(1,27,21,29,simple,white,black);
     deplacerCurseurXY(2,28);write('Buff : ');
@@ -143,8 +153,7 @@ begin
 
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
-    //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
-    //else EntrerPage();
+
   end;
 
 

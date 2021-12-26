@@ -113,7 +113,6 @@ var choix : string;
   nRecette : integer;
   page : integer;
   i : integer;
-  choixNumber : integer;
 begin
   page := 1;
   recette := recupRecetteHUB(n);
@@ -123,10 +122,13 @@ begin
   begin
     afficherInterfacePrincipale();
     afficherLieu('Cantine de la ville de Brightwood');
-                                                        
+
+    nRecette := ((page * 20) - 19);
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
     for i:=1 to 20 do
-    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[i]);
+    begin
+    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[nRecette+i]);
+    end;
 
     dessinerCadreXY(1,27,21,29,simple,white,black);
     deplacerCurseurXY(2,28);write('Buff : ');
@@ -136,7 +138,7 @@ begin
     3:write('Critique');
     end;
     dessinerCadreXY(130,27,147,29,simple,white,black);
-    deplacerCurseurXY(131,28);write('Page : 255 / 255');
+    deplacerCurseurXY(131,28);write('Page : ',page,' / 255');
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
     deplacerCurseurZoneAction(3);write('     1/ Passer ordre alphabétique à inverse');
@@ -151,8 +153,7 @@ begin
 
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
-    //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
-    //else EntrerPage();
+
   end;
 
 

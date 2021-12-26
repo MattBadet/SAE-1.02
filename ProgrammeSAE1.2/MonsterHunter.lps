@@ -150,8 +150,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="48"/>
-        <CursorPos X="4" Y="62"/>
+        <TopLine Value="118"/>
+        <CursorPos X="36" Y="127"/>
         <UsageCount Value="99"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -206,7 +206,7 @@
         <UsageCount Value="10"/>
       </Unit19>
     </Units>
-    <JumpHistory Count="15" HistoryIndex="14">
+    <JumpHistory Count="19" HistoryIndex="18">
       <Position1>
         <Filename Value="unitpersonnage.pas"/>
         <Caret Line="46" Column="61" TopLine="24"/>
@@ -267,6 +267,22 @@
         <Filename Value="unitcantine.pas"/>
         <Caret Line="65" Column="14" TopLine="51"/>
       </Position15>
+      <Position16>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="78" Column="4" TopLine="65"/>
+      </Position16>
+      <Position17>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="65" Column="48" TopLine="45"/>
+      </Position17>
+      <Position18>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="114" Column="3" TopLine="103"/>
+      </Position18>
+      <Position19>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="122" Column="40" TopLine="105"/>
+      </Position19>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
