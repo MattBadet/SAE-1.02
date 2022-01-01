@@ -111,11 +111,19 @@ function choixPage(n : integer) : typeLieu;
 var choix : string;
   recette : tablarray;
   nRecette : integer;
+  pageVoulu : integer;
   page : integer;
+  pageMax : integer;
   i : integer;
 begin
   page := 1;
   recette := recupRecetteHUB(n);
+
+  case n of
+  1:pageMax:=83;
+  2:pageMax:=82;
+  3:pageMax:=86;
+  end;
 
   choix := '';
   while (choix <> '0') do
@@ -137,15 +145,15 @@ begin
     2:write('Régénération');
     3:write('Critique');
     end;
-    dessinerCadreXY(130,27,147,29,simple,white,black);
-    deplacerCurseurXY(131,28);write('Page : ',page,' / 255');
+    dessinerCadreXY(132,27,147,29,simple,white,black);
+    deplacerCurseurXY(133,28);write('Page : ',page,' / ',pageMax);
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
-    deplacerCurseurZoneAction(3);write('     1/ Passer ordre alphabétique à inverse');
+    deplacerCurseurZoneAction(3);write('     1/ Inverser l''ordre alphabéthique');
     deplacerCurseurZoneAction(5);write('     2/ Choisir une page par numéro');
     deplacerCurseurZoneAction(7);write('     3/ Page précédente');
     deplacerCurseurXY(55,33);write('     4/ Page suivante');
-    deplacerCurseurXY(55,35);write('     5/ Choisir plat sur la page');
+    deplacerCurseurXY(55,35);write('     5/ Choisir un plat sur la page');
     deplacerCurseurXY(55,37);write('     0/ Retourner sur la place principale');
 
     deplacerCurseurZoneResponse();
@@ -153,7 +161,27 @@ begin
 
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
-
+    else if(choix = '1') then
+    else if(choix = '2') then
+    begin
+      afficherCadreAction();
+      afficherCadreResponse();
+      deplacerCurseurXY(5,33);write('Rentrez la page où vous souhaitez vous rendre.');
+      deplacerCurseurXY(5,34);write('Cette page doit évidemment être possible');
+      deplacerCurseurXY(5,35);write('en fonction du nombre de page existantes');
+      deplacerCurseurZoneResponse();
+      readln(pageVoulu);
+      if(pageVoulu >= 1) AND(pageVoulu <= pageMax) then page:=pageVoulu;
+    end
+    else if(choix = '3') then
+    begin
+      if(page <> 1) then page -= 1;
+    end
+    else if(choix = '4') then
+    begin
+      if(page <> pageMax) then page += 1
+    end
+    else if(choix = '5') then  ;
   end;
 
 

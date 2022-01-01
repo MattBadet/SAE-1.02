@@ -10,6 +10,8 @@ procedure afficherInterfacePrincipale();
 procedure afficherInterfaceSimple();  
 //Affichage du cadre d'action
 procedure afficherCadreAction();
+//Affichage du cadre de réponse
+procedure afficherCadreResponse();
 //Affiche le nom du lieu au centre de la boite associée
 procedure afficherLieu(nomLieu : string); 
 //Affiche le nom du lieu au centre de la boite associée (écran simple)
@@ -67,7 +69,7 @@ end;
 //Affichage du cadre d'action
 procedure afficherCadreAction();
 begin
-  dessinerCadreXY(1,29,198,39,simple,white,black);
+  dessinerCadreXY(1,29,147,39,simple,white,black);
 end;
 
 //Affichage du cadre de réponse
