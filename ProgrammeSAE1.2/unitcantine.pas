@@ -29,7 +29,7 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array[1..1721] of string;
+  tablarray = array[1..1721] of string; //Tableau des recettes
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -103,6 +103,7 @@ begin
     CloseFile(FileVar);
 end;
 
+//Renvoie un tableau contenant les recettes d'un certain buff
 function recupRecetteHUB(n:integer):tablarray;
 begin
   recupRecette;
@@ -117,21 +118,22 @@ end;
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
-  recette : tablarray;
-  nRecette : integer;
-  recetteVoulu : integer;
-  pageVoulu : integer;
-  page : integer;
-  pageMax : integer;
-  i : integer;
+  recette : tablarray;      //Tableau contenant les recettes à afficher
+  nRecette : integer;       //Recette à laquelle commencer la page
+  recetteVoulu : integer;   //Recette choisit par l'utilisateur
+  pageVoulu : integer;      //Page choisit par l'utilisateur
+  page : integer;           //Page actuelle
+  pageMax : integer;        //Nombre de pages pour ce buff
+  i : integer;              //Compteur de boucle pour l'affichage des 20 recettes par page
 begin
   page := 1;
   recette := recupRecetteHUB(n);
 
+  //Nombre de page pour chaque buff
   case n of
-  1:pageMax:=83;
-  2:pageMax:=82;
-  3:pageMax:=86;
+  1:pageMax:=83; //Force
+  2:pageMax:=82; //Regen
+  3:pageMax:=86; //Critique
   end;
 
   choix := '';
@@ -142,6 +144,7 @@ begin
 
     nRecette := ((page * 20) - 19);
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
+    //Boucle d'affichage des 20 recettes
     for i:=1 to 20 do
     begin
     if(recette[nRecette+i]) <> '' then
@@ -150,6 +153,7 @@ begin
     end;
     end;
 
+    //Affichage buff actuel
     dessinerCadreXY(1,27,21,29,simple,white,black);
     deplacerCurseurXY(2,28);write('Buff : ');
     case n of
@@ -157,6 +161,7 @@ begin
     2:write('Régénération');
     3:write('Critique');
     end;
+    //Affichage prix
     dessinerCadreXY(1,7,14,9,simple,white,black);
     if(getPersonnage().argent > 200-(50*(n-1))) then couleurTexte(Green)
     else couleurTexte(Red);
@@ -166,6 +171,7 @@ begin
     2:write(200-(50*(n-1)),'PO');
     3:write(200-(50*(n-1)),'PO');
     end;
+    //Affichage page
     dessinerCadreXY(132,27,147,29,simple,white,black);
     deplacerCurseurXY(133,28);write('Page : ',page,' / ',pageMax);
 
@@ -182,8 +188,8 @@ begin
 
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
-    else if(choix = '1') then
-    else if(choix = '2') then
+    else if(choix = '1') then //Triage Tableau
+    else if(choix = '2') then //Choix d'une page
     begin
       afficherCadreAction();
       afficherCadreResponse();
@@ -194,15 +200,15 @@ begin
       readln(pageVoulu);
       if(pageVoulu >= 1) AND(pageVoulu <= pageMax) then page:=pageVoulu;
     end
-    else if(choix = '3') then
+    else if(choix = '3') then //Page précédente
     begin
       if(page <> 1) then page -= 1;
     end
-    else if(choix = '4') then
+    else if(choix = '4') then //Page suivante
     begin
       if(page <> pageMax) then page += 1
     end
-    else if(choix = '5') then
+    else if(choix = '5') then //Choisir une recette sur la page
     begin
       afficherCadreAction();
       afficherCadreResponse();
