@@ -36,16 +36,16 @@ var
   tablforc:tablarray;  //RecettesForce    1655 elem
 
 //Mange le plat et applique le bonus
-procedure manger(nbPlat : integer, n);
+procedure manger(nbPlat : integer);
 begin
   //Si argent suffisant
-  if(getPersonnage().argent > 200-(50*(n-1))) then
+  if(getPersonnage().argent > 200-(50*(nbPlat-1))) then
   begin
      //Fixe le buff
      case nbPlat of
-     1:setBuff(Force,200-(50*(n-1)));
-     2:setBuff(Regeneration,200-(50*(n-1)));
-     3:setBuff(Critique,200-(50*(n-1)));
+     1:setBuff(Force,200-(50*(nbPlat-1)));
+     2:setBuff(Regeneration,200-(50*(nbPlat-1)));
+     3:setBuff(Critiue,200-(50*(nbPlat-1)));
      end;
   end;
 end;

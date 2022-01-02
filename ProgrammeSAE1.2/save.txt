@@ -2,8 +2,8 @@ boyz
 666
 Masculin
 100
-100000000
-aucun
+99997350
+fer
 aucun
 aucun
 aucun
@@ -12,8 +12,7 @@ aucun
 0
 0
 AucunB
-0
-TRUE
+3
 FALSE
 FALSE
 FALSE
@@ -31,5 +30,6 @@ FALSE
 FALSE
 FALSE
 FALSE
-0
-0
+FALSE
+5
+5

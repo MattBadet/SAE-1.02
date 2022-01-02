@@ -404,6 +404,7 @@ begin
        AucunB:bonusToString:='Aucun';
        Force:bonusToString:='Force';
        Regeneration:bonusToString:='Regénération';
+       Critique:bonusToString:='Critique';
   end;
 end;
 

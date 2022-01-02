@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <PathDelim Value="\"/>
-    <Version Value="11"/>
+    <Version Value="10"/>
     <BuildModes Active="Default"/>
     <Units Count="20">
       <Unit0>
@@ -11,7 +11,7 @@
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="9"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -21,19 +21,18 @@
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="3" Y="38"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="unitmenuprincipal.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitMenuPrincipal"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="189"/>
-        <CursorPos X="28" Y="237"/>
-        <UsageCount Value="165"/>
+        <TopLine Value="109"/>
+        <CursorPos X="52" Y="199"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -44,7 +43,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="31"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -53,9 +52,9 @@
         <UnitName Value="unitIHM"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="67"/>
+        <TopLine Value="109"/>
         <CursorPos X="27" Y="72"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -64,9 +63,9 @@
         <UnitName Value="unitPersonnage"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="93"/>
-        <CursorPos X="43" Y="104"/>
-        <UsageCount Value="163"/>
+        <TopLine Value="299"/>
+        <CursorPos X="71" Y="313"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -77,7 +76,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="24"/>
         <CursorPos X="52" Y="34"/>
-        <UsageCount Value="160"/>
+        <UsageCount Value="162"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -88,7 +87,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="52"/>
         <CursorPos X="8" Y="144"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="128"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -99,7 +98,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="4"/>
         <CursorPos X="84" Y="48"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -110,7 +109,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="31"/>
         <CursorPos X="87" Y="49"/>
-        <UsageCount Value="112"/>
+        <UsageCount Value="114"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -119,9 +118,9 @@
         <UnitName Value="unitMarchand"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="24"/>
+        <TopLine Value="23"/>
         <CursorPos X="85" Y="64"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="112"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -132,18 +131,19 @@
         <WindowIndex Value="1"/>
         <TopLine Value="16"/>
         <CursorPos X="75" Y="14"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="unitchasse.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitChasse"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="269"/>
-        <CursorPos X="32" Y="282"/>
-        <UsageCount Value="102"/>
+        <TopLine Value="209"/>
+        <CursorPos X="114" Y="212"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -152,9 +152,9 @@
         <UnitName Value="unitCantine"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="31"/>
-        <CursorPos X="40" Y="48"/>
-        <UsageCount Value="102"/>
+        <TopLine Value="34"/>
+        <CursorPos X="67" Y="38"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -165,7 +165,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="22"/>
         <CursorPos X="32" Y="32"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
@@ -174,17 +174,17 @@
         <UnitName Value="unitCampEntrainement"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="7"/>
+        <TopLine Value="6"/>
         <CursorPos X="42" Y="70"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="GestionEcran.pas"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="31"/>
-        <CursorPos X="49" Y="33"/>
-        <UsageCount Value="81"/>
+        <TopLine Value="80"/>
+        <CursorPos X="15" Y="32"/>
+        <UsageCount Value="82"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
@@ -209,127 +209,127 @@
         <UsageCount Value="10"/>
       </Unit19>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="165" Column="60" TopLine="157"/>
+        <Caret Line="121" Column="30" TopLine="105"/>
       </Position1>
       <Position2>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="166" Column="66" TopLine="156"/>
+        <Caret Line="197" Column="63" TopLine="182"/>
       </Position2>
       <Position3>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="173" Column="33" TopLine="162"/>
+        <Caret Line="110" Column="20" TopLine="30"/>
       </Position3>
       <Position4>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="169" Column="73" TopLine="160"/>
+        <Filename Value="unitmenuprincipal.pas"/>
+        <Caret Line="155" TopLine="145"/>
       </Position4>
       <Position5>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="114" Column="12" TopLine="104"/>
+        <Filename Value="unitmenuprincipal.pas"/>
+        <Caret Line="182" Column="6" TopLine="169"/>
       </Position5>
       <Position6>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="168" Column="7" TopLine="158"/>
+        <Filename Value="unitmenuprincipal.pas"/>
+        <Caret Line="138" Column="4" TopLine="127"/>
       </Position6>
       <Position7>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="170" Column="23" TopLine="161"/>
+        <Filename Value="unitmenuprincipal.pas"/>
+        <Caret Line="182" Column="6"/>
       </Position7>
       <Position8>
-        <Filename Value="unitihm.pas"/>
-        <Caret Line="165" Column="22" TopLine="148"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="159" Column="34" TopLine="142"/>
       </Position8>
       <Position9>
-        <Filename Value="unitforge.pas"/>
-        <Caret Line="79" Column="50" TopLine="35"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="163" Column="55" TopLine="149"/>
       </Position9>
       <Position10>
-        <Filename Value="unitchambre.pas"/>
-        <Caret Line="188" Column="51" TopLine="162"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="159" Column="26" TopLine="149"/>
       </Position10>
       <Position11>
-        <Filename Value="unitchambre.pas"/>
-        <Caret Line="144" Column="3" TopLine="134"/>
+        <Filename Value="unitcampentrainement.pas"/>
+        <Caret Line="70" Column="42" TopLine="7"/>
       </Position11>
       <Position12>
-        <Filename Value="unitchasse.pas"/>
-        <Caret Line="124" Column="48" TopLine="110"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="48" Column="39" TopLine="30"/>
       </Position12>
       <Position13>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="121" Column="30" TopLine="105"/>
+        <Filename Value="unitpersonnage.pas"/>
+        <Caret Line="414" Column="35" TopLine="402"/>
       </Position13>
       <Position14>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="197" Column="63" TopLine="182"/>
+        <Caret Line="48" Column="39" TopLine="30"/>
       </Position14>
       <Position15>
         <Filename Value="unitcantine.pas"/>
-        <Caret Line="110" Column="20" TopLine="30"/>
+        <Caret Line="42" Column="40" TopLine="31"/>
       </Position15>
       <Position16>
-        <Filename Value="unitmenuprincipal.pas"/>
-        <Caret Line="155" TopLine="145"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="174" Column="81" TopLine="164"/>
       </Position16>
       <Position17>
         <Filename Value="unitmenuprincipal.pas"/>
-        <Caret Line="182" Column="6" TopLine="169"/>
+        <Caret Line="182" Column="13" TopLine="171"/>
       </Position17>
       <Position18>
-        <Filename Value="unitmenuprincipal.pas"/>
-        <Caret Line="138" Column="4" TopLine="127"/>
+        <Filename Value="unitcantine.pas"/>
+        <Caret Line="48" Column="29" TopLine="34"/>
       </Position18>
       <Position19>
-        <Filename Value="unitmenuprincipal.pas"/>
-        <Caret Line="182" Column="6"/>
+        <Filename Value="unitpersonnage.pas"/>
+        <Caret Line="413" Column="35" TopLine="400"/>
       </Position19>
       <Position20>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="159" Column="34" TopLine="142"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="214" Column="23" TopLine="198"/>
       </Position20>
       <Position21>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="163" Column="55" TopLine="149"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="216" Column="41" TopLine="205"/>
       </Position21>
       <Position22>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="159" Column="26" TopLine="149"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="76" Column="43" TopLine="67"/>
       </Position22>
       <Position23>
-        <Filename Value="unitcampentrainement.pas"/>
-        <Caret Line="70" Column="42" TopLine="7"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="164" Column="32" TopLine="147"/>
       </Position23>
       <Position24>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="48" Column="39" TopLine="30"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="64" Column="21" TopLine="55"/>
       </Position24>
       <Position25>
-        <Filename Value="unitpersonnage.pas"/>
-        <Caret Line="414" Column="35" TopLine="402"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="80" Column="35" TopLine="70"/>
       </Position25>
       <Position26>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="48" Column="39" TopLine="30"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="99" Column="35" TopLine="89"/>
       </Position26>
       <Position27>
-        <Filename Value="unitcantine.pas"/>
-        <Caret Line="42" Column="40" TopLine="31"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="144" Column="32" TopLine="134"/>
       </Position27>
       <Position28>
         <Filename Value="unitchasse.pas"/>
-        <Caret Line="174" Column="81" TopLine="164"/>
+        <Caret Line="164" Column="32" TopLine="153"/>
       </Position28>
       <Position29>
-        <Filename Value="unitmenuprincipal.pas"/>
-        <Caret Line="182" Column="13" TopLine="171"/>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="214" Column="35" TopLine="204"/>
       </Position29>
+      <Position30>
+        <Filename Value="unitchasse.pas"/>
+        <Caret Line="226" Column="17" TopLine="210"/>
+      </Position30>
     </JumpHistory>
-    <RunParams>
-      <FormatVersion Value="2"/>
-      <Modes Count="0" ActiveMode="default"/>
-    </RunParams>
   </ProjectSession>
 </CONFIG>
