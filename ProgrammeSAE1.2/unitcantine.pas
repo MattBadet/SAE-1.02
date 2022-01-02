@@ -29,7 +29,7 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array[1..1712] of string;
+  tablarray = array[1..1721] of string;
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -38,8 +38,16 @@ var
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
 begin
+  //Si argent suffisant
+  if(getPersonnage().argent > 200-(50*(nbPlat-1))) then
+  begin
      //Fixe le buff
-     setBuff(bonus(nbPlat));
+     case nbPlat of
+     1:setBuff(Force,200-(50*(nbPlat-1)));
+     2:setBuff(Regeneration,200-(50*(nbPlat-1)));
+     3:setBuff(Critique,200-(50*(nbPlat-1)));
+     end;
+  end;
 end;
 
 function split(chaine,char:string):strarray;//type strarray = array[1..2] of string;
@@ -99,9 +107,9 @@ function recupRecetteHUB(n:integer):tablarray;
 begin
   recupRecette;
   case n of
-    1: recupRecetteHUB:=tablcrit;
+    1: recupRecetteHUB:=tablforc;
     2: recupRecetteHUB:=tablregen;
-    3: recupRecetteHUB:=tablforc;
+    3: recupRecetteHUB:=tablcrit;
   end;
 end;
 
@@ -111,6 +119,7 @@ function choixPage(n : integer) : typeLieu;
 var choix : string;
   recette : tablarray;
   nRecette : integer;
+  recetteVoulu : integer;
   pageVoulu : integer;
   page : integer;
   pageMax : integer;
@@ -135,7 +144,10 @@ begin
     deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
     for i:=1 to 20 do
     begin
-    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[nRecette+i]);
+    if(recette[nRecette+i]) <> '' then
+    begin
+      deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[nRecette+i]);
+    end;
     end;
 
     dessinerCadreXY(1,27,21,29,simple,white,black);
@@ -144,6 +156,15 @@ begin
     1:write('Force');
     2:write('Régénération');
     3:write('Critique');
+    end;
+    dessinerCadreXY(1,7,14,9,simple,white,black);
+    if(getPersonnage().argent > 200-(50*(n-1))) then couleurTexte(Green)
+    else couleurTexte(Red);
+    deplacerCurseurXY(2,8);write('Prix : ');
+    case n of
+    1:write(200-(50*(n-1)),'PO');
+    2:write(200-(50*(n-1)),'PO');
+    3:write(200-(50*(n-1)),'PO');
     end;
     dessinerCadreXY(132,27,147,29,simple,white,black);
     deplacerCurseurXY(133,28);write('Page : ',page,' / ',pageMax);
@@ -181,7 +202,17 @@ begin
     begin
       if(page <> pageMax) then page += 1
     end
-    else if(choix = '5') then  ;
+    else if(choix = '5') then
+    begin
+      afficherCadreAction();
+      afficherCadreResponse();
+      deplacerCurseurXY(5,33);write('Rentrez la recette que vous souhaitez manger.');
+      deplacerCurseurXY(5,34);write('Cette recette doit évidemment être disponible');
+      deplacerCurseurXY(5,35);write('en fonction des nombre de recettes affiché');
+      deplacerCurseurZoneResponse();
+      readln(recetteVoulu);
+      if(recette[nRecette+recetteVoulu]) <> '' then manger(n);
+    end
   end;
 
 

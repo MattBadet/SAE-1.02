@@ -179,7 +179,7 @@ begin
      Readln(savefile,partie2);
      setPartiePersonnage(partie2,1);
      Readln(savefile,buf);
-     setBuffPersonnage(buf);
+     setBuff(buf,0);
      Readln(savefile,comp);
      SetCompPersonnage(comp);
      //ARME

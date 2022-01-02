@@ -276,7 +276,7 @@ begin
    if(monstre.pv = 0) then
    begin
          recupererPrime(monstre.prime);
-         setBuff(AucunB);
+         setBuff(AucunB,0);
          combat := expedition;
    end
    //Mort

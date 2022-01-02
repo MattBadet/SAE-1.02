@@ -60,8 +60,6 @@ procedure setArmePersonnage(arme : materiaux);
 procedure setArmurePersonnage(mat : materiaux;emp:integer);
 //Change le nombre de partie du joueur
 procedure setPartiePersonnage(partie,id : integer);
-//Change le buff du joueur
-procedure setBuffPersonnage(buf : bonus);
 //Change la/les compétence(s) du joueur
 procedure SetCompPersonnage(comp:integer);
 //Change les armes contenues dans le coffre
@@ -103,7 +101,7 @@ procedure forgerArmure(slot : integer; mat : materiaux);
 //Converti un bonus en chaine de caractères
 function bonusToString(buff : bonus) : String;
 //Change le buff du joueur
-procedure setBuff(buff : bonus);
+procedure setBuff(buff : bonus;n : integer);
 //donne une compétence au joueur
 procedure apprendCompetence(n : integer);
 
@@ -233,12 +231,6 @@ end;
 procedure setPartiePersonnage(partie,id : integer);
 begin
   perso.parties[id]:=partie;
-end;
-
-//Change le buff du personnage
-procedure setBuffPersonnage(buf : bonus);
-begin
-  perso.buff:=buf;
 end;
 
 //Change la/les compétence(s) du personnage
@@ -416,9 +408,10 @@ begin
 end;
 
 //Change le buff du joueur
-procedure setBuff(buff : bonus);
+procedure setBuff(buff : bonus;n : integer);
 begin
   perso.buff := buff;
+  perso.argent := perso.argent - n;
 end;
 
 //donne une compétence au joueur
