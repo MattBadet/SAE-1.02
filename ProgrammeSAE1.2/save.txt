@@ -1,6 +1,6 @@
 boyz
 666
-Autre
+Masculin
 100
 100000000
 aucun
@@ -11,7 +11,7 @@ aucun
 aucun
 0
 0
-Force
+AucunB
 0
 TRUE
 FALSE

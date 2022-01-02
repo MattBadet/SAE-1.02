@@ -30,7 +30,7 @@ function chargerpartie():typeLieu;
 
 implementation
 uses
-  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet,unitEquipement;
+  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet,unitEquipement,Sysutils;
 
 
 //----- FONCTIONS ET PROCEDURES -----
@@ -55,8 +55,14 @@ begin
    readln(choix);
    case choix of
         '1': menuPrincipalHub:=creationPersonnage;
-        '2': menuPrincipalHub:=chargerpartie;
-        else menuPrincipalHub:=quitter;
+        '2':
+          begin
+            if FileExists('save.txt') then
+                  menuPrincipalHub:=chargerpartie
+            else
+                   menuPrincipalHub:=creationPersonnage;
+          end;
+         else menuPrincipalHub:=quitter;
    end;
 end;
 
@@ -228,7 +234,7 @@ begin
 
      CloseFile(savefile);
 
-     chargerpartie:=chambreArrivee;
+     chargerpartie:=chambre;
 end;
 
 end.

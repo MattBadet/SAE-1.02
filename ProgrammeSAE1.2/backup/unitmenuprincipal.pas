@@ -30,7 +30,7 @@ function chargerpartie():typeLieu;
 
 implementation
 uses
-  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet,unitEquipement;
+  unitMonstre,unitASCII,unitIHM,GestionEcran,unitPersonnage,unitObjet,unitEquipement,Sysutils;
 
 
 //----- FONCTIONS ET PROCEDURES -----
@@ -55,8 +55,14 @@ begin
    readln(choix);
    case choix of
         '1': menuPrincipalHub:=creationPersonnage;
-        '2': menuPrincipalHub:=chargerpartie;
-        else menuPrincipalHub:=quitter;
+        '2':
+          begin
+            if FileExists('save.txt') then
+                  menuPrincipalHub:=chargerpartie
+            else
+                   menuPrincipalHub:=creationPersonnage;
+          end;
+         else menuPrincipalHub:=quitter;
    end;
 end;
 
@@ -179,7 +185,7 @@ begin
      Readln(savefile,partie2);
      setPartiePersonnage(partie2,1);
      Readln(savefile,buf);
-     setBuffPersonnage(buf);
+     setBuff(buf,0);
      Readln(savefile,comp);
      SetCompPersonnage(comp);
      //ARME
@@ -191,35 +197,35 @@ begin
      setArmeCoffre(3,epeeecaille);
      //ARMURE
      Readln(savefile,casquefer);
-     SetArmureCoffre(0,2,casquefer);
+     SetArmureCoffre(0,1,casquefer);
      Readln(savefile,torsefer);
-     SetArmureCoffre(1,2,torsefer);
+     SetArmureCoffre(1,1,torsefer);
      Readln(savefile,gantsfer);
-     SetArmureCoffre(2,2,gantsfer);
+     SetArmureCoffre(2,1,gantsfer);
      Readln(savefile,jambieresfer);
-     SetArmureCoffre(3,2,jambieresfer);
+     SetArmureCoffre(3,1,jambieresfer);
      Readln(savefile,bottesfer);
-     SetArmureCoffre(4,2,bottesfer);
+     SetArmureCoffre(4,1,bottesfer);
      Readln(savefile,casqueos);
-     SetArmureCoffre(0,3,casqueos);
+     SetArmureCoffre(0,2,casqueos);
      Readln(savefile,torseos);
-     SetArmureCoffre(1,3,torseos);
+     SetArmureCoffre(1,2,torseos);
      Readln(savefile,gantsos);
-     SetArmureCoffre(2,3,gantsos);
+     SetArmureCoffre(2,2,gantsos);
      Readln(savefile,jambieresos);
-     SetArmureCoffre(3,3,jambieresos);
+     SetArmureCoffre(3,2,jambieresos);
      Readln(savefile,bottesos);
-     SetArmureCoffre(4,3,bottesos) ;
+     SetArmureCoffre(4,2,bottesos) ;
      Readln(savefile,casqueecaille);
-     SetArmureCoffre(0,4,casqueecaille);
+     SetArmureCoffre(0,3,casqueecaille);
      Readln(savefile,torseecaille);
-     SetArmureCoffre(1,4,torseecaille);
+     SetArmureCoffre(1,3,torseecaille);
      Readln(savefile,gantsecaille);
-     SetArmureCoffre(2,4,gantsecaille);
+     SetArmureCoffre(2,3,gantsecaille);
      Readln(savefile,jambieresecaille);
-     SetArmureCoffre(3,4,jambieresecaille);
+     SetArmureCoffre(3,3,jambieresecaille);
      Readln(savefile,bottesecaille);
-     SetArmureCoffre(4,4,bottesecaille);
+     SetArmureCoffre(4,3,bottesecaille);
      //OBJET
      Readln(savefile,qte);
      ajoutObjet(1,qte);
