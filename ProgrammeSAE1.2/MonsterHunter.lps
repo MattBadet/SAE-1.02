@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <PathDelim Value="\"/>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <BuildModes Active="Default"/>
     <Units Count="20">
       <Unit0>
@@ -28,10 +28,11 @@
         <Filename Value="unitmenuprincipal.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitMenuPrincipal"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="109"/>
-        <CursorPos X="52" Y="199"/>
+        <TopLine Value="24"/>
+        <CursorPos X="53" Y="71"/>
         <UsageCount Value="168"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -138,10 +139,9 @@
         <Filename Value="unitchasse.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitChasse"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="155"/>
+        <TopLine Value="64"/>
         <CursorPos X="68" Y="167"/>
         <UsageCount Value="105"/>
         <Loaded Value="True"/>
@@ -331,5 +331,9 @@
         <Caret Line="226" Column="17" TopLine="210"/>
       </Position30>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
 </CONFIG>

@@ -48,22 +48,31 @@ begin
    afficherInterfacePrincipale();
    afficherTitreMenuPrincipal();
    afficherLieu('Menu Principal');
-   deplacerCurseurZoneAction(2);write('1/ Débuter une nouvelle partie');
-   deplacerCurseurZoneAction(4);write('2/ Continuer la partie');
-   deplacerCurseurZoneAction(6);write('3/ Quitter');
-   deplacerCurseurZoneResponse();
-   readln(choix);
-   case choix of
-        '1': menuPrincipalHub:=creationPersonnage;
-        '2':
-          begin
-            if FileExists('save.txt') then
-                  menuPrincipalHub:=chargerpartie
-            else
-                   menuPrincipalHub:=creationPersonnage;
-          end;
-         else menuPrincipalHub:=quitter;
-   end;
+   if FileExists('save.txt') then
+   begin
+     deplacerCurseurZoneAction(2);write('1/ Débuter une nouvelle partie');
+     deplacerCurseurZoneAction(4);write('2/ Continuer la partie');
+     deplacerCurseurZoneAction(6);write('3/ Quitter');
+     deplacerCurseurZoneResponse();
+     readln(choix);
+     case choix of
+          '1': menuPrincipalHub:=creationPersonnage;
+          '2': menuPrincipalHub:=chargerpartie;
+           else menuPrincipalHub:=quitter;
+     end;
+   end
+   else
+   begin
+     deplacerCurseurZoneAction(2);write('1/ Débuter une nouvelle partie');
+     deplacerCurseurZoneAction(6);write('3/ Quitter');
+     deplacerCurseurZoneResponse();
+     readln(choix);
+     case choix of
+          '1': menuPrincipalHub:=creationPersonnage;
+           else menuPrincipalHub:=quitter;
+     end;
+   end
+
 end;
 
 //Fonction exécutée à l'arrivée dans l'écran de création du personnage
