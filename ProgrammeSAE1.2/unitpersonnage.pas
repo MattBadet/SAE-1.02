@@ -10,6 +10,10 @@ uses
 type
   bonus = (AucunB,Force,Regeneration,Critique);       //Bonus de la cantinue
   genre = (Masculin,Feminin,Autre);         //Genre du personnage
+  xp = record
+    niveau:Integer;
+    experience:Integer;
+  end;
 
   //Type représentant le personnage
   Personnage = record
@@ -24,6 +28,7 @@ type
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
     competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
+    exp : xp;                               //Gestion de l'expérience (niveau et barre d'expérience)
   end;
 
   //Type représentant un coffre d'équipement

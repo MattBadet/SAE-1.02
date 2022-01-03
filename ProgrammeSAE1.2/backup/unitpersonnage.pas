@@ -10,6 +10,10 @@ uses
 type
   bonus = (AucunB,Force,Regeneration,Critique);       //Bonus de la cantinue
   genre = (Masculin,Feminin,Autre);         //Genre du personnage
+  xp = record
+    niveau:Integer;
+    experience:Integer;
+  end;
 
   //Type représentant le personnage
   Personnage = record
@@ -24,6 +28,7 @@ type
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
     competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
+    exp : xp;                           //
   end;
 
   //Type représentant un coffre d'équipement
@@ -60,8 +65,6 @@ procedure setArmePersonnage(arme : materiaux);
 procedure setArmurePersonnage(mat : materiaux;emp:integer);
 //Change le nombre de partie du joueur
 procedure setPartiePersonnage(partie,id : integer);
-//Change le buff du joueur
-procedure setBuffPersonnage(buf : bonus);
 //Change la/les compétence(s) du joueur
 procedure SetCompPersonnage(comp:integer);
 //Change les armes contenues dans le coffre
@@ -103,7 +106,7 @@ procedure forgerArmure(slot : integer; mat : materiaux);
 //Converti un bonus en chaine de caractères
 function bonusToString(buff : bonus) : String;
 //Change le buff du joueur
-procedure setBuff(buff : bonus);
+procedure setBuff(buff : bonus;n : integer);
 //donne une compétence au joueur
 procedure apprendCompetence(n : integer);
 
@@ -235,12 +238,6 @@ begin
   perso.parties[id]:=partie;
 end;
 
-//Change le buff du personnage
-procedure setBuffPersonnage(buf : bonus);
-begin
-  perso.buff:=buf;
-end;
-
 //Change la/les compétence(s) du personnage
 procedure setCompPersonnage(comp : integer);
 begin
@@ -250,7 +247,7 @@ end;
 //Change les armes contenues dans le coffre
 procedure SetArmeCoffre(mat:integer;verif:string);
 begin
-  if verif='true' then
+  if verif='TRUE' then
      coffre.armes[mat]:=true
   else
      coffre.armes[mat]:=false;
@@ -259,7 +256,7 @@ end;
 //Change les armures contenues dans le coffre
 procedure SetArmureCoffre(emp,mat:integer;verif:string);
 begin
-  if verif='true' then
+  if verif='TRUE' then
      coffre.armures[emp,mat]:=true
   else
      coffre.armures[emp,mat]:=false;
@@ -412,13 +409,15 @@ begin
        AucunB:bonusToString:='Aucun';
        Force:bonusToString:='Force';
        Regeneration:bonusToString:='Regénération';
+       Critique:bonusToString:='Critique';
   end;
 end;
 
 //Change le buff du joueur
-procedure setBuff(buff : bonus);
+procedure setBuff(buff : bonus;n : integer);
 begin
   perso.buff := buff;
+  perso.argent := perso.argent - n;
 end;
 
 //donne une compétence au joueur
