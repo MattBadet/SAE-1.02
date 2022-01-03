@@ -28,7 +28,7 @@ type
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
     competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
-    exp : xp;                           //
+    exp : xp;                               //Gestion de l'expérience (niveau et barre d'expérience)
   end;
 
   //Type représentant un coffre d'équipement
@@ -164,6 +164,10 @@ begin
   perso.argent:=200;
   //Pas de compétence apprise
   perso.competence:=0;
+  // Commence au niveau 1
+  perso.exp.niveau:=1;
+  // Pas d'expérience
+  perso.exp.experience:=0:
 end;
 
 //Renvoie le personnage (lecture seul)

@@ -164,6 +164,10 @@ begin
   perso.argent:=200;
   //Pas de compétence apprise
   perso.competence:=0;
+  // Commence au niveau 1
+  perso.exp.niveau:=1;
+  // Pas d'expérience
+  perso.exp.experience:=0;
 end;
 
 //Renvoie le personnage (lecture seul)
