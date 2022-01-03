@@ -367,7 +367,6 @@ begin
   perso.exp += (qte+random(20));
 end;
 
-perso().exp:=getPersonnage().exp+(monstre.exp+random(20));
 //Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet
 function peuxForger(mat : materiaux) : boolean;
 begin
