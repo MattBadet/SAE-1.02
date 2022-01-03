@@ -42,6 +42,10 @@ procedure initialisationJoueur();
 procedure initialisationCoffre();
 //Renvoie le personnage (lecture seul)
 function getPersonnage() : Personnage;
+//Renvoie le niveau du personnage
+function getNiveau() : Integer;
+//Renvoie l'expérience du personnage
+function getExp() : Integer;
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 //Transforme un Genre en chaine de caractères
@@ -173,6 +177,18 @@ end;
 function getPersonnage() : Personnage;
 begin
   getPersonnage := perso;
+end;
+
+//Renvoie le niveau du personnage (lecture seul)
+function getNiveau() : integer;
+begin
+  getNiveau := perso.niveau;
+end;
+
+//Renvoie l'expérience du personnage (lecture seul)
+function getExp() : integer;
+begin
+  getExp := perso.exp;
 end;
 
 //Renvoie le coffre (lecture seul)

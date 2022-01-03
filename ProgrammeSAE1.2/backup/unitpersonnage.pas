@@ -42,6 +42,10 @@ procedure initialisationJoueur();
 procedure initialisationCoffre();
 //Renvoie le personnage (lecture seul)
 function getPersonnage() : Personnage;
+//Renvoie le niveau du personnage
+function getNiveau() : Integer;
+//Renvoie l'expérience du personnage
+function getExp() : Integer;
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 //Transforme un Genre en chaine de caractères
@@ -173,6 +177,18 @@ end;
 function getPersonnage() : Personnage;
 begin
   getPersonnage := perso;
+end;
+
+//Renvoie le niveau du personnage (lecture seul)
+function getNiveau() : integer;
+begin
+  getNiveau := perso.niveau;
+end;
+
+//Renvoie l'expérience du personnage (lecture seul)
+function getExperience() : integer;
+begin
+  getExperience := perso.exp;
 end;
 
 //Renvoie le coffre (lecture seul)
@@ -372,7 +388,7 @@ begin
   end;
 end;
 
-//Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet
+//Renvoie si le joueur possède les ingrédients (+ l'or et l'expérience) pour crafter l'objet
 function peuxForger(mat : materiaux) : boolean;
 begin
      //Test de l'argent
@@ -381,6 +397,11 @@ begin
      case mat of
           os : peuxForger := peuxForger AND (perso.parties[0]>4);
           Ecaille : peuxForger := peuxForger AND (perso.parties[1]>4);
+     end;
+     //Test de l'expérience
+     case mat of
+          os : peuxForger := peuxForger AND (perso.niveau>2);
+          Ecaille : peuxForger := peuxForger AND (perso.niveau>5);
      end;
 end;
 
