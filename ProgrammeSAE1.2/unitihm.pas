@@ -98,27 +98,28 @@ begin
 
   deplacerCurseurXY(155,13); write('     Santé : ',getPersonnage().sante);
   deplacerCurseurXY(155,14); write('    Argent : ',getPersonnage().argent);
+  deplacerCurseurXY(155,15); write('    Niveau : ',getPersonnage().niveau);
+  deplacerCurseurXY(155,16); write('Expérience : ',getPersonnage().exp);
 
+  deplacerCurseurXY(164,18);Write('   -------------   ');
 
-  deplacerCurseurXY(164,16);Write('   -------------   ');
+  deplacerCurseurXY(155,20); write('      Arme : ',armeToString(getPersonnage().arme));
+  deplacerCurseurXY(155,21); write('    Casque : ',armureToString(Casque,getPersonnage().armures[0]));
+  deplacerCurseurXY(155,22); write('     Torse : ',armureToString(Torse,getPersonnage().armures[1]));
+  deplacerCurseurXY(155,23); write('     Gants : ',armureToString(Gants,getPersonnage().armures[2]));
+  deplacerCurseurXY(155,24); write(' Jambières : ',armureToString(Jambieres,getPersonnage().armures[3]));
+  deplacerCurseurXY(155,25); write('    Bottes : ',armureToString(Bottes,getPersonnage().armures[4]));
 
-  deplacerCurseurXY(155,18); write('      Arme : ',armeToString(getPersonnage().arme));
-  deplacerCurseurXY(155,19); write('    Casque : ',armureToString(Casque,getPersonnage().armures[0]));
-  deplacerCurseurXY(155,20); write('     Torse : ',armureToString(Torse,getPersonnage().armures[1]));
-  deplacerCurseurXY(155,21); write('     Gants : ',armureToString(Gants,getPersonnage().armures[2]));
-  deplacerCurseurXY(155,22); write(' Jambières : ',armureToString(Jambieres,getPersonnage().armures[3]));
-  deplacerCurseurXY(155,23); write('    Bottes : ',armureToString(Bottes,getPersonnage().armures[4]));
-
-  deplacerCurseurXY(164,25);Write('   -------------   ');
+  deplacerCurseurXY(164,27);Write('   -------------   ');
   for i:=0 to ord(high(TypeMonstre)) do
   begin
-      deplacerCurseurXY(180-length(partieToString(TypeMonstre(i))),27+i);
+      deplacerCurseurXY(180-length(partieToString(TypeMonstre(i))),29+i);
       write(partieToString(TypeMonstre(i)),' : ',getPersonnage().parties[i]);
   end;
-  deplacerCurseurXY(164,30);Write('   -------------   ');
-  deplacerCurseurXY(155,32);Write('      Buff : ',bonusToString(getPersonnage().buff));
+  deplacerCurseurXY(164,32);Write('   -------------   ');
+  deplacerCurseurXY(155,34);Write('      Buff : ',bonusToString(getPersonnage().buff));
 
-  deplacerCurseurXY(164,34);Write('   -------------   ');
+  deplacerCurseurXY(164,36);Write('   -------------   ');
 
   if (getPersonnage().competence = 0) then
   begin

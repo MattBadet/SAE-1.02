@@ -10,6 +10,8 @@ procedure afficherInterfacePrincipale();
 procedure afficherInterfaceSimple();  
 //Affichage du cadre d'action
 procedure afficherCadreAction();
+//Affichage du cadre de réponse
+procedure afficherCadreResponse();
 //Affiche le nom du lieu au centre de la boite associée
 procedure afficherLieu(nomLieu : string); 
 //Affiche le nom du lieu au centre de la boite associée (écran simple)
@@ -18,6 +20,15 @@ procedure afficherLieuSimple(nomLieu : string);
 procedure deplacerCurseurZoneAction(numLigne : integer); 
 //Positionne le curseur à la n-ième ligne de la zone d'action
 procedure deplacerCurseurZoneResponse();
+
+
+
+
+
+
+
+
+
 
 implementation
 uses
@@ -58,7 +69,7 @@ end;
 //Affichage du cadre d'action
 procedure afficherCadreAction();
 begin
-  dessinerCadreXY(1,29,198,39,simple,white,black);
+  dessinerCadreXY(1,29,147,39,simple,white,black);
 end;
 
 //Affichage du cadre de réponse
@@ -77,40 +88,55 @@ begin
   dessinerCadreXY(158,1,188,3,simple,white,black);
   deplacerCurseurXY(164,2);Write('FICHE DU PERSONNAGE');
 
-  if(getPersonnage().Nom <> '') then
+  deplacerCurseurXY(164,5);Write('   -------------   ');
+
+  deplacerCurseurXY(155,7); write('       Nom : ',getPersonnage().nom);
+  deplacerCurseurXY(155,8); write('     Genre : ',genreToString(getPersonnage().sexe));
+  deplacerCurseurXY(155,9); write('    Taille : ',getPersonnage().taille);
+
+  deplacerCurseurXY(164,11);Write('   -------------   ');
+
+  deplacerCurseurXY(155,13); write('     Santé : ',getPersonnage().sante);
+  deplacerCurseurXY(155,14); write('    Argent : ',getPersonnage().argent);
+
+
+  deplacerCurseurXY(164,16);Write('   -------------   ');
+
+  deplacerCurseurXY(155,18); write('      Arme : ',armeToString(getPersonnage().arme));
+  deplacerCurseurXY(155,19); write('    Casque : ',armureToString(Casque,getPersonnage().armures[0]));
+  deplacerCurseurXY(155,20); write('     Torse : ',armureToString(Torse,getPersonnage().armures[1]));
+  deplacerCurseurXY(155,21); write('     Gants : ',armureToString(Gants,getPersonnage().armures[2]));
+  deplacerCurseurXY(155,22); write(' Jambières : ',armureToString(Jambieres,getPersonnage().armures[3]));
+  deplacerCurseurXY(155,23); write('    Bottes : ',armureToString(Bottes,getPersonnage().armures[4]));
+
+  deplacerCurseurXY(164,25);Write('   -------------   ');
+  for i:=0 to ord(high(TypeMonstre)) do
   begin
-    deplacerCurseurXY(164,5);Write('   -------------   ');
-
-    deplacerCurseurXY(155,7); write('       Nom : ',getPersonnage().nom);
-    deplacerCurseurXY(155,8); write('     Genre : ',genreToString(getPersonnage().sexe));
-    deplacerCurseurXY(155,9); write('    Taille : ',getPersonnage().taille);
-
-    deplacerCurseurXY(164,11);Write('   -------------   ');
-
-    deplacerCurseurXY(155,13); write('     Santé : ',getPersonnage().sante);
-    deplacerCurseurXY(155,14); write('    Argent : ',getPersonnage().argent);
-
-
-    deplacerCurseurXY(164,16);Write('   -------------   ');
-
-    deplacerCurseurXY(155,18); write('      Arme : ',armeToString(getPersonnage().arme));
-    deplacerCurseurXY(155,19); write('    Casque : ',armureToString(Casque,getPersonnage().armures[0]));
-    deplacerCurseurXY(155,20); write('     Torse : ',armureToString(Torse,getPersonnage().armures[1]));
-    deplacerCurseurXY(155,21); write('     Gants : ',armureToString(Gants,getPersonnage().armures[2]));
-    deplacerCurseurXY(155,22); write(' Jambières : ',armureToString(Jambieres,getPersonnage().armures[3]));
-    deplacerCurseurXY(155,23); write('    Bottes : ',armureToString(Bottes,getPersonnage().armures[4]));
-
-    deplacerCurseurXY(164,25);Write('   -------------   ');
-    for i:=0 to ord(high(TypeMonstre)) do
-    begin
-        deplacerCurseurXY(180-length(partieToString(TypeMonstre(i))),27+i);
-        write(partieToString(TypeMonstre(i)),' : ',getPersonnage().parties[i]);
-    end; 
-    deplacerCurseurXY(164,30);Write('   -------------   '); 
-    deplacerCurseurXY(155,32);Write('      Buff : ',bonusToString(getPersonnage().buff));
-
+      deplacerCurseurXY(180-length(partieToString(TypeMonstre(i))),27+i);
+      write(partieToString(TypeMonstre(i)),' : ',getPersonnage().parties[i]);
   end;
+  deplacerCurseurXY(164,30);Write('   -------------   ');
+  deplacerCurseurXY(155,32);Write('      Buff : ',bonusToString(getPersonnage().buff));
 
+  deplacerCurseurXY(164,34);Write('   -------------   ');
+
+  if (getPersonnage().competence = 0) then
+  begin
+  deplacerCurseurXY(160,36);Write(' Compétences : Aucune');
+  end
+  else if (getPersonnage().competence = 1) then
+  begin
+  deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
+  end
+  else if (getPersonnage().competence = 2) then
+  begin
+  deplacerCurseurXY(160,36);Write(' Compétences : Vol Vie');
+  end
+  else if (getPersonnage().competence = 3) then
+  begin
+  deplacerCurseurXY(160,36);Write(' Compétences : Tranche');
+  deplacerCurseurXY(175,37);Write('Vol Vie ');
+  end;
 end;
 
 //Affichage le cadre du lieu dans le cas d'un écran simple
