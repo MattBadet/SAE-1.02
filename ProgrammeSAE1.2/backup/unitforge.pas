@@ -11,6 +11,16 @@ uses
 function ForgeHUB() : typeLieu;
 
 
+
+
+
+
+
+
+
+
+
+
 implementation
 uses
     unitPersonnage,unitEquipement,unitIHM,GestionEcran;

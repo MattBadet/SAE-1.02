@@ -372,7 +372,7 @@ begin
   end;
 end;
 
-//Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet
+//Renvoie si le joueur possède les ingrédients (+ l'or et l'expérience) pour crafter l'objet
 function peuxForger(mat : materiaux) : boolean;
 begin
      //Test de l'argent
@@ -381,6 +381,11 @@ begin
      case mat of
           os : peuxForger := peuxForger AND (perso.parties[0]>4);
           Ecaille : peuxForger := peuxForger AND (perso.parties[1]>4);
+     end;
+     //Test de l'expérience
+     case mat of
+          os : peuxForger := peuxForger AND (perso.niveau>2);
+          Ecaille : peuxForger := peuxForger AND (perso.niveau>5);
      end;
 end;
 

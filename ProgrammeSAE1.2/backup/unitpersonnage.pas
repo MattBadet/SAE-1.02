@@ -365,6 +365,11 @@ end;
 procedure recupererExp(qte : integer);
 begin
   perso.exp += (qte+random(20));
+  if perso.exp>500 then
+  begin
+    perso.exp -=500;
+    perso.niveau += 1;
+  end;
 end;
 
 //Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet

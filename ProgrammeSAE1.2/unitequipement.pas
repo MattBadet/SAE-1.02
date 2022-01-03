@@ -46,13 +46,13 @@ begin
         Casque : armureToString := 'Casque';
         Torse : armureToString := 'Plastron';
         Gants : armureToString := 'Gants';
-        Jambieres : armureToString := 'Jambieres';
+        Jambieres : armureToString := 'Jambières';
         Bottes : armureToString := 'Bottes';
     end;
     case mat of
         fer : armureToString += ' en fer';
         Os : armureToString += ' en os';
-        Ecaille : armureToString += ' en évaille';
+        Ecaille : armureToString += ' en écailles';
     end;
   end;
 end;
@@ -95,9 +95,9 @@ end;
 function recetteToString(mat : materiaux) : string;
 begin
   case mat of
-      fer : recetteToString:='(500 po)';
-      os : recetteToString:='(500 po, 5 morceaux de Grand Jagras)';
-      Ecaille : recetteToString:='(500 po, 5 morceaux de Pukei-Pukei)';
+      fer : recetteToString:='(500 po, Niveau 1)';
+      os : recetteToString:='(500 po, 5 morceaux de Grand Jagras, Niveau 2)';
+      Ecaille : recetteToString:='(500 po, 5 morceaux de Pukei-Pukei, Niveau 5)';
   end;
 end;
 
