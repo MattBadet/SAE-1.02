@@ -9,6 +9,17 @@ uses
 //----- FONCTIONS ET PROCEDURES -----
 function chasseHub() : typeLieu;
 
+
+
+
+
+
+
+
+
+
+
+
 implementation
 uses
     unitEquipement,unitPersonnage,unitMonstre,unitIHM,GestionEcran;
@@ -20,9 +31,12 @@ var
   choix : string;
   degatPerso : integer;      //Dégats réalisés par le perso
   degatMonstre : integer;    //Dégats réalisés par le monstre
+  degatSaignement : integer; //Dégats réalisés a cause du saignement du monstre
+  faitCritique : boolean;        //Le joueur a fait une attaque critique
   nbPartie : integer;        //Nb de parties récupérées sur le monstre
   lancerBombe : integer;     //Etat du lancé de bombe (-1 pas fait, 0 échoué, 1 réussi)
   boirePotion : integer;     //Etat de l'utilisateur de potion (-1 pas fait, 0 échoué, 1 réussi)
+  i : integer;               //Compteur de boucle pour la régen de VolVie
 begin
    //On récupère une copie du monstre
    monstre := getMonstre(numMonstre);
@@ -47,8 +61,9 @@ begin
         nbPartie := -1;
         lancerBombe := -1;
         boirePotion := -1;
+        faitCritique := FALSE;
 
-        if (choix = '1') or (choix = '2') or (choix = '3') or (choix = '4') then
+        if (choix = '1') or (choix = '2') or (choix = '3') or (choix = '4') or (choix = '5') or (choix = '6') then
         begin
              //Attaque classique
              if (choix = '1') then
@@ -57,6 +72,15 @@ begin
                   degatPerso := degatsAttaque();
                   //Buff de Force
                   if(getPersonnage().buff = Force) then degatPerso+=1;
+                  //Buff de Critique
+                  if(getPersonnage().buff = Critique) then
+                  begin
+                    if(random(100)+1 > 70) then
+                    begin
+                      degatPerso:=degatPerso*2;
+                      faitCritique:=TRUE;
+                    end;
+                  end;
                   monstre.pv -= degatPerso;
                   if(monstre.pv < 0) then monstre.pv := 0;
              end
@@ -67,6 +91,15 @@ begin
                   degatPerso := degatsAttaque() div 2;
                   //Buff de Force
                   if(getPersonnage().buff = Force) then degatPerso+=1;
+                  //Buff de Critique
+                  if(getPersonnage().buff = Critique) then
+                  begin
+                    if(random(100)+1 > 70) then
+                    begin
+                      degatPerso:=degatPerso*2;
+                      faitCritique:=TRUE;
+                    end;
+                  end;
                   monstre.pv -= degatPerso;
                   if(monstre.pv < 0) then monstre.pv := 0;
                   //Récupération de partie
@@ -77,24 +110,64 @@ begin
              //Potion
              else if(choix = '3') then
              begin
-                  if(getPersonnage().inventaire[0] > 0) then
+                  if(getPersonnage().inventaire[1] > 0) then
                   begin
                        soigner();
                        boirePotion := 1;           //Réussite 
-                       utiliserObjet(0);
+                       utiliserObjet(1);
                   end
                   else boirePotion := 0;           //Echec
              end
              //Bombe
              else if(choix = '4') then
              begin
-                 if(getPersonnage().inventaire[1] > 0) then
+                 if(getPersonnage().inventaire[2] > 0) then
                   begin
                        monstre.stun:=3;
                        lancerBombe := 1;           //Réussite
-                       utiliserObjet(1);
+                       utiliserObjet(2);
                   end
                   else lancerBombe := 0;           //Echec
+             end
+             //Tranche
+             else if(choix = '5') AND ((getPersonnage().competence = 1) OR (getPersonnage().competence = 3)) then //si compétence détenu
+             begin
+               //Dégat du joueur
+               degatPerso := degatsAttaque() div 2;
+               //Buff de Force
+               if(getPersonnage().buff = Force) then degatPerso+=1;
+               //Buff de Critique
+               if(getPersonnage().buff = Critique) then
+               begin
+                 if(random(100)+1 > 70) then
+                 begin
+                   degatPerso:=degatPerso*2;
+                   faitCritique:=TRUE;
+                 end;
+               end;
+               monstre.saignement:=3;
+               monstre.pv -= degatPerso;
+             end
+             //VolVie
+             else if(choix = '6') AND ((getPersonnage().competence = 2) OR (getPersonnage().competence = 3)) then //si compétence détenu
+             begin
+               //Dégat du joueur
+               degatPerso := (degatsAttaque() * 2) div 3;
+               //Buff de Force
+               if(getPersonnage().buff = Force) then degatPerso+=1;
+               //Buff de Critique
+               if(getPersonnage().buff = Critique) then
+               begin
+                 if(random(100)+1 > 70) then
+                 begin
+                   degatPerso:=degatPerso*2;
+                   faitCritique:=TRUE;
+                 end;
+               end;
+               monstre.pv -= degatPerso;
+               //Régen égale au nombre de PV enlevé au monstre
+               for i:=1 to degatPerso do
+               regen();
              end;
 
              //Contre attaque du monstre
@@ -106,6 +179,16 @@ begin
              else if(monstre.pv > 0) then monstre.stun -= 1;
              //Regenration du joueur
              if(getPersonnage.sante>0) and (getPersonnage.buff = Regeneration) then regen();
+
+             //saignement du monstre
+             degatSaignement:=0;
+             if(monstre.saignement>0) then
+             begin
+               monstre.saignement -= 1; //réduit le saignement de 1
+               //calcul dégats saignement
+               degatSaignement := degatsAttaque() div 4;
+               monstre.pv -= degatSaignement;
+             end;
 
             afficherInterfacePrincipale();
             afficherLieu('Combat contre un '+nomMonstre(monstre.typeM));
@@ -121,16 +204,34 @@ begin
 
 
             //Affichage des dégats du joueurs
-            if(degatPerso>-1) then
+            if(degatPerso>-1) OR(degatSaignement > 0)then
             begin
               couleurTexte(cyan);
               if(getPersonnage.buff = Force) then
               begin
-                 deplacerCurseurXY(30,15);write('Vous attaquez le monstre avec ',armeToString(getPersonnage().arme)+' et lui faites ',degatPerso,' point(s) de dégats (dont 1 point bonus)');
+                 deplacerCurseurXY(30,14);write('Vous faite 1 point de dégat en plus grace à votre force augmenté');
+              end
+              else if faitCritique then
+              begin
+                 deplacerCurseurXY(30,14);write('Vous faite un critique!');
+              end;
+              if(choix = '5') then
+              begin
+                deplacerCurseurXY(30,15);write('Vous attaquez le monstre avec ',armeToString(getPersonnage().arme)+' et utilisez vos compétence pour lui trancher la peau.');
+                deplacerCurseurXY(30,16);write('Vous lui faites ',degatPerso,' point(s) de dégats et provoquez son saignement');
+              end
+              else if(choix = '6') then
+              begin
+                deplacerCurseurXY(30,15);write('Vous attaquez le monstre avec VolVie et lui faites ',degatPerso,' point(s) de dégats');
+                couleurTexte(green);deplacerCurseurXY(30,21);write('Vous vous régénérez alors de ', degatPerso,' point(s) de vie grâce à votre compétences spéciales');couleurTexte(cyan);
               end
               else
               begin
                   deplacerCurseurXY(30,15);write('Vous attaquez le monstre avec ',armeToString(getPersonnage().arme)+' et lui faites ',degatPerso,' point(s) de dégats');
+              end;
+              if(degatSaignement > 0) then
+              begin
+                deplacerCurseurXY(30,17);write('Le monstre saigne! il prend ', degatSaignement,' point(s) de dégats a cause du saignement');
               end;
               if(nbPartie > 0) and (degatPerso > 0) then
               begin
@@ -142,7 +243,7 @@ begin
               end;
               if(monstre.pv = 0) then
               begin
-                   deplacerCurseurXY(30,17);write('Le monstre s''effondre ! Félicitations, vous l''avez vaincu !');
+                   deplacerCurseurXY(30,18);write('Le monstre s''effondre ! Félicitations, vous l''avez vaincu !');
               end;
             end;
             //Boire potion
@@ -155,7 +256,7 @@ begin
                 end
                 else if(boirePotion = 1) then
                 begin
-                     deplacerCurseurXY(30,15);write('Vous buvez une potion qui vous soigne de 50 points de vie.');
+                     couleurTexte(green);deplacerCurseurXY(30,23);write('Vous buvez une potion qui vous soigne de 50 points de vie.');couleurTexte(cyan);
                 end;
             end;
             //Lancer une bombe
@@ -168,7 +269,7 @@ begin
                 end
                 else if(lancerBombe = 1) then
                 begin
-                     deplacerCurseurXY(30,15);write('Vous lanvez une bombe sur le monstre qui est étourdi !');
+                     deplacerCurseurXY(30,15);write('Vous lancez une bombe sur le monstre qui est étourdi !');
                 end;
             end;
             //Affichage des dégats du monstres
@@ -184,7 +285,7 @@ begin
                  else if(getPersonnage().buff = Regeneration) then
                  begin
                       couleurTexte(green);
-                      deplacerCurseurXY(30,21);write('Vous vous regénérez de 1 PV.');
+                      deplacerCurseurXY(30,22);write('Vous vous regénérez de 1 PV.');
                  end;
             end;
             if(monstre.pv > 0) and (monstre.stun > 0) then
@@ -202,9 +303,17 @@ begin
         begin
           deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
           deplacerCurseurZoneAction(3);write('     1/ Attaquer le monstre de toute votre force');
-          deplacerCurseurZoneAction(4);write('     2/ Essayer de récupérer une partie du monstre');
-          deplacerCurseurZoneAction(5);write('     3/ Utiliser une potion');
-          deplacerCurseurZoneAction(6);write('     4/ Utiliser une bombe');
+          deplacerCurseurZoneAction(5);write('     2/ Essayer de récupérer une partie du monstre');
+          deplacerCurseurZoneAction(7);write('     3/ Utiliser une potion');
+          deplacerCurseurXY(55,33);write('     4/ Utiliser une bombe');
+          if (getpersonnage().competence = 1) OR (getpersonnage().competence = 3) then
+          begin
+          deplacerCurseurXY(55,35);write('     5/ Utiliser Tranche');
+          end;
+          if (getpersonnage().competence = 2) OR (getpersonnage().competence = 3) then
+          begin
+          deplacerCurseurXY(55,37);write('     6/ Utiliser VolVie');
+          end;
         end;
         deplacerCurseurZoneResponse();
         readln(choix);
@@ -212,8 +321,9 @@ begin
    //Victoire
    if(monstre.pv = 0) then
    begin
+         perso().exp:=getPersonnage().exp+(monstre.exp+random(20));
          recupererPrime(monstre.prime);
-         setBuff(AucunB);
+         setBuff(AucunB,0);
          combat := expedition;
    end
    //Mort

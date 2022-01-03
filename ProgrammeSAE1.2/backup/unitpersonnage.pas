@@ -10,10 +10,6 @@ uses
 type
   bonus = (AucunB,Force,Regeneration,Critique);       //Bonus de la cantinue
   genre = (Masculin,Feminin,Autre);         //Genre du personnage
-  xp = record
-    niveau:Integer;
-    experience:Integer;
-  end;
 
   //Type représentant le personnage
   Personnage = record
@@ -28,7 +24,8 @@ type
     argent : integer;                       //Argent du personnage
     buff : bonus;                           //Buff du joueur
     competence : integer;                   //Compétences utilisable par le joueur (0 = aucune; 1 = tranche; 2 = volvie; 3 = les deux)
-    exp : xp;                               //Gestion de l'expérience (niveau et barre d'expérience)
+    niveau : integer;                       //Gestion du niveau d'expérience
+    exp : integer;                          //Gestion de l'expérience par niveau
   end;
 
   //Type représentant un coffre d'équipement
@@ -96,7 +93,9 @@ procedure regen();
 //Supprime 1 objet
 procedure utiliserObjet(i : integer); 
 //Récupère une prime pour avoir tué un monstre
-procedure recupererPrime(qte : integer); 
+procedure recupererPrime(qte : integer);
+//Récupère l'expérience pour avoir tué un monstre
+procedure recupererExp(qte : integer);
 //Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet
 function peuxForger(mat : materiaux) : boolean;
 //Forge une arme du matériaux donné
@@ -165,9 +164,9 @@ begin
   //Pas de compétence apprise
   perso.competence:=0;
   // Commence au niveau 1
-  perso.exp.niveau:=1;
+  perso.niveau:=1;
   // Pas d'expérience
-  perso.exp.experience:=0:
+  perso.exp:=0;
 end;
 
 //Renvoie le personnage (lecture seul)
@@ -362,6 +361,13 @@ begin
   perso.argent += qte;
 end;
 
+//Récupère l'expérience pour avoir tué un monstre
+procedure recupererExp(qte : integer);
+begin
+  perso.exp += (qte+random(20));
+end;
+
+perso().exp:=getPersonnage().exp+(monstre.exp+random(20));
 //Renvoie si le joueur possède les ingrédients (et l'or) pour crafter l'objet
 function peuxForger(mat : materiaux) : boolean;
 begin

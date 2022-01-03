@@ -321,6 +321,7 @@ begin
    //Victoire
    if(monstre.pv = 0) then
    begin
+         recupererExp(monstre.exp);
          recupererPrime(monstre.prime);
          setBuff(AucunB,0);
          combat := expedition;

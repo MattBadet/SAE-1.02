@@ -11,7 +11,8 @@ type
     typeM : TypeMonstre;                        //type de monstre
     pv : integer;                               //points de vie
     stun : integer;                             //Nombre de tour stun
-    prime : integer;
+    saignement : integer;                       //Nombre de tour à saigner
+    prime : integer;                            //PO donné par le monstre à sa mort
   end;
 
   TCatalogueMonstre = array[0..ord(high(TypeMonstre))] of TMonstre;
@@ -25,6 +26,15 @@ function nomMonstre(monstre : TypeMonstre) : string;
 function getMonstre(i : integer) : TMonstre;
 
 
+
+
+
+
+
+
+
+
+
 implementation
 var
   monstres : TCatalogueMonstre;              //Catalogue des monstres
@@ -35,11 +45,15 @@ begin
   monstres[0].typeM:=Jagras;
   monstres[0].pv:=100;
   monstres[0].stun:=0;
+  monstres[0].saignement:=0;
   monstres[0].prime := 200;
+  monstres[0].exp := 90;
   monstres[1].typeM:=Pukei;
   monstres[1].pv:=200;
-  monstres[1].stun:=0;     
+  monstres[1].stun:=0;
+  monstres[1].saignement:=0;
   monstres[1].prime := 500;
+  monstres[1].exp := 140;
 end;
 
 //Renvoie le nom du monstre

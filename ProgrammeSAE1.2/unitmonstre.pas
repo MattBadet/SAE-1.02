@@ -13,6 +13,7 @@ type
     stun : integer;                             //Nombre de tour stun
     saignement : integer;                       //Nombre de tour à saigner
     prime : integer;                            //PO donné par le monstre à sa mort
+    exp : integer;                              //Expérience donée par le monste à sa mort
   end;
 
   TCatalogueMonstre = array[0..ord(high(TypeMonstre))] of TMonstre;
@@ -47,11 +48,13 @@ begin
   monstres[0].stun:=0;
   monstres[0].saignement:=0;
   monstres[0].prime := 200;
+  monstres[0].exp := 90;
   monstres[1].typeM:=Pukei;
   monstres[1].pv:=200;
   monstres[1].stun:=0;
   monstres[1].saignement:=0;
   monstres[1].prime := 500;
+  monstres[1].exp := 140;
 end;
 
 //Renvoie le nom du monstre
