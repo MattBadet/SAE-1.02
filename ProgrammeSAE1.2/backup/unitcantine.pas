@@ -29,17 +29,67 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array[1..1712] of string;
+  tablarray = array[1..1721] of string; //Tableau des recettes
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
+// Gestion des tris
+// Tri par insertion
+function triInsertion(table);
+var i:Integer;
+begin
+  for i:= to lentgh(table) do
+  begin
+    temp:=table[i]
+    j:=i;
+    while ((j>0)AND(table[j-1]>temp)) do
+    begin
+      table[j]:=table[j-1];
+      j:=j-1
+    end;
+    table[j]:=temp;
+  end;
+end;
+// Tri par fusion
+function fusion(table1,table2);
+begin
+  if table1=[] then
+     Result:=table2
+  else
+  begin
+      if table2=[] then
+         Result:=table1;
+      else
+      begin
+        if table1[1]<=table2[2] then
+           Result:=(table1[1]+fusion(table1[2, …, a],table2));
+        else
+           Result:=(table1[1]+fusion(table1,table2[2, …, b]));
+  end;
+end;
+function triFusion(table);
+begin
+  if n<=1 then
+     Result:=table;
+  else
+  Result:=fusion(triFusion(table[1, …, n/2]),triFusion(table [n/2 + 1, …, n]));
+end;
+
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
 begin
+  //Si argent suffisant
+  if(getPersonnage().argent > 200-(50*(nbPlat-1))) then
+  begin
      //Fixe le buff
-     setBuff(bonus(nbPlat));
+     case nbPlat of
+     1:setBuff(Force,200-(50*(nbPlat-1)));
+     2:setBuff(Regeneration,200-(50*(nbPlat-1)));
+     3:setBuff(Critique,200-(50*(nbPlat-1)));
+     end;
+  end;
 end;
 
 function split(chaine,char:string):strarray;//type strarray = array[1..2] of string;
@@ -95,14 +145,14 @@ begin
     CloseFile(FileVar);
 end;
 
+//Renvoie un tableau contenant les recettes d'un certain buff
 function recupRecetteHUB(n:integer):tablarray;
 begin
   recupRecette;
-
   case n of
-    '1': recupRecetteHUB:=tablcrit;
-    '2': recupRecetteHUB:=tablregen;
-    '3': recupRecetteHUB:=tablforc;
+    1: recupRecetteHUB:=tablforc;
+    2: recupRecetteHUB:=tablregen;
+    3: recupRecetteHUB:=tablcrit;
   end;
 end;
 
@@ -110,25 +160,42 @@ end;
 //Renvoie le prochain lieu à visiter
 function choixPage(n : integer) : typeLieu;
 var choix : string;
-  recette : tablarray;
-  nRecette : integer;
-  page : integer;
-  i : integer;
-  choixNumber : integer;
+  recette : tablarray;      //Tableau contenant les recettes à afficher
+  nRecette : integer;       //Recette à laquelle commencer la page
+  recetteVoulu : integer;   //Recette choisit par l'utilisateur
+  pageVoulu : integer;      //Page choisit par l'utilisateur
+  page : integer;           //Page actuelle
+  pageMax : integer;        //Nombre de pages pour ce buff
+  i : integer;              //Compteur de boucle pour l'affichage des 20 recettes par page
 begin
   page := 1;
   recette := recupRecetteHUB(n);
+
+  //Nombre de page pour chaque buff
+  case n of
+  1:pageMax:=83; //Force
+  2:pageMax:=82; //Regen
+  3:pageMax:=86; //Critique
+  end;
 
   choix := '';
   while (choix <> '0') do
   begin
     afficherInterfacePrincipale();
     afficherLieu('Cantine de la ville de Brightwood');
-                                                        
-    deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
-    for i:=1 to 20 do
-    deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[i]);
 
+    nRecette := ((page * 20) - 19);
+    deplacerCurseurXY(63,5);write('Le cuisinier vous proposent :');
+    //Boucle d'affichage des 20 recettes
+    for i:=1 to 20 do
+    begin
+    if(recette[nRecette+i]) <> '' then
+    begin
+      deplacerCurseurXY(40,i+6);write(' ', i,'/ ');write(recette[nRecette+i]);
+    end;
+    end;
+
+    //Affichage buff actuel
     dessinerCadreXY(1,27,21,29,simple,white,black);
     deplacerCurseurXY(2,28);write('Buff : ');
     case n of
@@ -136,15 +203,26 @@ begin
     2:write('Régénération');
     3:write('Critique');
     end;
-    dessinerCadreXY(130,27,147,29,simple,white,black);
-    deplacerCurseurXY(131,28);write('Page : 255 / 255');
+    //Affichage prix
+    dessinerCadreXY(1,7,14,9,simple,white,black);
+    if(getPersonnage().argent > 200-(50*(n-1))) then couleurTexte(Green)
+    else couleurTexte(Red);
+    deplacerCurseurXY(2,8);write('Prix : ');
+    case n of
+    1:write(200-(50*(n-1)),'PO');
+    2:write(200-(50*(n-1)),'PO');
+    3:write(200-(50*(n-1)),'PO');
+    end;
+    //Affichage page
+    dessinerCadreXY(132,27,147,29,simple,white,black);
+    deplacerCurseurXY(133,28);write('Page : ',page,' / ',pageMax);
 
     deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
-    deplacerCurseurZoneAction(3);write('     1/ Passer ordre alphabétique à inverse');
+    deplacerCurseurZoneAction(3);write('     1/ Inverser l''ordre alphabéthique');
     deplacerCurseurZoneAction(5);write('     2/ Choisir une page par numéro');
     deplacerCurseurZoneAction(7);write('     3/ Page précédente');
     deplacerCurseurXY(55,33);write('     4/ Page suivante');
-    deplacerCurseurXY(55,35);write('     5/ Choisir plat sur la page');
+    deplacerCurseurXY(55,35);write('     5/ Choisir un plat sur la page');
     deplacerCurseurXY(55,37);write('     0/ Retourner sur la place principale');
 
     deplacerCurseurZoneResponse();
@@ -152,8 +230,37 @@ begin
 
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
-    //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
-    //else EntrerPage();
+    else if(choix = '1') then //Triage Tableau
+    else if(choix = '2') then //Choix d'une page
+    begin
+      afficherCadreAction();
+      afficherCadreResponse();
+      deplacerCurseurXY(5,33);write('Rentrez la page où vous souhaitez vous rendre.');
+      deplacerCurseurXY(5,34);write('Cette page doit évidemment être possible');
+      deplacerCurseurXY(5,35);write('en fonction du nombre de page existantes');
+      deplacerCurseurZoneResponse();
+      readln(pageVoulu);
+      if(pageVoulu >= 1) AND(pageVoulu <= pageMax) then page:=pageVoulu;
+    end
+    else if(choix = '3') then //Page précédente
+    begin
+      if(page <> 1) then page -= 1;
+    end
+    else if(choix = '4') then //Page suivante
+    begin
+      if(page <> pageMax) then page += 1
+    end
+    else if(choix = '5') then //Choisir une recette sur la page
+    begin
+      afficherCadreAction();
+      afficherCadreResponse();
+      deplacerCurseurXY(5,33);write('Rentrez la recette que vous souhaitez manger.');
+      deplacerCurseurXY(5,34);write('Cette recette doit évidemment être disponible');
+      deplacerCurseurXY(5,35);write('en fonction des nombre de recettes affiché');
+      deplacerCurseurZoneResponse();
+      readln(recetteVoulu);
+      if(recette[nRecette+recetteVoulu]) <> '' then manger(n);
+    end
   end;
 
 
