@@ -31,6 +31,7 @@ function fabricationEquipement() : typeLieu;
 var
   ligne,mat,slot,nbchoix,choix,i : integer;
 begin
+     i := 0;
      choix := -1;
      while(choix <> 0) do
      begin
@@ -39,7 +40,7 @@ begin
         deplacerCurseurXY(63,5);write('Les forgerons vous proposent :');
 
         deplacerCurseurXY(4,7);write('--- ARMES ---');
-        deplacerCurseurXY(80,7);write('--- ARMURES ---');
+        deplacerCurseurXY(70,7);write('--- ARMURES ---');
 
         //Fabrication des ARMES
         for mat := 1 to ord(high(materiaux)) do
@@ -48,17 +49,18 @@ begin
            if(getCoffre().armes[mat]) or (ord(getPersonnage().arme) = mat) then
            begin
                 couleurTexte(green);
-                deplacerCurseurXY(34,8+mat);write('(Déjà possédé(e))');
+                deplacerCurseurXY(4,9+mat+i);write('(Déjà possédé(e))');
            end
            else
            begin 
               //Arme non fabricable
               if not(peuxForger(materiaux(mat))) then couleurTexte(lightred);
               //Affichage de la recette
-              deplacerCurseurXY(34,8+mat);writeln(recetteToString(materiaux(mat)));
+              deplacerCurseurXY(4,9+mat+i);writeln(recetteToString(materiaux(mat)));
            end;
-           deplacerCurseurXY(4,8+mat);writeln(mat,'/ ',armeToString(materiaux(mat)));
+           deplacerCurseurXY(4,8+mat+i);writeln(mat,'/ ',armeToString(materiaux(mat)));
            couleurTexte(white);
+           i+=1;
         end;
 
         //Fabrication des ARMURES
@@ -72,15 +74,15 @@ begin
                 if(getCoffre().armures[slot,mat]) or (ord(getPersonnage().armures[slot]) = mat) then
                 begin
                      couleurTexte(green);
-                     deplacerCurseurXY(110,ligne);write('(Déjà possédé(e))');
+                     deplacerCurseurXY(100,ligne);write('(Déjà possédé(e))');
                 end
                 //Armure non fabricable
                 else
                 begin
                     if not(peuxForger(materiaux(mat))) then couleurTexte(lightred);
-                    deplacerCurseurXY(110,ligne);writeln(recetteToString(materiaux(mat)));
+                    deplacerCurseurXY(100,ligne);writeln(recetteToString(materiaux(mat)));
                 end;
-                deplacerCurseurXY(80,ligne);write(nbchoix,'/ ',armureToString(emplacementArmure(slot),materiaux(mat)));
+                deplacerCurseurXY(70,ligne);write(nbchoix,'/ ',armureToString(emplacementArmure(slot),materiaux(mat)));
                 nbchoix += 1;
                 ligne += 1;
                 couleurTexte(white);

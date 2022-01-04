@@ -31,6 +31,7 @@ function fabricationEquipement() : typeLieu;
 var
   ligne,mat,slot,nbchoix,choix,i : integer;
 begin
+     i := 0;
      choix := -1;
      while(choix <> 0) do
      begin
@@ -48,17 +49,18 @@ begin
            if(getCoffre().armes[mat]) or (ord(getPersonnage().arme) = mat) then
            begin
                 couleurTexte(green);
-                deplacerCurseurXY(34,8+mat);write('(Déjà possédé(e))');
+                deplacerCurseurXY(14,9+mat+i);write('(Déjà possédé(e))');
            end
            else
            begin 
               //Arme non fabricable
               if not(peuxForger(materiaux(mat))) then couleurTexte(lightred);
               //Affichage de la recette
-              deplacerCurseurXY(34,8+mat);writeln(recetteToString(materiaux(mat)));
+              deplacerCurseurXY(14,9+mat+i);writeln(recetteToString(materiaux(mat)));
            end;
-           deplacerCurseurXY(4,8+mat);writeln(mat,'/ ',armeToString(materiaux(mat)));
+           deplacerCurseurXY(4,8+mat+i);writeln(mat,'/ ',armeToString(materiaux(mat)));
            couleurTexte(white);
+           i+=1;
         end;
 
         //Fabrication des ARMURES
