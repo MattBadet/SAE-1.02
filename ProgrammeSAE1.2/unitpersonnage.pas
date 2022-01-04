@@ -347,10 +347,23 @@ begin
   perso.inventaire[i] -= 1;
 end;
 
+//Renvoie le multiplicateur de dégats en fonction du niveau du joueur
+function multiplicateurNiveau() : integer;
+begin
+   case getNiveau() of
+       1 : multiplicateurNiveau := 0;
+       2 : multiplicateurNiveau := 1;
+       3 : multiplicateurNiveau := 2;
+       4 : multiplicateurNiveau := 3;
+       5 : multiplicateurNiveau := 4;
+       6 : multiplicateurNiveau := 5;
+   end;
+end;
+
 //Renvoie le montant de dégats d'une attaque
 function degatsAttaque() : integer;
 begin
-  degatsAttaque := (4+Random(5))*multiplicateurDegatsArme(perso.arme);
+  degatsAttaque := round((4+Random(5))*multiplicateurDegatsArme(perso.arme)*(multiplicateurNiveau()/10));
 end;
 
 //Renvoie le montant de dégats recu
@@ -396,12 +409,26 @@ end;
 
 //Récupère l'expérience pour avoir tué un monstre
 procedure recupererExp(qte : integer);
+var expMax,niv:Integer;
 begin
   perso.exp += (qte+random(20));
-  if perso.exp>500 then
+  niv:=getNiveau();
+  case niv of
+       1:expMax:=500;
+       2:expMax:=550;
+       3:expMax:=600;
+       4:expMax:=650;
+       5:expMax:=700;
+  end;
+  if ((perso.exp>expMax)AND(niv<6)) then
   begin
-    perso.exp -=500;
+    perso.exp -=expMax;
     perso.niveau += 1;
+  end
+  else
+  begin
+    if niv>=6 then
+       perso.exp:=0;
   end;
 end;
 

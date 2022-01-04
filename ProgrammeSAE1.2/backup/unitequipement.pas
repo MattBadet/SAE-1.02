@@ -79,6 +79,19 @@ begin
    end;
 end;
 
+//Renvoie le multiplicateur de dégats en fonction du niveau du joueur
+function multiplicateurNiveau() : integer;
+begin
+   case getNiveau() of
+       1 : multiplicateurNiveau := 0;
+       2 : multiplicateurNiveau := 1;
+       3 : multiplicateurNiveau := 2;
+       4 : multiplicateurNiveau := 3;
+       5 : multiplicateurNiveau := 4;
+       6 : multiplicateurNiveau := 5;
+   end;
+end;
+
 //Renvoie l'encaissement de l'armure
 function encaissement(armures : TArmures) : integer;
 var
@@ -96,8 +109,8 @@ function recetteToString(mat : materiaux) : string;
 begin
   case mat of
       fer : recetteToString:='(500 po, Niveau 1)';
-      os : recetteToString:='(500 po, 5 morceaux de Grand Jagras)';
-      Ecaille : recetteToString:='(500 po, 5 morceaux de Pukei-Pukei)';
+      os : recetteToString:='(500 po, 5 morceaux de Grand Jagras, Niveau 2)';
+      Ecaille : recetteToString:='(500 po, 5 morceaux de Pukei-Pukei, Niveau 5)';
   end;
 end;
 
