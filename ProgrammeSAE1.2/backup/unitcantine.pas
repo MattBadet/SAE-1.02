@@ -67,7 +67,7 @@ begin
       else
       begin}
         if table1[1]<=table2[2] then
-           Result:=(table1[1]+fusion(table1[2, …, length(table1)],table2))
+           Result:=(table1[1]+fusion(table1[2..length(table1)],table2))
         else
            Result:=(table1[1]+fusion(table1,table2[2, …, b]));
   //end;
