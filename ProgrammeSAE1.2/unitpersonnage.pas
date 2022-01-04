@@ -341,6 +341,7 @@ end;
 function degatsRecu() : integer;
 begin
   degatsRecu := (2+Random(10))-encaissement(perso.armures);
+  if(degatsRecu < 0) then degatsRecu:=0;
   perso.sante -= degatsRecu;
   if perso.sante < 0 then perso.sante := 0;
 end;
