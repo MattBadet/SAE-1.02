@@ -37,12 +37,14 @@ var
 
 // Gestion des tris
 // Tri par insertion
-function triInsertion(table);
-var i:Integer;
+function triInsertion(table:tablarray):tablarray;
+var
+  i,j:Integer;
+  temp:string;
 begin
-  for i:= to lentgh(table) do
+  for i:=1 to length(table) do
   begin
-    temp:=table[i]
+    temp:=table[i];
     j:=i;
     while ((j>0)AND(table[j-1]>temp)) do
     begin
@@ -51,25 +53,26 @@ begin
     end;
     table[j]:=temp;
   end;
+  Result:=table;
 end;
 // Tri par fusion
-function fusion(table1,table2);
+function fusion(table1,table2:tablarray):tablarray;
 begin
-  if table1=[] then
+  {if table1=[] then
      Result:=table2
   else
   begin
       if table2=[] then
-         Result:=table1;
+         Result:=table1
       else
-      begin
+      begin}
         if table1[1]<=table2[2] then
-           Result:=(table1[1]+fusion(table1[2, …, a],table2));
+           Result:=(table1[1]+fusion(table1[2, …, length(table1)],table2))
         else
            Result:=(table1[1]+fusion(table1,table2[2, …, b]));
-  end;
+  //end;
 end;
-function triFusion(table);
+function triFusion(table:tablarray):tablarray;
 begin
   if n<=1 then
      Result:=table;
