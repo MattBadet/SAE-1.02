@@ -185,7 +185,10 @@ begin
   Writeln(sauvfile,getCoffre.armures[4,3]);
   //Objets
   Writeln(sauvfile,getPersonnage.inventaire[1]);
-  Writeln(sauvfile,getObjet(2));
+  Writeln(sauvfile,getPersonnage.inventaire[2]);
+  //XP
+  Writeln(sauvfile,getxp());
+  Writeln(sauvfile,getNiveau);
 
   CloseFile(sauvfile);
 

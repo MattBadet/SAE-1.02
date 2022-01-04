@@ -45,7 +45,7 @@ function getPersonnage() : Personnage;
 //Renvoie le niveau du personnage
 function getNiveau() : Integer;
 //Renvoie l'expérience du personnage
-function getExp() : Integer;
+function getxp() : Integer;
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 //Transforme un Genre en chaine de caractères
@@ -112,6 +112,10 @@ function bonusToString(buff : bonus) : String;
 procedure setBuff(buff : bonus;n : integer);
 //donne une compétence au joueur
 procedure apprendCompetence(n : integer);
+//Change l'xp du joueur
+procedure setxp(xp:integer);
+//Change le niveau du joueur
+procedure setniveau(lvl:integer);
 
 
 
@@ -186,9 +190,9 @@ begin
 end;
 
 //Renvoie l'expérience du personnage (lecture seul)
-function getExp() : integer;
+function getxp() : integer;
 begin
-  getExp := perso.exp;
+  getxp := perso.exp;
 end;
 
 //Renvoie le coffre (lecture seul)
@@ -279,6 +283,18 @@ begin
      coffre.armures[emp,mat]:=true
   else
      coffre.armures[emp,mat]:=false;
+end;
+
+//Change l'xp du joueur
+procedure setxp(xp:integer);
+begin
+  perso.exp:=xp;
+end;
+
+//Change le niveau du joueur
+procedure setniveau(lvl:integer);
+begin
+  perso.niveau:=lvl;
 end;
 
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur

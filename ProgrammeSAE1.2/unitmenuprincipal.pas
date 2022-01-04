@@ -147,7 +147,7 @@ function chargerpartie(): typeLieu;
 var
    savefile: TextFile;
    taille,nom : string;
-   qte,pv,po,partie1,partie2,comp : integer;
+   qte,pv,po,partie1,partie2,comp,xp,lvl : integer;
    sexe : genre;
    arm,casque,torse,gants,jambieres,bottes : materiaux;
    buf:bonus;
@@ -240,6 +240,11 @@ begin
      ajoutObjet(1,qte);
      Readln(savefile,qte);
      ajoutObjet(2,qte);
+     //XP
+     Readln(savefile,xp);
+     setXp(xp);
+     Readln(savefile,lvl);
+     setNiveau(lvl);
 
      CloseFile(savefile);
 
