@@ -60,7 +60,19 @@ begin
           '2': menuPrincipalHub:=chargerpartie;
            else menuPrincipalHub:=quitter;
      end;
-   end;
+   end
+   else
+   begin
+     deplacerCurseurZoneAction(2);write('1/ Débuter une nouvelle partie');
+     deplacerCurseurZoneAction(6);write('3/ Quitter');
+     deplacerCurseurZoneResponse();
+     readln(choix);
+     case choix of
+          '1': menuPrincipalHub:=creationPersonnage;
+           else menuPrincipalHub:=quitter;
+     end;
+   end
+
 end;
 
 //Fonction exécutée à l'arrivée dans l'écran de création du personnage
@@ -228,6 +240,11 @@ begin
      ajoutObjet(1,qte);
      Readln(savefile,qte);
      ajoutObjet(2,qte);
+     //XP
+     Readln(savefile,xp);
+     setXp(xp);
+     Readln(savefile,lvl);
+     setNiveau(lvl);
 
      CloseFile(savefile);
 
