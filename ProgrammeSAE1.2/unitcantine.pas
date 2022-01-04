@@ -35,7 +35,7 @@ var
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
-// Gestion des tris
+{// Gestion des tris
 // Tri par dichotomie
 function triDichotomie(table:tablarray;):tablarray;
 var
@@ -46,14 +46,14 @@ var
 begin
   indice1:=0;
   indice2:=length(table);
-  trouve:=False;
+  trier:=False;
   while ((indice1<=indice2)AND(trouve=False)) do
   begin
       indiceMid:=(indice1+indice2)div 2;
       valeurMid:=table[indiceMid];
       if valeurMid
   end;
-end;
+end;}
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
