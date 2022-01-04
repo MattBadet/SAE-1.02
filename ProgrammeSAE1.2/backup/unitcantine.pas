@@ -35,7 +35,7 @@ var
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
-// Gestion des tris
+{// Gestion des tris
 // Tri par insertion
 function triInsertion(table:tablarray):tablarray;
 var
@@ -78,7 +78,7 @@ begin
      Result:=table;
   else
   Result:=fusion(triFusion(table[1, …, n/2]),triFusion(table [n/2 + 1, …, n]));
-end;
+end;                      }
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);

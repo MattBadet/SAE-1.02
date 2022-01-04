@@ -35,50 +35,25 @@ var
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
-{// Gestion des tris
-// Tri par insertion
-function triInsertion(table:tablarray):tablarray;
+// Gestion des tris
+// Tri par dichotomie
+function triDichotomie(table:tablarray;):tablarray;
 var
-  i,j:Integer;
-  temp:string;
+  trouve:Boolean;
+  indice1,indiceMid,indice2:Integer;
+  valeurMid:string;
+
 begin
-  for i:=1 to length(table) do
+  indice1:=0;
+  indice2:=length(table);
+  trouve:=False;
+  while ((indice1<=indice2)AND(trouve=False)) do
   begin
-    temp:=table[i];
-    j:=i;
-    while ((j>0)AND(table[j-1]>temp)) do
-    begin
-      table[j]:=table[j-1];
-      j:=j-1
-    end;
-    table[j]:=temp;
+      indiceMid:=(indice1+indice2)div 2;
+      valeurMid:=table[indiceMid];
+      if valeurMid
   end;
-  Result:=table;
 end;
-// Tri par fusion
-function fusion(table1,table2:tablarray):tablarray;
-begin
-  {if table1=[] then
-     Result:=table2
-  else
-  begin
-      if table2=[] then
-         Result:=table1
-      else
-      begin}
-        if table1[1]<=table2[2] then
-           Result:=(table1[1]+fusion(table1[2..length(table1)],table2))
-        else
-           Result:=(table1[1]+fusion(table1,table2[2, …, b]));
-  //end;
-end;
-function triFusion(table:tablarray):tablarray;
-begin
-  if n<=1 then
-     Result:=table;
-  else
-  Result:=fusion(triFusion(table[1, …, n/2]),triFusion(table [n/2 + 1, …, n]));
-end;                      }
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
