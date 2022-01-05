@@ -69,29 +69,53 @@ begin
         for i := low(droite) to high(droite) do
             fusion[j]:=droite[i];
 end;
-
-function triFusion(m:tablarray):tablarray;
+// fonction qui permet le tri des recettes
+function triFusion(table:tablarray):tablarray;
 var
-    gauche,droite: tablarray;
-    i,milieu: integer;
+    gauche,droite:tablarray;
+    i,milieu:integer;
 begin
-    setlength(triFusion, length(m));
-    if length(m) = 1 then
-        triFusion[1]:=m[1]
-    else if length(m) > 1 then
+    setlength(triFusion,length(table));
+    if length(table)=1 then
+        triFusion[1]:=table[1]
+    else if length(table)>1 then
     begin
-        milieu := length(m) div 2;
-        setlength(gauche, milieu);
-        setlength(droite,(length(m)-milieu));
-        for i := low(gauche) to high(gauche) do
-            gauche[i] := m[i];
-        for i := low(droite) to high(droite) do
-            droite[i] := m[milieu];
-        gauche  := tri_fusion(gauche);
-        droite := tri_fusion(droite);
-        tri_fusion := fusion(gauche, droite);
+        milieu:=length(table) div 2;
+        setlength(gauche,milieu);
+        setlength(droite,(length(table)-milieu));
+        for i:=low(gauche) to high(gauche) do
+            gauche[i]:=table[i];
+        for i:=low(droite) to high(droite) do
+            droite[i]:=table[milieu];
+        gauche:=triFusion(gauche);
+        droite:=triFusion(droite);
+        triFusion:=fusion(gauche,droite);
     end;
 end;
+{Ici version où l'on choisit le sens de tri
+function triFusion(table:tablarray):tablarray;
+var
+    gauche,droite:tablarray;
+    i,milieu:integer;
+begin
+    setlength(triFusion,length(table));
+    if length(table)=1 then
+        triFusion[1]:=table[1]
+    else if length(table)>1 then
+    begin
+        milieu:=length(table) div 2;
+        setlength(gauche,milieu);
+        setlength(droite,(length(table)-milieu));
+        for i:=low(gauche) to high(gauche) do
+            gauche[i]:=table[i];
+        for i:=low(droite) to high(droite) do
+            droite[i]:=table[milieu];
+        gauche:=triFusion(gauche);
+        droite:=triFusion(droite);
+        triFusion:=fusion(gauche,droite);
+    end;
+end;
+}
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
