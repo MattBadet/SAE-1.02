@@ -363,7 +363,7 @@ end;
 //Renvoie le montant de dégats d'une attaque
 function degatsAttaque() : integer;
 begin
-  degatsAttaque := ((4+Random(5))*multiplicateurDegatsArme(perso.arme)*(multiplicateurNiveau()/10))div 1;
+  degatsAttaque := round((4+Random(5))*multiplicateurDegatsArme(perso.arme)*(multiplicateurNiveau()/10));
 end;
 
 //Renvoie le montant de dégats recu
