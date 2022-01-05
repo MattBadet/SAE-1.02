@@ -42,7 +42,7 @@ var
 i,j: integer;
 begin
     j:=1;
-    setlength(fusion,length(gauche)+length(droite));
+    setLength(fusion,length(gauche)+length(droite));
     while (length(gauche)>0)AND(length(droite)>0) do
     begin
         if gauche[1]<=droite[1] then
@@ -50,8 +50,8 @@ begin
             fusion[j]:=gauche[1];
             inc(j);
             for i:=low(gauche) to high(gauche)-1 do
-                gauche[i] := gauche[i-1];
-            setlength(gauche, length(gauche)-1);
+                gauche[i]:=gauche[i-1];
+            setLength(gauche, length(gauche)-1);
         end else
         begin
             fusion[j]:=droite[1];
@@ -61,18 +61,18 @@ begin
             setlength(droite,length(droite)-1);
         end;
     end;
-    if length(gauche) > 0 then
+    if length(gauche)>0 then
         for i := low(gauche) to high(gauche) do
-            fusion[j,i]:=gauche[i];
+            fusion[j]:=gauche[i];
     j:=j+length(gauche);
-    if length(droite) > 0 then
+    if length(droite)>0 then
         for i := low(droite) to high(droite) do
-            fusion[j,i]:=droite[i];
+            fusion[j]:=droite[i];
 end;
 
-function tri_fusion(m:tablarray):tablarray;
+function tri_fusion(m:tabllarray):tablarray;
 var
-    gauche, droite: tablarray;
+    gauche, droite: tab;
     i, milieu: integer;
 begin
     setlength(tri_fusion, length(m));
@@ -82,7 +82,7 @@ begin
     begin
         milieu := length(m) div 2;
         setlength(gauche, milieu);
-        setlength(droite, length(m)-milieu);
+        setlength(droite,(length(m)-milieu));
         for i := low(gauche) to high(gauche) do
             gauche[i] := m[i];
         for i := low(droite) to high(droite) do
