@@ -29,7 +29,7 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array of string; //Tableau des recettes
+  tablarray = array[1..1721] of string; //Tableau des recettes
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -37,7 +37,7 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-function fusion(gauche,droite:tablarray):tablarray;
+{function fusion(gauche,droite:tablarray):tablarray;
 var
 i,j: integer;
 begin
@@ -92,7 +92,7 @@ begin
         triFusion:=fusion(gauche,droite);
     end;
 end;
-{Ici version où l'on choisit le sens de tri
+Ici version où l'on choisit le sens de tri
 function triFusion(table:tablarray;sens:Boolean):tablarray;
 var
     gauche,droite:tablarray;
@@ -281,6 +281,9 @@ begin
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
+    begin
+    //  recette := triFusion(recette);
+    end
     else if(choix = '2') then //Choix d'une page
     begin
       afficherCadreAction();

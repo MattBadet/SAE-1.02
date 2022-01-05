@@ -35,6 +35,98 @@ var
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
+// Gestion des tris
+// Tri par dichotomie
+function fusion(gauche,droite:tablarray):tablarray;
+var
+i,j: integer;
+begin
+    j:=1;
+    setLength(fusion,length(gauche)+length(droite));
+    while (length(gauche)>0)AND(length(droite)>0) do
+    begin
+        if gauche[1]<=droite[1] then
+        begin
+            fusion[j]:=gauche[1];
+            inc(j);
+            for i:=low(gauche) to high(gauche)-1 do
+                gauche[i]:=gauche[i-1];
+            setLength(gauche, length(gauche)-1);
+        end else
+        begin
+            fusion[j]:=droite[1];
+            inc(j);
+            for i:=low(droite) to high(droite)-1 do
+                droite[i]:=droite[i+1];
+            setlength(droite,length(droite)-1);
+        end;
+    end;
+    if length(gauche)>0 then
+        for i := low(gauche) to high(gauche) do
+            fusion[j]:=gauche[i];
+    j:=j+length(gauche);
+    if length(droite)>0 then
+        for i := low(droite) to high(droite) do
+            fusion[j]:=droite[i];
+end;
+// fonction qui permet le tri des recettes
+function triFusion(table:tablarray):tablarray;
+var
+    gauche,droite:tablarray;
+    i,milieu:integer;
+begin
+    setlength(triFusion,length(table));
+    if length(table)=1 then
+        triFusion[1]:=table[1]
+    else if length(table)>1 then
+    begin
+        milieu:=length(table) div 2;
+        setlength(gauche,milieu);
+        setlength(droite,(length(table)-milieu));
+        for i:=low(gauche) to high(gauche) do
+            gauche[i]:=table[i];
+        for i:=low(droite) to high(droite) do
+            droite[i]:=table[milieu];
+        gauche:=triFusion(gauche);
+        droite:=triFusion(droite);
+        triFusion:=fusion(gauche,droite);
+    end;
+end;
+{Ici version où l'on choisit le sens de tri
+function triFusion(table:tablarray;sens:Boolean):tablarray;
+var
+    gauche,droite:tablarray;
+    i,milieu:integer;
+begin
+    setlength(triFusion,length(table));
+    if length(table)=1 then
+        triFusion[1]:=table[1]
+    else if length(table)>1 then
+    begin
+        milieu:=length(table) div 2;
+        setlength(gauche,milieu);
+        setlength(droite,(length(table)-milieu));
+        if sens then
+        begin
+          for i:=low(gauche) to high(gauche) do
+              gauche[i]:=table[i];
+          for i:=low(droite) to high(droite) do
+              droite[i]:=table[milieu];
+        end
+        else
+        begin
+           for i:=hight(droite) to low(droite) do
+              droite[i]:=table[milieu];
+           for i:=hight(gauche) to low(gauche) do
+              gauche[i]:=table[i];
+        end;
+        gauche:=triFusion(gauche);
+        droite:=triFusion(droite);
+        triFusion:=fusion(gauche,droite);
+    end;
+end;
+}
+
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
 begin
@@ -189,6 +281,9 @@ begin
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
+    begin
+    //  recette := triFusion(recette);
+    end
     else if(choix = '2') then //Choix d'une page
     begin
       afficherCadreAction();
@@ -208,7 +303,7 @@ begin
     begin
       if(page <> pageMax) then page += 1
     end
-    else if(choix = '5') then
+    else if(choix = '5') then //Choisir une recette sur la page
     begin
       afficherCadreAction();
       afficherCadreResponse();
