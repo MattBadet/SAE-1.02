@@ -29,7 +29,7 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array[1..1721] of string; //Tableau des recettes
+  tablarray = array of string; //Tableau des recettes
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -70,14 +70,14 @@ begin
             fusion[j]:=droite[i];
 end;
 
-function tri_fusion(m:tabllarray):tablarray;
+function triFusion(m:tablarray):tablarray;
 var
-    gauche, droite: tab;
-    i, milieu: integer;
+    gauche,droite: tablarray;
+    i,milieu: integer;
 begin
-    setlength(tri_fusion, length(m));
+    setlength(triFusion, length(m));
     if length(m) = 1 then
-        tri_fusion[0] := m[0]
+        triFusion[1]:=m[1]
     else if length(m) > 1 then
     begin
         milieu := length(m) div 2;
@@ -86,7 +86,7 @@ begin
         for i := low(gauche) to high(gauche) do
             gauche[i] := m[i];
         for i := low(droite) to high(droite) do
-            droite[i] := m[milieui];
+            droite[i] := m[milieu];
         gauche  := tri_fusion(gauche);
         droite := tri_fusion(droite);
         tri_fusion := fusion(gauche, droite);
