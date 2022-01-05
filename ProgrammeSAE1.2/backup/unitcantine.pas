@@ -37,22 +37,60 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-function triDichotomie(table:tablarray;):tablarray;
+function fusion(gauche,droite:tablarray):tablarray;
 var
-  trouve:Boolean;
-  indice1,indiceMid,indice2:Integer;
-  valeurMid:string;
-
+i,j: integer;
 begin
-  indice1:=0;
-  indice2:=length(table);
-  trouve:=False;
-  while ((indice1<=indice2)AND(trouve=False)) do
-  begin
-      indiceMid:=(indice1+indice2)div 2;
-      valeurMid:=table[indiceMid];
-      if valeurMid
-  end;
+    j:=1;
+    setlength(fusion,length(gauche)+length(droite));
+    while (length(gauche)>0)AND(length(droite)>0) do
+    begin
+        if gauche[1]<=droite[1] then
+        begin
+            fusion[j]:=gauche[1];
+            inc(j);
+            for i:=low(gauche) to high(gauche)-1 do
+                gauche[i] := gauche[i-1];
+            setlength(gauche, length(gauche)-1);
+        end else
+        begin
+            fusion[j]:=droite[1];
+            inc(j);
+            for i:=low(droite) to high(droite)-1 do
+                droite[i]:=droite[i+1];
+            setlength(droite,length(droite)-1);
+        end;
+    end;
+    if length(gauche) > 0 then
+        for i := low(gauche) to high(gauche) do
+            fusion[j,i]:=gauche[i];
+    j:=j+length(gauche);
+    if length(droite) > 0 then
+        for i := low(droite) to high(droite) do
+            fusion[j,i]:=droite[i];
+end;
+
+function tri_fusion(m:tablarray):tablarray;
+var
+    gauche, droite: tablarray;
+    i, milieu: integer;
+begin
+    setlength(tri_fusion, length(m));
+    if length(m) = 1 then
+        tri_fusion[0] := m[0]
+    else if length(m) > 1 then
+    begin
+        milieu := length(m) div 2;
+        setlength(gauche, milieu);
+        setlength(droite, length(m)-milieu);
+        for i := low(gauche) to high(gauche) do
+            gauche[i] := m[i];
+        for i := low(droite) to high(droite) do
+            droite[i] := m[milieui];
+        gauche  := tri_fusion(gauche);
+        droite := tri_fusion(droite);
+        tri_fusion := fusion(gauche, droite);
+    end;
 end;
 
 //Mange le plat et applique le bonus
