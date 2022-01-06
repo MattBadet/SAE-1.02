@@ -294,7 +294,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-    //  recette := triFusion(recette);
+      recette := triRecettes(recette);
     end
     else if(choix = '2') then //Choix d'une page
     begin
