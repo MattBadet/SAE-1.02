@@ -30,6 +30,7 @@ uses
 type
   strarray = array[1..2] of string;
   tablarray = array[1..1721] of string; //Tableau des recettes
+  tablMod = array of string;
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -37,7 +38,7 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-{function fusion(gauche,droite:tablarray):tablarray;
+function fusion(gauche,droite:tablMod):tablMod;
 var
 i,j: integer;
 begin
@@ -70,9 +71,9 @@ begin
             fusion[j]:=droite[i];
 end;
 // fonction qui permet le tri des recettes
-function triFusion(table:tablarray):tablarray;
+function triFusion(table:tablMod):tablMod;
 var
-    gauche,droite:tablarray;
+    gauche,droite:array of string;
     i,milieu:integer;
 begin
     setlength(triFusion,length(table));
@@ -92,7 +93,18 @@ begin
         triFusion:=fusion(gauche,droite);
     end;
 end;
-Ici version où l'on choisit le sens de tri
+function triRecettes(table:tablarray):tablarray;
+var tableTemp:array of string;
+    i:Integer;
+begin
+    for i:=1 to 1721 do
+        tableTemp[i]:=table[i];
+    tableTemp:=triFusion(tableTemp);
+    for i:=1 to 1721 do
+        table[i]:=tableTemp[i];
+    Result:=table;
+end;
+{Ici version où l'on choisit le sens de tri
 function triFusion(table:tablarray;sens:Boolean):tablarray;
 var
     gauche,droite:tablarray;

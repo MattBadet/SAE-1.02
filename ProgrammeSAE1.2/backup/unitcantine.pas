@@ -29,7 +29,8 @@ uses
   sysutils,unitPersonnage,unitIHM,GestionEcran;
 type
   strarray = array[1..2] of string;
-  tablarray = array of string; //Tableau des recettes
+  tablarray = array[1..1721] of string; //Tableau des recettes
+  tablMod = array of string;
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
@@ -37,7 +38,7 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-function fusion(gauche,droite:tablarray):tablarray;
+function fusion(gauche,droite:tablMod):tablMod;
 var
 i,j: integer;
 begin
@@ -70,9 +71,9 @@ begin
             fusion[j]:=droite[i];
 end;
 // fonction qui permet le tri des recettes
-function triFusion(table:tablarray):tablarray;
+function triFusion(table:tablMod):tablMod;
 var
-    gauche,droite:tablarray;
+    gauche,droite:array of string;
     i,milieu:integer;
 begin
     setlength(triFusion,length(table));
@@ -92,8 +93,19 @@ begin
         triFusion:=fusion(gauche,droite);
     end;
 end;
+function triRecettes(table:tablarray):tablarray;
+var tableTemp:array of string;
+    i:Integer;
+begin
+    for i:=1 to 1721 do
+        tableTemp[i]:=table[i];
+    tableTemp:=triFusion(tableTemp);
+    for i:=1 to 1721 do
+        table[i]:=tableTemp[i];
+    Result:=table;
+end,
 {Ici version où l'on choisit le sens de tri
-function triFusion(table:tablarray):tablarray;
+function triFusion(table:tablarray;sens:Boolean):tablarray;
 var
     gauche,droite:tablarray;
     i,milieu:integer;
@@ -106,10 +118,20 @@ begin
         milieu:=length(table) div 2;
         setlength(gauche,milieu);
         setlength(droite,(length(table)-milieu));
-        for i:=low(gauche) to high(gauche) do
-            gauche[i]:=table[i];
-        for i:=low(droite) to high(droite) do
-            droite[i]:=table[milieu];
+        if sens then
+        begin
+          for i:=low(gauche) to high(gauche) do
+              gauche[i]:=table[i];
+          for i:=low(droite) to high(droite) do
+              droite[i]:=table[milieu];
+        end
+        else
+        begin
+           for i:=hight(droite) to low(droite) do
+              droite[i]:=table[milieu];
+           for i:=hight(gauche) to low(gauche) do
+              gauche[i]:=table[i];
+        end;
         gauche:=triFusion(gauche);
         droite:=triFusion(droite);
         triFusion:=fusion(gauche,droite);
@@ -271,6 +293,9 @@ begin
     //Si l'utilisateur saisit 0 => sortir
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
+    begin
+    //  recette := triFusion(recette);
+    end
     else if(choix = '2') then //Choix d'une page
     begin
       afficherCadreAction();
