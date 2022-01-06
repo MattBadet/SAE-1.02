@@ -38,7 +38,7 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-function fusion(gauche,droite:tablMod):tablMod;
+{function fusion(gauche,droite:tablMod):tablMod;
 var
 i,j: integer;
 begin
@@ -104,7 +104,7 @@ begin
         table[i]:=tableTemp[i];
     Result:=table;
 end;
-{Ici version où l'on choisit le sens de tri
+Ici version où l'on choisit le sens de tri
 function triFusion(table:tablarray;sens:Boolean):tablarray;
 var
     gauche,droite:tablarray;
@@ -294,7 +294,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-      recette := triRecettes(recette);
+      //recette := triRecettes(recette);
     end
     else if(choix = '2') then //Choix d'une page
     begin

@@ -44,54 +44,65 @@ begin
     afficherInterfacePrincipale();
     afficherLieu('Camp d''entrainement de la ville de Brightwood');
 
-    deplacerCurseurXY(60,5);write('Le maître d''arme vous propose :');
-    dessinerCadreXY(23,8,69,27,simple,white,black);
-    dessinerCadreXY(35,7,57,9,simple,white,black);
-    dessinerCadreXY(23,22,69,27,simple,white,black);
-    deplacerCurseurXY(39,8);write('--- TRANCHE ---');
-    deplacerCurseurXY(26,10);write('DESCRIPTION : Avec cette technique, vous');
-    deplacerCurseurXY(26,11);write('infligerai un coup rapide à l''ennemie.');
-    deplacerCurseurXY(26,12);write('Le faisant ainsi saigner abondemment.');
-    deplacerCurseurXY(26,15);write('EFFET : Inflige immédiatement 50% des');
-    deplacerCurseurXY(26,16);write('dégats de base. Puis inflige 25% des');
-    deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
-    deplacerCurseurXY(26,18);write('tours.');
-    if (getPersonnage().argent < 1000) then
-    couleurTexte(Red)
-    else
-    couleurTexte(Green);
-    deplacerCurseurXY(40,24);write('Prix : 1000PO');
-    if (getPersonnage().competence = 1) OR (getPersonnage().competence = 3) then
+    if(getPersonnage().competence = 0) OR ((getPersonnage().niveau > 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau > 4) then
     begin
-    deplacerCurseurXY(40,25);write('Déjà appris');
-    end;
+      deplacerCurseurXY(60,5);write('Le maître d''arme vous propose :');
+      dessinerCadreXY(23,8,69,27,simple,white,black);
+      dessinerCadreXY(35,7,57,9,simple,white,black);
+      dessinerCadreXY(23,22,69,27,simple,white,black);
+      deplacerCurseurXY(39,8);write('--- TRANCHE ---');
+      deplacerCurseurXY(26,10);write('DESCRIPTION : Avec cette technique, vous');
+      deplacerCurseurXY(26,11);write('infligerai un coup rapide à l''ennemie.');
+      deplacerCurseurXY(26,12);write('Le faisant ainsi saigner abondemment.');
+      deplacerCurseurXY(26,15);write('EFFET : Inflige immédiatement 50% des');
+      deplacerCurseurXY(26,16);write('dégats de base. Puis inflige 25% des');
+      deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
+      deplacerCurseurXY(26,18);write('tours.');
+      if (getPersonnage().argent < 1000) then
+      couleurTexte(Red)
+      else
+      couleurTexte(Green);
+      deplacerCurseurXY(40,24);write('Prix : 1000PO');
+      if (getPersonnage().competence = 1) OR (getPersonnage().competence = 3) then
+      begin
+      deplacerCurseurXY(40,25);write('Déjà appris');
+      end;
 
-    dessinerCadreXY(79,8,125,27,simple,white,black);
-    dessinerCadreXY(91,7,113,9,simple,white,black);
-    dessinerCadreXY(79,22,125,27,simple,white,black);
-    deplacerCurseurXY(95,8);write('--- VOL VIE ---');
-    deplacerCurseurXY(82,10);write('DESCRIPTION : Avec cette attaque magique,');
-    deplacerCurseurXY(82,11);write('vous serai capable de voler une partie de');
-    deplacerCurseurXY(82,12);write('la vie du monstre qui vous fera face. Et');
-    deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
-    deplacerCurseurXY(82,15);write('EFFET : Inflige 33% des dégats de base,');
-    deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
-    deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
-    if (getPersonnage().argent < 1000) then
-    couleurTexte(Red)
+      dessinerCadreXY(79,8,125,27,simple,white,black);
+      dessinerCadreXY(91,7,113,9,simple,white,black);
+      dessinerCadreXY(79,22,125,27,simple,white,black);
+      deplacerCurseurXY(95,8);write('--- VOL VIE ---');
+      deplacerCurseurXY(82,10);write('DESCRIPTION : Avec cette attaque magique,');
+      deplacerCurseurXY(82,11);write('vous serai capable de voler une partie de');
+      deplacerCurseurXY(82,12);write('la vie du monstre qui vous fera face. Et');
+      deplacerCurseurXY(82,13);write('D''ainsi vous soigner tout en l''attaquant.');
+      deplacerCurseurXY(82,15);write('EFFET : Inflige 66% des dégats de base,');
+      deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
+      deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
+      if (getPersonnage().argent < 1000) then
+      couleurTexte(Red)
+      else
+      couleurTexte(Green);
+      deplacerCurseurXY(96,24);write('Prix : 1000PO');
+      if (getPersonnage().competence = 2) OR (getPersonnage().competence = 3) then
+      begin
+      deplacerCurseurXY(96,25);write('Déjà appris');
+      end;
+      couleurTexte(white);
+
+
+      deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
+      deplacerCurseurZoneAction(3);write('     1/ Apprendre Tranche');
+      deplacerCurseurZoneAction(4);write('     2/ Apprendre Vol Vie');
+    end
     else
-    couleurTexte(Green);
-    deplacerCurseurXY(96,24);write('Prix : 1000PO');
-    if (getPersonnage().competence = 2) OR (getPersonnage().competence = 3) then
     begin
-    deplacerCurseurXY(96,25);write('Déjà appris');
+      deplacerCurseurXY(60,5);write('Le maître d''arme vous dit :');
+
+      deplacerCurseurXY(30,7);write('Tu n''as pas encore le niveau pour apprendre une nouvelle compétence. Tu devrais revenir');
+      deplacerCurseurXY(30,8);write('ici plus tard avant de te blesser.');
+      deplacerCurseurXY(30,10);write('En attendant, va donc combattre de nouveau monstre pour te muscler un peu');
     end;
-    couleurTexte(white);
-
-
-    deplacerCurseurZoneAction(1);write('Que souhaitez-vous faire ?');
-    deplacerCurseurZoneAction(3);write('     1/ Apprendre Tranche');
-    deplacerCurseurZoneAction(4);write('     2/ Apprendre Vol Vie');
 
     deplacerCurseurZoneAction(6);write('     0/ Retourner sur la place principale');
 
@@ -103,10 +114,13 @@ begin
     //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
     else if(TryStrToInt(choix,choixNumber)) then
     begin
-      case choixNumber of
-      1:veuxTranche();
-      2:veuxVolVie();
-    end;
+      if(getPersonnage().competence = 0) OR ((getPersonnage().niveau > 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau > 4) then
+      begin
+        case choixNumber of
+        1:veuxTranche();
+        2:veuxVolVie();
+        end;
+      end;
     end;
   end;
 end;
