@@ -46,29 +46,29 @@ begin
     setLength(fusion,length(gauche)+length(droite));
     while (length(gauche)>0)AND(length(droite)>0) do
     begin
-        if gauche[1]<=droite[1] then
+        if gauche[0]<=droite[0] then
         begin
-            fusion[j]:=gauche[1];
+            fusion[j]:=gauche[0];
             inc(j);
-            for i:=low(gauche) to high(gauche)-1 do
-                gauche[i]:=gauche[i-1];
+            for i:=low(gauche) to (high(gauche)-1) do
+                gauche[i]:=gauche[i+1];
             setLength(gauche, length(gauche)-1);
         end else
         begin
-            fusion[j]:=droite[1];
+            fusion[j]:=droite[0];
             inc(j);
-            for i:=low(droite) to high(droite)-1 do
+            for i:=low(droite) to (high(droite)-1) do
                 droite[i]:=droite[i+1];
             setlength(droite,length(droite)-1);
         end;
     end;
     if length(gauche)>0 then
         for i := low(gauche) to high(gauche) do
-            fusion[j]:=gauche[i];
-    j:=j+length(gauche);
+            fusion[j i]:=gauche[i];
+    j:=j length(gauche);
     if length(droite)>0 then
         for i := low(droite) to high(droite) do
-            fusion[j]:=droite[i];
+            fusion[j i]:=droite[i];
 end;
 // fonction qui permet le tri des recettes
 function triFusion(table:tablMod):tablMod;
