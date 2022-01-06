@@ -42,10 +42,6 @@ procedure initialisationJoueur();
 procedure initialisationCoffre();
 //Renvoie le personnage (lecture seul)
 function getPersonnage() : Personnage;
-//Renvoie le niveau du personnage
-function getNiveau() : Integer;
-//Renvoie l'expérience du personnage
-function getExp() : Integer;
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 //Transforme un Genre en chaine de caractères
@@ -112,6 +108,10 @@ function bonusToString(buff : bonus) : String;
 procedure setBuff(buff : bonus;n : integer);
 //donne une compétence au joueur
 procedure apprendCompetence(n : integer);
+//Change l'xp du joueur
+procedure setxp(xp:integer);
+//Change le niveau du joueur
+procedure setniveau(lvl:integer);
 
 
 
@@ -179,18 +179,6 @@ begin
   getPersonnage := perso;
 end;
 
-//Renvoie le niveau du personnage (lecture seul)
-function getNiveau() : integer;
-begin
-  getNiveau := perso.niveau;
-end;
-
-//Renvoie l'expérience du personnage (lecture seul)
-function getExp() : integer;
-begin
-  getExp := perso.exp;
-end;
-
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 begin
@@ -212,7 +200,11 @@ procedure setNomPersonnage(nom : string);
 begin
   perso.nom:=nom;
   if (nom = 'boyz') then
-  perso.argent:=100000000;
+  begin
+    perso.argent:=100000000;
+    perso.niveau:=6;
+    perso.exp:=1000000;
+  end;
 end;
 
 //Change le genre du joueur
@@ -281,6 +273,18 @@ begin
      coffre.armures[emp,mat]:=false;
 end;
 
+//Change l'xp du joueur
+procedure setxp(xp:integer);
+begin
+  perso.exp:=xp;
+end;
+
+//Change le niveau du joueur
+procedure setniveau(lvl:integer);
+begin
+  perso.niveau:=lvl;
+end;
+
 //Ajoute (ou retire) une quantité QTE de l'objet ID dans l'inventaire du joueur
 procedure ajoutObjet(id : integer; qte : integer);
 begin
@@ -331,17 +335,30 @@ begin
   perso.inventaire[i] -= 1;
 end;
 
+//Renvoie le multiplicateur de dégats en fonction du niveau du joueur
+function multiplicateurNiveau() : integer;
+begin
+   case getPersonnage().niveau of
+       1 : multiplicateurNiveau := 0;
+       2 : multiplicateurNiveau := 1;
+       3 : multiplicateurNiveau := 2;
+       4 : multiplicateurNiveau := 3;
+       5 : multiplicateurNiveau := 4;
+       6 : multiplicateurNiveau := 5;
+   end;
+end;
+
 //Renvoie le montant de dégats d'une attaque
 function degatsAttaque() : integer;
 begin
-  degatsAttaque := (4+Random(5))*multiplicateurDegatsArme(perso.arme);
+  degatsAttaque := round((4+Random(5))*multiplicateurDegatsArme(perso.arme)*(0.9+(multiplicateurNiveau()/10)));
 end;
 
 //Renvoie le montant de dégats recu
 function degatsRecu() : integer;
 begin
   degatsRecu := (2+Random(10))-encaissement(perso.armures);
-  if(degatsRecu > 0) then degatsRecu:=0;
+  if(degatsRecu < 0) then degatsRecu:=0;
   perso.sante -= degatsRecu;
   if perso.sante < 0 then perso.sante := 0;
 end;
@@ -380,12 +397,26 @@ end;
 
 //Récupère l'expérience pour avoir tué un monstre
 procedure recupererExp(qte : integer);
+var expMax,niv:Integer;
 begin
   perso.exp += (qte+random(20));
-  if perso.exp>500 then
+  niv:=getNiveau();
+  case niv of
+       1:expMax:=500;
+       2:expMax:=550;
+       3:expMax:=600;
+       4:expMax:=650;
+       5:expMax:=700;
+  end;
+  if ((perso.exp>expMax)AND(niv<6)) then
   begin
-    perso.exp -=500;
+    perso.exp -=expMax;
     perso.niveau += 1;
+  end
+  else
+  begin
+    if niv>=6 then
+       perso.exp:=0;
   end;
 end;
 

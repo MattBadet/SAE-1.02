@@ -187,8 +187,8 @@ begin
   Writeln(sauvfile,getPersonnage.inventaire[1]);
   Writeln(sauvfile,getPersonnage.inventaire[2]);
   //XP
-  Writeln(sauvfile,getPersonnage().exp);
-  Writeln(sauvfile,getPersonnage().niveau);
+  Writeln(sauvfile,getxp);
+  Writeln(sauvfile,getNiveau);
 
   CloseFile(sauvfile);
 

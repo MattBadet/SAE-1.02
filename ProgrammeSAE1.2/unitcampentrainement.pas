@@ -44,7 +44,7 @@ begin
     afficherInterfacePrincipale();
     afficherLieu('Camp d''entrainement de la ville de Brightwood');
 
-    if(getPersonnage().competence = 0) OR ((getPersonnage().niveau > 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau > 4) then
+    if(getPersonnage().competence = 0) OR ((getPersonnage().niveau >= 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau >= 4) then
     begin
       deplacerCurseurXY(60,5);write('Le maître d''arme vous propose :');
       dessinerCadreXY(23,8,69,27,simple,white,black);
@@ -114,7 +114,7 @@ begin
     //Si l'utilisateur saisit un nombre, convertir choix (string) en choixNumber (integer)
     else if(TryStrToInt(choix,choixNumber)) then
     begin
-      if(getPersonnage().competence = 0) OR ((getPersonnage().niveau > 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau > 4) then
+      if(getPersonnage().competence = 0) OR ((getPersonnage().niveau >= 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau >= 4) then
       begin
         case choixNumber of
         1:veuxTranche();

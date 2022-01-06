@@ -44,7 +44,7 @@ begin
     afficherInterfacePrincipale();
     afficherLieu('Camp d''entrainement de la ville de Brightwood');
 
-    if(getPersonnage().competence = 0) OR ((getPersonnage().niveau > 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau > 4) then
+    if(getPersonnage().competence = 0) OR ((getPersonnage().niveau >= 2) AND (getPersonnage().competence <> 3)) OR (getPersonnage().niveau >= 4) then
     begin
       deplacerCurseurXY(60,5);write('Le maître d''arme vous propose :');
       dessinerCadreXY(23,8,69,27,simple,white,black);
@@ -101,7 +101,7 @@ begin
 
       deplacerCurseurXY(30,7);write('Tu n''as pas encore le niveau pour apprendre une nouvelle compétence. Tu devrais revenir');
       deplacerCurseurXY(30,8);write('ici plus tard avant de te blesser.');
-      deplacerCurseurXY(30,10);write('En attendant, va donc combattre de nouveau monstre pour te muscler un peu');
+      deplacerCurseurXY(30,10);write('En attendant, va donc combattre de nouveaux monstres pour te muscler un peu');
     end;
 
     deplacerCurseurZoneAction(6);write('     0/ Retourner sur la place principale');

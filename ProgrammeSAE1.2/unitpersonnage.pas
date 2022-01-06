@@ -42,10 +42,6 @@ procedure initialisationJoueur();
 procedure initialisationCoffre();
 //Renvoie le personnage (lecture seul)
 function getPersonnage() : Personnage;
-//Renvoie le niveau du personnage
-function getNiveau() : Integer;
-//Renvoie l'expérience du personnage
-function getxp() : Integer;
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 //Transforme un Genre en chaine de caractères
@@ -183,18 +179,6 @@ begin
   getPersonnage := perso;
 end;
 
-//Renvoie le niveau du personnage (lecture seul)
-function getNiveau() : integer;
-begin
-  getNiveau := perso.niveau;
-end;
-
-//Renvoie l'expérience du personnage (lecture seul)
-function getxp() : integer;
-begin
-  getxp := perso.exp;
-end;
-
 //Renvoie le coffre (lecture seul)
 function getCoffre() : TCoffre;
 begin
@@ -216,7 +200,11 @@ procedure setNomPersonnage(nom : string);
 begin
   perso.nom:=nom;
   if (nom = 'boyz') then
-  perso.argent:=100000000;
+  begin
+    perso.argent:=100000000;
+    perso.niveau:=6;
+    perso.exp:=1000000;
+  end;
 end;
 
 //Change le genre du joueur
@@ -350,7 +338,7 @@ end;
 //Renvoie le multiplicateur de dégats en fonction du niveau du joueur
 function multiplicateurNiveau() : integer;
 begin
-   case getNiveau() of
+   case getPersonnage().niveau of
        1 : multiplicateurNiveau := 0;
        2 : multiplicateurNiveau := 1;
        3 : multiplicateurNiveau := 2;
@@ -412,7 +400,7 @@ procedure recupererExp(qte : integer);
 var expMax,niv:Integer;
 begin
   perso.exp += (qte+random(20));
-  niv:=getNiveau();
+  niv:=getPersonnage().niveau;
   case niv of
        1:expMax:=500;
        2:expMax:=550;
