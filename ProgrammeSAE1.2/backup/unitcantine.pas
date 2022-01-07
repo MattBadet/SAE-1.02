@@ -44,7 +44,7 @@ var
    i,j,k:Integer;
    p:Boolean;
 begin
-  for k:=1 to 1721 do
+  for k:=1 to 1720 do
   begin
     for i:=2 to 1721 do
     begin

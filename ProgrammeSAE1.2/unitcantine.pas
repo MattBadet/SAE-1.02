@@ -44,6 +44,8 @@ var
    i,j,k:Integer;
    p:Boolean;
 begin
+  for k:=1 to 1000 do
+  begin
     for i:=2 to 1721 do
     begin
         temp:=t[i];
@@ -71,6 +73,7 @@ begin
             end;
         end;
     end;
+  end;
 end;
 // Tri par dichotomie (tentatives échouées)
 {function fusion(T,T1,T2:tablMod):tablMod;
