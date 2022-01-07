@@ -268,7 +268,7 @@ begin
     //Affichage prix
     dessinerCadreXY(1,7,14,9,simple,white,black);
     if(getPersonnage().argent > 200-(50*(n-1))) then couleurTexte(Green)
-    else couleurTexte(Red);
+    else couleurTexte(lightred);
     deplacerCurseurXY(2,8);write('Prix : ');
     case n of
     1:write(200-(50*(n-1)),'PO');

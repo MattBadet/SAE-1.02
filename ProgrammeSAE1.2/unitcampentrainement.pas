@@ -59,7 +59,7 @@ begin
       deplacerCurseurXY(26,17);write('dégats de base chaque tour pendant 3');
       deplacerCurseurXY(26,18);write('tours.');
       if (getPersonnage().argent < 1000) then
-      couleurTexte(Red)
+      couleurTexte(lightred)
       else
       couleurTexte(Green);
       deplacerCurseurXY(40,24);write('Prix : 1000PO');
@@ -80,7 +80,7 @@ begin
       deplacerCurseurXY(82,16);write('mais vous soigne en même temps d''autant');
       deplacerCurseurXY(82,17);write('de PV que le nombre enlever au monstre.');
       if (getPersonnage().argent < 1000) then
-      couleurTexte(Red)
+      couleurTexte(lightred)
       else
       couleurTexte(Green);
       deplacerCurseurXY(96,24);write('Prix : 1000PO');
