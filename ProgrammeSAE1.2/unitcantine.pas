@@ -75,27 +75,27 @@ begin
 end;}
 procedure triInsertion(var t:tablarray;var ordre:Boolean);
 var
-   temp:string;
-   i,j,k:Integer;
-   p:Boolean;
+   temp:string;    // temp servent pour les inversions des valeurs
+   i,j,k:Integer; // compteurs pour les boucles for
+   p:Boolean;    // pour arrêter le tri dans le tableaux
 begin
-  if ordre then
+  if ordre then   // permet de savoir l'ordre dans lequel trier
   begin
-    for k:=1 to 1000 do
+    for k:=1 to 1630 do  // pour effectuer plusieurs fois le tri afin de bien trier
     begin
-      for i:=2 to 1721 do
+      for i:=2 to 1721 do // pour parcourir tout le tableaux
       begin
-          temp:=t[i];
+          temp:=t[i];      // sauveagarde la valeur de l'indice i pour le permetuer plus tard
           j:=i-1;
           p:=False;
-          while p=False do
+          while p=False do  // tant que p faux trier
           begin
               if j>1 then
               begin
-                if t[j]>t[j+1] then
+                if t[j]>t[j+1] then  // si la valeur de j est supérieur à celle de j+1
                 begin
-                  t[j+1]:=t[j];
-                  t[j]:=temp;
+                  t[j+1]:=t[j];      // alors échanger les valeurs de j
+                  t[j]:=temp;       // et de j+1
                 end
                 else
                 begin
@@ -111,11 +111,11 @@ begin
           end;
       end;
     end;
-    ordre:=False;
-  end
+    ordre:=False;  // inverse la valeur de l'ordre pour qu'au prochain appel la procédure change le sens du tri
+  end              // on recommence mais dans l'autre sens
   else
   begin
-    for k:=1 to 1000 do
+    for k:=1 to 1630 do
     begin
       for i:=2 to 1721 do
       begin
@@ -126,7 +126,7 @@ begin
           begin
               if j>1 then
               begin
-                if t[j]<t[j+1] then
+                if t[j]<t[j+1] then   // même qu'au dessus mais si j inférieur à j+1
                 begin
                   t[j+1]:=t[j];
                   t[j]:=temp;
@@ -243,7 +243,7 @@ var choix : string;
 begin
   page := 1;
   recette := recupRecetteHUB(n);
-
+  ordreTri:=True;
   //Nombre de page pour chaque buff
   case n of
   1:pageMax:=83; //Force
