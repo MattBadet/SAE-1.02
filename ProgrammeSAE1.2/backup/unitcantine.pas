@@ -30,21 +30,19 @@ uses
 type
   strarray = array[1..2] of string;
   tablarray = array[1..1721] of string; //Tableau des recettes
-  tablMod = array of string;
 var
   tablcrit:tablarray;  //RecettesCritique
   tablregen:tablarray; //RecettesRegen    1633 elem
   tablforc:tablarray;  //RecettesForce    1655 elem
 
-// Gestion des tris
-// Tri par Insertion
-procedure triInsertion(var t:tablarray);
+// Tri par Insertion des recettes
+{procedure triInsertion(var t:tablarray);
 var
    temp:string;
    i,j,k:Integer;
    p:Boolean;
 begin
-  for k:=1 to 1720 do
+  for k:=1 to 1000 do
   begin
     for i:=2 to 1721 do
     begin
@@ -74,145 +72,81 @@ begin
         end;
     end;
   end;
-end;
-// Tri par dichotomie (tentatives échouées)
-{function fusion(T,T1,T2:tablMod):tablMod;
-var i,n,j,m,k:Integer;
+end;}
+procedure triInsertion(var t:tablarray;var ordre:Boolean);
+var
+   temp:string;
+   i,j,k:Integer;
+   p:Boolean;
 begin
-  i:=low(T1);
-  n:=high(T1);
-  j:=low(T2);
-  m:=high(T2);
-  k:=1;
-  while ((i<=n)AND(j<=m)) do
+  if ordre then
   begin
-      if T1[i] < T2[j] then
+    for k:=1 to 1000 do
+    begin
+      for i:=2 to 1721 do
       begin
-          T[k]:=T1[i];
-          k+=1;
-          i+=1;
-      end
-      else
-      begin
-          T[k]:=T2[j];
-          k+=1;
-          j+=1;
+          temp:=t[i];
+          j:=i-1;
+          p:=False;
+          while p=False do
+          begin
+              if j>1 then
+              begin
+                if t[j]>t[j+1] then
+                begin
+                  t[j+1]:=t[j];
+                  t[j]:=temp;
+                end
+                else
+                begin
+                    p:=True;
+                    j:=j-1;
+                end;
+              end
+              else
+              begin
+                  p:=True;
+                  j:=j-1;
+              end;
+          end;
       end;
-  end;
-  while i<=n do
+    end;
+  end
+  else
   begin
-      T[k]:=T1[i];
-      k:=+1;
-      i+=1;
+    for k:=1 to 1000 do
+    begin
+      for i:=2 to 1721 do
+      begin
+          temp:=t[i];
+          j:=i-1;
+          p:=False;
+          while p=False do
+          begin
+              if j>1 then
+              begin
+                if t[j]<t[j+1] then
+                begin
+                  t[j+1]:=t[j];
+                  t[j]:=temp;
+                end
+                else
+                begin
+                    p:=True;
+                    j:=j-1;
+                end;
+              end
+              else
+              begin
+                  p:=True;
+                  j:=j-1;
+              end;
+          end;
+      end;
+    end;
   end;
-  while j<=m do
-  begin
-      T[k]:=T2[j];
-      k+=1;
-      j+=1;
-  end;
-  Result:=T;
+  ordre:= !ordre;
 end;
-function triFusion(T:tablMod;d,f:Integer):tablMod;
-var q:Integer;
-begin
-    if d<f then
-    begin
-      q:=(d+f) div 2;
-      triFusion(T,d,q);
-      triFusion(T,q+1,f);
-      T:=fusion(T,T[d..q],T[q+1..f]);
-    end;
-end;}
-{function fusion(gauche,droite:tablMod):tablMod;
-var
-i,j: integer;
-begin
-    j:=1;
-    setLength(fusion,length(gauche)+length(droite));
-    while (length(gauche)>0)AND(length(droite)>0) do
-    begin
-        if gauche[0]<=droite[0] then
-        begin
-            fusion[j]:=gauche[0];
-            inc(j);
-            for i:=low(gauche) to (high(gauche)-1) do
-                gauche[i]:=gauche[i+1];
-            setLength(gauche, length(gauche)-1);
-        end else
-        begin
-            fusion[j]:=droite[0];
-            inc(j);
-            for i:=low(droite) to (high(droite)-1) do
-                droite[i]:=droite[i+1];
-            setlength(droite,length(droite)-1);
-        end;
-    end;
-    if length(gauche)>0 then
-        for i := low(gauche) to high(gauche) do
-            fusion[j i]:=gauche[i];
-    j:=j length(gauche);
-    if length(droite)>0 then
-        for i := low(droite) to high(droite) do
-            fusion[j i]:=droite[i];
-end;
-// fonction qui permet le tri des recettes
-function triFusion(table:tablMod):tablMod;
-var
-    gauche,droite:array of string;
-    i,milieu:integer;
-begin
-    setlength(triFusion,length(table));
-    if length(table)=1 then
-        triFusion[1]:=table[1]
-    else if length(table)>1 then
-    begin
-        milieu:=length(table) div 2;
-        setlength(gauche,milieu);
-        setlength(droite,(length(table)-milieu));
-        for i:=low(gauche) to high(gauche) do
-            gauche[i]:=table[i];
-        for i:=low(droite) to high(droite) do
-            droite[i]:=table[milieu];
-        gauche:=triFusion(gauche);
-        droite:=triFusion(droite);
-        triFusion:=fusion(gauche,droite);
-    end;
-end;}
-{Ici version où l'on choisit le sens de tri
-function triFusion(table:tablarray;sens:Boolean):tablarray;
-var
-    gauche,droite:tablarray;
-    i,milieu:integer;
-begin
-    setlength(triFusion,length(table));
-    if length(table)=1 then
-        triFusion[1]:=table[1]
-    else if length(table)>1 then
-    begin
-        milieu:=length(table) div 2;
-        setlength(gauche,milieu);
-        setlength(droite,(length(table)-milieu));
-        if sens then
-        begin
-          for i:=low(gauche) to high(gauche) do
-              gauche[i]:=table[i];
-          for i:=low(droite) to high(droite) do
-              droite[i]:=table[milieu];
-        end
-        else
-        begin
-           for i:=hight(droite) to low(droite) do
-              droite[i]:=table[milieu];
-           for i:=hight(gauche) to low(gauche) do
-              gauche[i]:=table[i];
-        end;
-        gauche:=triFusion(gauche);
-        droite:=triFusion(droite);
-        triFusion:=fusion(gauche,droite);
-    end;
-end;
-}
 
 //Mange le plat et applique le bonus
 procedure manger(nbPlat : integer);
@@ -304,6 +238,7 @@ var choix : string;
   page : integer;           //Page actuelle
   pageMax : integer;        //Nombre de pages pour ce buff
   i : integer;              //Compteur de boucle pour l'affichage des 20 recettes par page
+  ordreTri : boolean;       //Pour savoir dans quel ordre trier les recettes
 begin
   page := 1;
   recette := recupRecetteHUB(n);
@@ -369,7 +304,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-      triInsertion(recette);
+      triInsertion(recette,ordreTri);
     end
     else if(choix = '2') then //Choix d'une page
     begin
