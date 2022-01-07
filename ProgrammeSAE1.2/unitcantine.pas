@@ -38,7 +38,7 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-procedure triInsertion(var t:tablMod);
+procedure triInsertion(var t:tablarray);
 var
    temp:string;
    i,j:Integer;
@@ -76,11 +76,12 @@ function triRecettes(table:tablarray):tablarray;
 var tableTemp:array of string;
     i:Integer;
 begin
+  tableTemp:=[];
     for i:=1 to 1721 do
-        tableTemp[i]:=table[i];
-    triInsertion(tableTemp);
+        tableTemp[i-1]:=table[i];
+    //triInsertion(tableTemp);
     for i:=1 to 1721 do
-        table[i]:=tableTemp[i];
+        table[i]:=tableTemp[i-1];
     Result:=table;
 end;
 {function fusion(T,T1,T2:tablMod):tablMod;
@@ -376,7 +377,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-      //recette := triRecettes(recette);
+      {recette :=} triInsertion(recette);
     end
     else if(choix = '2') then //Choix d'une page
     begin
