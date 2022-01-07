@@ -38,7 +38,100 @@ var
 
 // Gestion des tris
 // Tri par dichotomie
-function fusion(gauche,droite:tablMod):tablMod;
+procedure triInsertion(var t:tablMod);
+var
+   temp:string;
+   i,j:Integer;
+   p:Boolean;
+begin
+  for i:=2 to 1721 do
+  begin
+      temp:=t[i];
+      j:=i-1;
+      p:=False;
+      while p=False do
+      begin
+          if j>1 then
+          begin
+            if t[j]>t[j+1] then
+            begin
+              t[j+1]:=t[j];
+              t[j]:=temp;
+            end
+            else
+            begin
+                p:=True;
+                j:=j-1;
+            end;
+          end
+          else
+          begin
+              p:=True;
+              j:=j-1;
+          end;
+      end;
+  end;
+end;
+function triRecettes(table:tablarray):tablarray;
+var tableTemp:array of string;
+    i:Integer;
+begin
+    for i:=1 to 1721 do
+        tableTemp[i]:=table[i];
+    triInsertion(tableTemp);
+    for i:=1 to 1721 do
+        table[i]:=tableTemp[i];
+    Result:=table;
+end;}
+{function fusion(T,T1,T2:tablMod):tablMod;
+var i,n,j,m,k:Integer;
+begin
+  i:=low(T1);
+  n:=high(T1);
+  j:=low(T2);
+  m:=high(T2);
+  k:=1;
+  while ((i<=n)AND(j<=m)) do
+  begin
+      if T1[i] < T2[j] then
+      begin
+          T[k]:=T1[i];
+          k+=1;
+          i+=1;
+      end
+      else
+      begin
+          T[k]:=T2[j];
+          k+=1;
+          j+=1;
+      end;
+  end;
+  while i<=n do
+  begin
+      T[k]:=T1[i];
+      k:=+1;
+      i+=1;
+  end;
+  while j<=m do
+  begin
+      T[k]:=T2[j];
+      k+=1;
+      j+=1;
+  end;
+  Result:=T;
+end;
+function triFusion(T:tablMod;d,f:Integer):tablMod;
+var q:Integer;
+begin
+    if d<f then
+    begin
+      q:=(d+f) div 2;
+      triFusion(T,d,q);
+      triFusion(T,q+1,f);
+      T:=fusion(T,T[d..q],T[q+1..f]);
+    end;
+end;}
+{function fusion(gauche,droite:tablMod):tablMod;
 var
 i,j: integer;
 begin
@@ -58,7 +151,7 @@ begin
             fusion[j]:=droite[0];
             inc(j);
             for i:=low(droite) to (high(droite)-1) do
-                droite[i]:=droite[i1];
+                droite[i]:=droite[i+1];
             setlength(droite,length(droite)-1);
         end;
     end;
@@ -92,18 +185,7 @@ begin
         droite:=triFusion(droite);
         triFusion:=fusion(gauche,droite);
     end;
-end;
-function triRecettes(table:tablarray):tablarray;
-var tableTemp:array of string;
-    i:Integer;
-begin
-    for i:=1 to 1721 do
-        tableTemp[i]:=table[i];
-    tableTemp:=triFusion(tableTemp);
-    for i:=1 to 1721 do
-        table[i]:=tableTemp[i];
-    Result:=table;
-end;
+end;}
 {Ici version où l'on choisit le sens de tri
 function triFusion(table:tablarray;sens:Boolean):tablarray;
 var
@@ -268,7 +350,7 @@ begin
     //Affichage prix
     dessinerCadreXY(1,7,14,9,simple,white,black);
     if(getPersonnage().argent > 200-(50*(n-1))) then couleurTexte(Green)
-    else couleurTexte(Red);
+    else couleurTexte(lightred);
     deplacerCurseurXY(2,8);write('Prix : ');
     case n of
     1:write(200-(50*(n-1)),'PO');
@@ -294,7 +376,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-      recette := triRecettes(recette);
+      //recette := triRecettes(recette);
     end
     else if(choix = '2') then //Choix d'une page
     begin
