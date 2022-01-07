@@ -37,53 +37,45 @@ var
   tablforc:tablarray;  //RecettesForce    1655 elem
 
 // Gestion des tris
-// Tri par dichotomie
+// Tri par Insertion
 procedure triInsertion(var t:tablarray);
 var
    temp:string;
-   i,j:Integer;
+   i,j,k:Integer;
    p:Boolean;
 begin
-  for i:=2 to 1721 do
+  for k:=1 to 1721 do
   begin
-      temp:=t[i];
-      j:=i-1;
-      p:=False;
-      while p=False do
-      begin
-          if j>1 then
-          begin
-            if t[j]>t[j+1] then
+    for i:=2 to 1721 do
+    begin
+        temp:=t[i];
+        j:=i-1;
+        p:=False;
+        while p=False do
+        begin
+            if j>1 then
             begin
-              t[j+1]:=t[j];
-              t[j]:=temp;
+              if t[j]>t[j+1] then
+              begin
+                t[j+1]:=t[j];
+                t[j]:=temp;
+              end
+              else
+              begin
+                  p:=True;
+                  j:=j-1;
+              end;
             end
             else
             begin
                 p:=True;
                 j:=j-1;
             end;
-          end
-          else
-          begin
-              p:=True;
-              j:=j-1;
-          end;
-      end;
+        end;
+    end;
   end;
 end;
-function triRecettes(table:tablarray):tablarray;
-var tableTemp:array of string;
-    i:Integer;
-begin
-  tableTemp:=[];
-    for i:=1 to 1721 do
-        tableTemp[i-1]:=table[i];
-    //triInsertion(tableTemp);
-    for i:=1 to 1721 do
-        table[i]:=tableTemp[i-1];
-    Result:=table;
-end;
+// Tri par dichotomie (tentatives échouées)
 {function fusion(T,T1,T2:tablMod):tablMod;
 var i,n,j,m,k:Integer;
 begin
@@ -377,7 +369,7 @@ begin
     if(choix = '0') then choixPage := ville
     else if(choix = '1') then //Triage Tableau
     begin
-      {recette :=} triInsertion(recette);
+      triInsertion(recette);
     end
     else if(choix = '2') then //Choix d'une page
     begin
