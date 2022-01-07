@@ -73,7 +73,6 @@ begin
             end;
         end;
     end;
-    end;
   end;
 end;
 // Tri par dichotomie (tentatives échouées)
